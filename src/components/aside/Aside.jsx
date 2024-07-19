@@ -6,8 +6,10 @@ import fileIcon from '../../assets/icons/file-icon.png';
 import writingIcon from '../../assets/icons/writing-icon.png';
 import managingIcon from '../../assets/icons/managing-icon.png';
 import { Link } from 'react-router-dom';
+import useCurrentPath from '../../hooks/useCurrentPath';
 
 function Aside() {
+  const currentPath = useCurrentPath();
   return (
     <aside>
       <section className='aside-menu'>
@@ -20,32 +22,32 @@ function Aside() {
           </article>
         </section>
         <ul className='aside-menus'>
-          <li className='aside-menus-item active'>
-            <Link>
+          <li className={'aside-menus-item ' + (currentPath === 'chatbot' ? 'active' : 'null')}>
+            <Link to='/chatbot'>
               <img src={chatIcon} alt="chat-icon" />
               <span>챗봇과 대화하기</span>
             </Link>
           </li>
-          <li className='aside-menus-item'>
-            <Link>
+          <li className={'aside-menus-item ' + (currentPath === 'chatstu' ? 'active' : 'null')}>
+            <Link to='/chatstu'>
               <img src={personIcon} alt="person-icon" />
               <span>질문에 답변하기</span>
             </Link>
           </li>
-          <li className='aside-menus-item'>
-            <Link>
+          <li className={'aside-menus-item ' + (currentPath === 'file' ? 'active' : 'null')}>
+            <Link to='/file'>
               <img src={fileIcon} alt="file-icon" />
               <span>파일 목록 보기</span>
             </Link>
           </li>
-          <li className='aside-menus-item'>
-            <Link>
+          <li className={'aside-menus-item ' + (currentPath === 'writing' ? 'active' : 'null')}>
+            <Link to='writing'>
               <img src={writingIcon} alt="writing-icon" />
               <span>글쓰기 피드백하기</span>
             </Link>
           </li>
-          <li className='aside-menus-item'>
-            <Link>
+          <li className={'aside-menus-item ' + (currentPath === 'manage' ? 'active' : 'null')}>
+            <Link to='/manage'>
               <img src={managingIcon} alt="managing-icon" />
               <span>사용자 관리하기</span>
             </Link>
