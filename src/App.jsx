@@ -10,11 +10,11 @@ function App() {
     <div className='page'>
       { showAside ? <Aside /> : null }
       <Routes>
-        <Route path='chatbot' element={""} />
-        <Route path='chatstu' element={""} />
-        <Route path='file' element={""} />
-        <Route path='writing' element={""} />
-        <Route path='manage' element={""} />
+        <Route path='/chatbot' element={""} />
+        <Route path='/chatstu' element={""} />
+        <Route path='/file' element={""} />
+        <Route path='/writing' element={""} />
+        <Route path='/manage' element={""} />
       </Routes>
     </div>
   )
