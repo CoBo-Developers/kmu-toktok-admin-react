@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Aside from './components/aside/Aside'
 import useShowAside from './hooks/useShowAside'
+import Manage from './routes/Manage';
 
 function App() {
   const showAside = useShowAside();
@@ -14,7 +15,7 @@ function App() {
         <Route path='/chatstu' element={""} />
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
-        <Route path='/manage' element={""} />
+        <Route path='/manage' element={<Manage />} />
       </Routes>
     </div>
   )
