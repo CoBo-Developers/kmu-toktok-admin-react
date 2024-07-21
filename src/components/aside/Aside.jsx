@@ -54,8 +54,13 @@ function Aside() {
           </li>
         </ul>
       </section>
-      <section>
-
+      <section className={'aside-extend-menu ' + (
+        currentPath === 'chatstu' || 
+        currentPath === 'file' || 
+        currentPath === 'manage' ?
+        'active' : null
+        )}>
+        
       </section>
     </aside>
   )

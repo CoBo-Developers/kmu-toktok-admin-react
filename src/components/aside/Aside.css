@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 900;
+  position: absolute;
 }
 
 .aside-title {
@@ -99,4 +101,19 @@
   width: 31px;
   height: 31px;
   aspect-ratio: 1;
+}
+
+.aside-extend-menu {
+  width: 280px;
+  height: 100dvh;
+  transition: width 0.5s;
+  border-radius: 0 30px 30px 0;
+  background: #193553;
+  position: absolute;
+  top: 0;
+  z-index: 800;
+}
+
+.aside-extend-menu.active {
+  width: 560px;
 }
