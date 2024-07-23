@@ -8,3 +8,5 @@ const getUserList = async (page, pageSize) => {
 
   return res.json();
 }
+
+export { getUserList };
