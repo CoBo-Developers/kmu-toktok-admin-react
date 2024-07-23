@@ -19,7 +19,6 @@ function useShowExtend() {
     } else {
       setShowExtend(false);
     }
-    console.log(selectedUser);
   }, [currentPath, selectedUser])
 
   return showExtend;

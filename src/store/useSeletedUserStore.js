@@ -3,8 +3,8 @@ import { create } from "zustand";
 const useSeletectUserStore = create((set) => ({
   seletedUser: {
     selected: false,
-    studentId: null,
-    role: null
+    studentId: "",
+    role: ""
   },
   setSelectedUser: (newStudentId, newRole) => set({
     seletedUser: {
@@ -15,8 +15,8 @@ const useSeletectUserStore = create((set) => ({
   resetSelectedUser: () => set({
     seletedUser: {
       selected: false,
-      studentId: null,
-      role: null
+      studentId: "",
+      role: ""
   }})
 }))
 
