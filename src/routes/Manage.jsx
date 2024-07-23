@@ -1,12 +1,9 @@
-import { Link } from 'react-router-dom';
 import './Manage.css';
-import arrowIcon from '../assets/icons/arrow-icon.png';
 import searchIcon from '../assets/icons/search-icon.png';
-import useSeletectUserStore from '../store/useSeletedUserStore';
 import useShowExtend from '../hooks/useShowExtend';
+import UserItem from '../components/list/UserItem';
 
 function Manage() {
-  const setSelectedUser = useSeletectUserStore((state) => state.setSelectedUser);
   const showExtend = useShowExtend();
   return (
     <main className={"manage " + (showExtend ? "active" : null)}>
@@ -21,24 +18,11 @@ function Manage() {
       <section className='manage-user-list'>
         <table className='manage-user-list-table'>
           <tbody>
-            <tr className='manage-user-list-item'>
-              <td>1</td>
-              <td>2022123455</td>
-              <td>
-                <button className='manage-user-list-redirect-btn'>챗봇과의 대화기록 보기</button>
-              </td>
-              <td>
-                <button className='manage-user-list-redirect-btn'>나와의 대화기록 보기</button>
-              </td>
-              <td>
-                <Link onClick={(e) => {
-                  e.preventDefault();
-                  setSelectedUser(2018117835, '관리자');
-                }}>
-                  자세히 보기 <img src={arrowIcon} alt="arrow-icon" />
-                </Link>
-              </td>
-            </tr>
+            <UserItem 
+              num={1}
+              studentId={5811032}
+              role={'학생'}
+              />
           </tbody>
         </table>
       </section>
