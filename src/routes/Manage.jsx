@@ -31,7 +31,7 @@ function Manage() {
               <td>
                 <Link onClick={(e) => {
                   e.preventDefault();
-                  setSelectedUser('2018117835', '관리자');
+                  setSelectedUser(2018117835, '관리자');
                 }}>
                   자세히 보기 <img src={arrowIcon} alt="arrow-icon" />
                 </Link>

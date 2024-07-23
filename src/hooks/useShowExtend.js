@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import useCurrentPath from "./useCurrentPath";
 import useSeletectUserStore from "../store/useSeletedUserStore";
+import useShowExtendStore from "../store/useShowExtendStore";
 
 function useShowExtend() {
   const currentPath = useCurrentPath();
   const selectedUser = useSeletectUserStore((state) => state.seletedUser);
-  const [showExtend, setShowExtend] = useState(false);
+  const showExtend = useShowExtendStore((state) => state.showExtend);
+  const setShowExtend = useShowExtendStore((state) => state.setShowExtend);
 
   useEffect(() => {
     if (
@@ -17,9 +19,10 @@ function useShowExtend() {
     } else {
       setShowExtend(false);
     }
+    console.log(selectedUser);
   }, [currentPath, selectedUser])
 
-  return { showExtend };
+  return showExtend;
 }
 
 export default useShowExtend;

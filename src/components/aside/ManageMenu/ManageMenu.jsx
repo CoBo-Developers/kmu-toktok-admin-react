@@ -1,7 +1,8 @@
 import useSeletectUserStore from "../../../store/useSeletedUserStore";
 
 function ManageMenu() {
-  const selectedUser = useSeletectUserStore((state) => state.selectedUser);
+  const selectedUser = useSeletectUserStore((state) => state.seletedUser);
+
   return (
     <section className='aside-user-manage'>
       <h2 className='aside-user-manage-title'>사용자 정보</h2>

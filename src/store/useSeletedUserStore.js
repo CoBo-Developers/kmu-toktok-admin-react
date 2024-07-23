@@ -8,15 +8,15 @@ const useSeletectUserStore = create((set) => ({
   },
   setSelectedUser: (newStudentId, newRole) => set({
     seletedUser: {
-    selected: true,
-    studentId: newStudentId,
-    role: newRole
+      selected: true,
+      studentId: newStudentId,
+      role: newRole
   }}),
-  resetStudentUser: () => set({
+  resetSelectedUser: () => set({
     seletedUser: {
-    selected: false,
-    studentId: null,
-    role: null
+      selected: false,
+      studentId: null,
+      role: null
   }})
 }))
 
