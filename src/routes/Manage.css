@@ -2,12 +2,17 @@
   width: 100%;
   padding: 56px 0;
   padding-right: 50px;
-  padding-left: calc(560px + 50px);
+  padding-left: calc(280px + 50px);
   height: 100dvh;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   flex-direction: column;
+  transition: padding 0.5s;
+}
+
+.manage.active {
+  padding-left: calc(560px + 50px);
 }
 
 .manage-search-wrapper {

@@ -3,11 +3,13 @@ import './Manage.css';
 import arrowIcon from '../assets/icons/arrow-icon.png';
 import searchIcon from '../assets/icons/search-icon.png';
 import useSeletectUserStore from '../store/useSeletedUserStore';
+import useShowExtend from '../hooks/useShowExtend';
 
 function Manage() {
   const setSelectedUser = useSeletectUserStore((state) => state.setSelectedUser);
+  const showExtend = useShowExtend();
   return (
-    <main className="manage">
+    <main className={"manage " + (showExtend ? "active" : null)}>
       <section className='manage-search-wrapper'>
         <div className='search-input'>
           <input type="text" name="search" id="search" placeholder='검색...' />
