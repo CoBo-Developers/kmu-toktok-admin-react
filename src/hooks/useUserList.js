@@ -8,7 +8,7 @@ function useUserList() {
   useEffect(() => {
     getUserList(page, 10)
     .then((result) => {
-      setUserList(result);
+      setUserList(result.data.users);
     })
     .catch((error) => {
       alert(error.message);

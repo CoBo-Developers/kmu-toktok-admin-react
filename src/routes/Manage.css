@@ -71,3 +71,9 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+.manage-user-detail {
+  text-decoration: none;
+  color: black;
+  vertical-align: middle;
+}

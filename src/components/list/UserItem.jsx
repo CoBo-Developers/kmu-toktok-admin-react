@@ -16,7 +16,7 @@ function UserItem(props) {
         <button className='manage-user-list-redirect-btn'>나와의 대화기록 보기</button>
       </td>
       <td>
-        <Link onClick={(e) => {
+        <Link className="manage-user-detail" onClick={(e) => {
           e.preventDefault();
           setSelectedUser(studentId, role);
         }}>
