@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import './Manage.css';
 import arrowIcon from '../assets/icons/arrow-icon.png';
 import searchIcon from '../assets/icons/search-icon.png';
+import useSeletectUserStore from '../store/useSeletedUserStore';
 
 function Manage() {
+  const setSelectedUser = useSeletectUserStore((state) => state.setSelectedUser);
   return (
     <main className="manage">
       <section className='manage-search-wrapper'>
@@ -27,7 +29,10 @@ function Manage() {
                 <button className='manage-user-list-redirect-btn'>나와의 대화기록 보기</button>
               </td>
               <td>
-                <Link>
+                <Link onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedUser('2018117835', '관리자');
+                }}>
                   자세히 보기 <img src={arrowIcon} alt="arrow-icon" />
                 </Link>
               </td>

@@ -8,9 +8,13 @@ import managingIcon from '../../assets/icons/managing-icon.png';
 import { Link } from 'react-router-dom';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import ManageMenu from './ManageMenu/ManageMenu';
+import useShowExtend from '../../hooks/useShowExtend';
+import useSeletectUserStore from '../../store/useSeletedUserStore';
 
 function Aside() {
   const currentPath = useCurrentPath();
+  const { showExtend } = useShowExtend();
+  const resetSelectedUser = useSeletectUserStore((state) => state.resetSelectedUser);
   return (
     <aside>
       <section className='aside-menu'>
@@ -56,9 +60,7 @@ function Aside() {
         </ul>
       </section>
       <section className={'aside-extend-menu ' + (
-        currentPath === 'chatstu' || 
-        currentPath === 'file' || 
-        currentPath === 'manage' ?
+        showExtend ?
         'active' : null
         )}>
           {
