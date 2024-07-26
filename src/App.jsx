@@ -4,10 +4,13 @@ import Aside from './components/aside/Aside'
 import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage';
 import Login from './routes/Login';
+import Redirect from './routes/Redirect';
 import Register from './routes/Register';
+import useReissue from './hooks/useReissue';
 
 function App() {
   const showAside = useShowAside();
+  useReissue();
 
   return (
     <div className="page">
@@ -22,6 +25,7 @@ function App() {
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
         <Route path='/manage' element={<Manage />} />
+        <Route path="/redirect/:option" element={<Redirect />} />
       </Routes>
     </div>
   )
