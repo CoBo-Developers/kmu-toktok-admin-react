@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import useSeletectUserStore from "../../../store/useSeletedUserStore";
 import './ManageMenu.css';
+import { useNavigate } from "react-router-dom";
 
 function ManageMenu() {
   const selectedUser = useSeletectUserStore((state) => state.seletedUser);
   const [selectedRole, setSelectedRole] = useState();
   const [inputId, setInputId] = useState();
   const [isModify, setIsModify] = useState(false);
+  const navigate = useNavigate();
 
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
@@ -55,8 +57,12 @@ function ManageMenu() {
         <input type="text" name="student-id" id='student-id' value={inputId} onChange={handleStudentIdChange} disabled={isModify ? false : true} />
       </div>
       <button className={'aside-user-manage-modify-btn ' + (isModify ? "active" : null)} onClick={handleClickModifyBtn}>정보 수정</button>
-      <button className='aside-user-redirect-btn'>챗봇과의 대화기록 보기</button>
-      <button className='aside-user-redirect-btn'>나와의 대화기록 보기</button>
+      <button className='aside-user-redirect-btn' onClick={() => {
+        navigate('/manage/' + selectedUser.studentId);
+      }}>챗봇과의 대화기록 보기</button>
+      <button className='aside-user-redirect-btn' onClick={() => {
+        navigate('/chatstu/' + selectedUser.studentId);
+      }}>나와의 대화기록 보기</button>
     </section>
   )
 }
