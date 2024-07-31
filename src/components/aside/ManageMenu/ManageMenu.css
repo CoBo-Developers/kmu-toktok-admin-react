@@ -71,6 +71,12 @@
   margin-bottom: 32px;
 }
 
+.aside-user-manage-modify-btn.active {
+  background: #465F7A;
+  border: none;
+  color: white;
+}
+
 .aside-user-redirect-btn {
   width: 100%;
   height: 44px;
