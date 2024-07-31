@@ -60,7 +60,11 @@ function ManageMenu() {
         <label htmlFor="student-id">학번</label>
         <input type="text" name="student-id" id='student-id' value={inputId || ""} onChange={handleStudentIdChange} disabled={isModify ? false : true} />
       </div>
-      <button className={'aside-user-manage-modify-btn ' + (isModify ? "active" : null)} onClick={handleClickModifyBtn}>정보 수정</button>
+      <button className={'aside-user-manage-modify-btn ' + (isModify ? "active" : null)} onClick={handleClickModifyBtn}>
+        {
+          isModify ? "저장하기" : "정보 수정"
+        }
+      </button>
       <button className='aside-user-redirect-btn' onClick={() => {
         navigate('/manage/' + selectedUser.studentId);
       }}>챗봇과의 대화기록 보기</button>
