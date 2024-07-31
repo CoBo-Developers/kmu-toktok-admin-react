@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import useCurrentPath from "./useCurrentPath";
 import useSeletectUserStore from "../store/useSeletedUserStore";
 import useShowExtendStore from "../store/useShowExtendStore";
+import { useLocation } from "react-router-dom";
 
 function useShowExtend() {
   const currentPath = useCurrentPath();
+  const location = useLocation();
   const selectedUser = useSeletectUserStore((state) => state.seletedUser);
   const showExtend = useShowExtendStore((state) => state.showExtend);
   const setShowExtend = useShowExtendStore((state) => state.setShowExtend);
@@ -13,13 +15,13 @@ function useShowExtend() {
     if (
       currentPath === 'chatstu' || 
       currentPath === 'file' || 
-      (currentPath === 'manage' && selectedUser.selected)
+      (currentPath === 'manage' && selectedUser.selected && !(location.pathname.split('/')[2]))
     ) {
       setShowExtend(true);
     } else {
       setShowExtend(false);
     }
-  }, [currentPath, selectedUser])
+  }, [currentPath, selectedUser, location])
 
   return showExtend;
 }
