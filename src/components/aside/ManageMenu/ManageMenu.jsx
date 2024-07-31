@@ -15,7 +15,11 @@ function ManageMenu() {
   }
 
   const handleStudentIdChange = (e) => {
-    setInputId(e.target.value);
+    if (isNaN(e.target.value)) {
+      e.preventDefault();
+    } else {
+      setInputId(e.target.value);
+    }
   }
 
   const handleClickModifyBtn = () => {
@@ -54,7 +58,7 @@ function ManageMenu() {
       </div>
       <div className='aside-user-manage-id-input'>
         <label htmlFor="student-id">학번</label>
-        <input type="text" name="student-id" id='student-id' value={inputId} onChange={handleStudentIdChange} disabled={isModify ? false : true} />
+        <input type="text" name="student-id" id='student-id' value={inputId || ""} onChange={handleStudentIdChange} disabled={isModify ? false : true} />
       </div>
       <button className={'aside-user-manage-modify-btn ' + (isModify ? "active" : null)} onClick={handleClickModifyBtn}>정보 수정</button>
       <button className='aside-user-redirect-btn' onClick={() => {
