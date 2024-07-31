@@ -99,7 +99,8 @@
   background: #465F7A;
 }
 
-.aside-user-manage-ratio > input:disabled+label {
+.aside-user-manage-ratio > input:disabled+label,
+.aside-user-manage-ratio > input:checked+label {
   cursor: default;
 }
 
