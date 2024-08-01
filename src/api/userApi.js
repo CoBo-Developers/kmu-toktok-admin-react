@@ -35,7 +35,7 @@ const putUser = async (studentId, registerState, newRole, newStudentId, token) =
   });
 
   if (!res.ok) {
-    let message = await res.json();
+    let message = (await res.json()).message;
     throw new Error(message);
   }
 

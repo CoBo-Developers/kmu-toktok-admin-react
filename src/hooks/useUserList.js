@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getUserList } from "../api/userApi";
 import { useCookies } from "react-cookie";
+import { useUserListStore } from "../store/useUserStore";
 
 function useUserList() {
-  const [userList, setUserList] = useState([]);
+  const userList = useUserListStore((state) => state.userList);
+  const setUserList = useUserListStore((state) => state.setUserList);
   const [page, setPage] = useState(0);
   const [cookies] = useCookies(['accessToken']);
 

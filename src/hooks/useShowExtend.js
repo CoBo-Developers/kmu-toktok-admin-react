@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useCurrentPath from "./useCurrentPath";
 import useSeletectUserStore from "../store/useSeletedUserStore";
 import useShowExtendStore from "../store/useShowExtendStore";

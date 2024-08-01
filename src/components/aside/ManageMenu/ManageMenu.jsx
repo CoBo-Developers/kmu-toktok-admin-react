@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import useSeletectUserStore from "../../../store/useSeletedUserStore";
 import './ManageMenu.css';
 import { useNavigate } from "react-router-dom";
+import { getUserList, putUser } from "../../../api/userApi";
+import { useCookies } from "react-cookie";
+import { useUserListStore } from "../../../store/useUserStore";
 
 function ManageMenu() {
   const selectedUser = useSeletectUserStore((state) => state.seletedUser);
+  const setUserList = useUserListStore((state) => state.setUserList);
   const [selectedRole, setSelectedRole] = useState();
   const [inputId, setInputId] = useState();
   const [isModify, setIsModify] = useState(false);
   const navigate = useNavigate();
+  const [cookies] = useCookies(['accessToken']);
 
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
@@ -23,9 +28,25 @@ function ManageMenu() {
   }
 
   const handleClickModifyBtn = () => {
-    // if (!isModify) {
+    if (!isModify) {
       setIsModify(!isModify);
-    // }
+    } else {
+      putUser(selectedUser.studentId, selectedUser.registerState, selectedRole, inputId, cookies.accessToken)
+        .then(() => {
+          alert('수정되었습니다.');
+          setIsModify(false);
+          getUserList(0, 10, cookies.accessToken)
+            .then((res) => {
+              setUserList(res.data.users);
+            })
+            .catch((error) => {
+              alert(error.message);
+            })
+        })
+        .catch((error) => {
+          alert(error.message);
+        })
+    }
   }
 
   useEffect(() => {
