@@ -13,16 +13,24 @@ const getUserList = async (page, pageSize, token) => {
   return res.json();
 }
 
-const putUser = async (studentId, registerState, newRole) => {
+const putUser = async (studentId, registerState, newRole, newStudentId, token) => {
+  const roleEnum = {
+    'DEVELOPER': 0,
+    'PROFESSOR': 1,
+    'STUDENT': 2
+  } 
+
   let res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/user', {
     method: 'PUT',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      'authorization': 'Bearer ' + token
     },
     body: JSON.stringify({
       studentId: studentId,
       registerState: registerState,
-      role: newRole
+      role: roleEnum[newRole],
+      newStudentId: newStudentId
     })
   });
 
