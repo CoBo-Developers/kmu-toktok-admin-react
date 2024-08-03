@@ -25,6 +25,7 @@ function App() {
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
         <Route path='/manage' element={<Manage />} />
+        <Route path='/manage/:id' element={""} />
         <Route path="/redirect/:option" element={<Redirect />} />
       </Routes>
     </div>

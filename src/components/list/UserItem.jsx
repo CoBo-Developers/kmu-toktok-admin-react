@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import arrowIcon from '../../assets/icons/arrow-icon.png';
 import useSeletectUserStore from "../../store/useSeletedUserStore";
+import './UserItem.css';
 
 function UserItem(props) {
   const { num, studentId, role } = props;
