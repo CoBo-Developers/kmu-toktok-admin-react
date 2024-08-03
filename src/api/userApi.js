@@ -1,5 +1,5 @@
 const getUserList = async (page, pageSize) => {
-  let res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/user/list?page=${page}&pageSize=${pageSize}`)
+  let res = await fetch(import.meta.env.VITE_APP_AUTH_API_URL + `/api/user/list?page=${page}&pageSize=${pageSize}`)
   
   if (!res.ok) {
     let message = await res.json();
@@ -10,7 +10,7 @@ const getUserList = async (page, pageSize) => {
 }
 
 const putUser = async (studentId, registerState, newRole) => {
-  let res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/user', {
+  let res = await fetch(import.meta.env.VITE_APP_AUTH_API_URL + '/api/user', {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
