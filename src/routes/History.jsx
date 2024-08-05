@@ -1,33 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './History.css';
-import { useEffect, useRef, useState } from 'react';
-import { useCookies } from 'react-cookie';
-import { getStudentChat } from '../api/chatApi';
 import ltIcon from '../assets/icons/lt_icon.png';
+import useChatHistory from '../hooks/useChatHistory';
 
 function History() {
-  const params = useParams();
-  const [cookies] = useCookies(['accessToken']);
-  const [chatHistory, setChatHistory] = useState([]);
-  const chatListRef = useRef();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (cookies.accessToken) {
-      getStudentChat(params.id, cookies.accessToken)
-      .then((res) => {
-        setChatHistory(res.data);
-        console.log(res);
-      })
-      .catch((err) => {
-        alert(err.message);
-      })
-    }
-  }, [])
-
-  useEffect(() => {
-    chatListRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [chatHistory]);
+  const {
+    id,
+    chatHistory,
+    chatListRef
+  } = useChatHistory();
 
   return (
     <main className="history">
@@ -38,7 +20,7 @@ function History() {
           }}>
             <img src={ltIcon} alt="lt-icon" /> 돌아가기
           </span>
-          { params.id }
+          { id }
         </div>
       </header>
       <div className="history-inner">
