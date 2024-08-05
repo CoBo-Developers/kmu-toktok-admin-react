@@ -1,0 +1,73 @@
+.history {
+  width: 100%;
+}
+
+.history-header {
+  width: 100%;
+  padding: 12px 0;
+  padding-left: 280px;
+  background: #4F6B8A;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 800;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.history-header-inner {
+  max-width: 950px;
+  width: 100%;
+  padding: 0 20px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 54px;
+}
+
+.history-return-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 2px;
+}
+
+.history-inner {
+  position: relative;
+  padding-left: 280px;
+}
+
+.message-container-inner {
+  margin: 56px auto;
+  max-width: 800px;
+  width: 80%;
+}
+
+.message-wrapper {
+  display: flex;
+}
+
+.message {
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  display: inline-block;
+  max-width: 60%;
+  line-height: 20px;
+  white-space: pre-wrap;
+}
+
+.message.bot {
+  background: #F0F1F3;
+}
+
+.message.user {
+  background: #001832;
+  color: white;
+  margin-left: auto;
+}

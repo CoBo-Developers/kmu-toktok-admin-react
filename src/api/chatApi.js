@@ -1,5 +1,9 @@
-const getStudentChat = async (studentId) => {
-  const res = await fetch(import.meta.env.VITE_APP_CHAT_API_URL + '/api/chat/student?studentId=' + studentId);
+const getStudentChat = async (studentId, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_CHAT_API_URL + '/api/chat/student?studentId=' + studentId, {
+    headers: {
+      'authorization': 'Bearer ' + token
+    }
+  });
 
   if (!res.ok) {
     const message = (await res.json()).message;
@@ -8,3 +12,5 @@ const getStudentChat = async (studentId) => {
 
   return res.json();
 }
+
+export { getStudentChat };
