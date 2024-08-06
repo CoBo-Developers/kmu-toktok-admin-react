@@ -8,6 +8,7 @@ import managingIcon from '../../assets/icons/managing-icon.png';
 import { Link, useNavigate } from 'react-router-dom';
 import useCurrentPath from '../../hooks/useCurrentPath';
 import ManageMenu from './ManageMenu/ManageMenu';
+import ChatStuMenu from './ChatStuMenu/ChatStuMenu';
 import useShowExtend from '../../hooks/useShowExtend';
 import useSeletectUserStore from '../../store/useSeletedUserStore';
 
@@ -84,6 +85,10 @@ function Aside() {
           {
             currentPath === 'manage' ? 
             <ManageMenu /> : null
+          }
+          {
+            currentPath === 'chatstu' ? 
+            <ChatStuMenu /> : null
           }
         
       </section>
