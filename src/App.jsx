@@ -8,6 +8,7 @@ import Redirect from './routes/Redirect';
 import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
 import Chatbot from './routes/Chatbot';
+import History from './routes/History';
 
 function App() {
   const showAside = useShowAside();
@@ -26,7 +27,7 @@ function App() {
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
         <Route path='/manage' element={<Manage />} />
-        <Route path='/manage/:id' element={""} />
+        <Route path='/manage/:id' element={<History />} />
         <Route path="/redirect/:option" element={<Redirect />} />
       </Routes>
     </div>

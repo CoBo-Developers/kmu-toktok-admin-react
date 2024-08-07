@@ -25,7 +25,7 @@ function Manage() {
                 if (item.studentId) 
                   return <UserItem 
                             key={i}
-                            num={i}
+                            num={i + 1}
                             studentId={item.studentId}
                             role={item.role}
                             />
