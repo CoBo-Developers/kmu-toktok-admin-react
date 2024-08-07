@@ -5,4 +5,9 @@ const useUserStore = create((set) => ({
   setStudentId: (studentId) => set({ studentId: studentId }),
 }));
 
-export default useUserStore;
+const useUserListStore = create((set) => ({
+  userList: [],
+  setUserList: (newUserList) => set({ userList: newUserList })
+}))
+
+export { useUserStore, useUserListStore };

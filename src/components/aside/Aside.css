@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   z-index: 900;
-  position: absolute;
+  position: fixed;
 }
 
 .aside-title {
@@ -109,7 +109,7 @@
   transition: all 0.5s;
   border-radius: 0 30px 30px 0;
   background: #193553;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 800;
   padding: 28px;
@@ -119,69 +119,4 @@
 .aside-extend-menu.active {
   width: 560px;
   padding-left: calc(280px + 28px);
-}
-
-.aside-user-manage-title {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 20px;
-  color: white;
-}
-
-.aside-user-manage-input {
-  width: 100%;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  padding: 13px 12px 13px 12px;
-  gap: 16px;
-  border-radius: 10px;
-  background: #152A41;
-  box-sizing: border-box;
-  margin-bottom: 4px;
-}
-
-.aside-user-manage-input > label {
-  color: #5E7D9F;
-  font-weight: 300;
-  font-size: 14px;
-}
-
-.aside-user-manage-input > input {
-  background: none;
-  color: white;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.aside-user-manage-modify-btn {
-  width: 100%;
-  height: 44px;
-  box-sizing: border-box;
-  border: 1px solid #5E7D9F;
-  border-radius: 10px;
-  background: none;
-  padding: 12px, 44px, 12px, 44px;
-  font-size: 14px;
-  font-weight: 300;
-  color: #5E7D9F;
-  cursor: pointer;
-  margin-bottom: 32px;
-}
-
-.aside-user-redirect-btn {
-  width: 100%;
-  height: 44px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  padding: 12px, 44px, 12px, 44px;
-  background: #465F7A;
-  color: white;
-  border: none;
-  margin-bottom: 4px;
-  cursor: pointer;
-  font-weight: 300;
-  font-size: 14px;
 }
