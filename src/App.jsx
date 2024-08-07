@@ -9,6 +9,7 @@ import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
 import Chatbot from './routes/Chatbot';
 import History from './routes/History';
+import ChatStu from './routes/ChatStu';
 
 function App() {
   const showAside = useShowAside();
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path='/chatbot' element={<Chatbot />} />
-        <Route path='/chatstu' element={""} />
+        <Route path='/chatstu' element={<ChatStu />} />
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
         <Route path='/manage' element={<Manage />} />
