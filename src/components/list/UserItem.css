@@ -17,6 +17,10 @@
   vertical-align: middle;
 }
 
+.manage-user-list-table {
+  border-spacing: 7px;
+}
+
 .manage-user-list-item > td {
   border: none;
   font-size: 14px;
