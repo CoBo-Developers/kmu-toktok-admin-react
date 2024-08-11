@@ -24,7 +24,9 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path='/chatbot' element={<Chatbot />} />
-        <Route path='/chatstu' element={<ChatStu />} />
+        <Route path="/chatstu" element={<ChatStu />}>
+          <Route path=":studentId" element={<ChatStu />} />
+        </Route>
         <Route path='/file' element={""} />
         <Route path='/writing' element={""} />
         <Route path='/manage' element={<Manage />} />

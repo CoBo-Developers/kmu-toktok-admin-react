@@ -1,16 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import { getChat, postChat } from '../api/chatStuApi';
 import { useCookies } from 'react-cookie';
-import useSeletectChatStu from '../store/useSelectedChatStu';
 
 const useChatStu = () => {
+  const { studentId } = useParams();
   const [cookies] = useCookies(['accessToken', 'refreshToken', 'isActive']);
   const [chatContent, setChatContent] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  const { selectedChatStu, setSelectedChatStu } = useSeletectChatStu((state) => ({
-    selectedChatStu: state.selectedChatStu,
-    setSelectedChatStu: state.setSelectedChatStu,
-  }));
   const inputRef = useRef();
   const chatContentRef = useRef();
   const sendRef = useRef();
@@ -22,8 +19,8 @@ const useChatStu = () => {
   }, [chatContent]);
 
   useEffect(() => {
-    if (selectedChatStu.studentId) {
-      getChat(cookies.accessToken, selectedChatStu.studentId)
+    if (studentId) {
+      getChat(cookies.accessToken, studentId)
         .then((chat) => {
           setChatContent(chat.data);
         })
@@ -31,7 +28,7 @@ const useChatStu = () => {
           console.error(error);
         });
     }
-  }, [selectedChatStu.studentId, cookies.accessToken]);
+  }, [studentId, cookies.accessToken]);
 
   const handleInputChange = (e) => {
     setNewMessage(e.target.value);
@@ -51,7 +48,7 @@ const useChatStu = () => {
       question: false,
     };
 
-    postChat(cookies.accessToken, selectedChatStu.studentId, newMessage)
+    postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
         setChatContent([...chatContent, newChat]);
         setNewMessage('');
@@ -78,9 +75,6 @@ const useChatStu = () => {
     }
   };
 
-  const handleBack = () => {
-    setSelectedChatStu(null);
-  };
 
   return {
     chatContent,
@@ -89,8 +83,6 @@ const useChatStu = () => {
     handleSend,
     handleKeyDown,
     handleKeyUp,
-    handleBack,
-    selectedChatStu,
     inputRef,
     chatContentRef,
     sendRef,
