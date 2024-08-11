@@ -15,6 +15,7 @@ function useShowExtend() {
     if (
       currentPath === 'chatstu' || 
       currentPath === 'file' || 
+      currentPath == 'writing' ||
       (currentPath === 'manage' && selectedUser.selected && !(location.pathname.split('/')[2]))
     ) {
       setShowExtend(true);
