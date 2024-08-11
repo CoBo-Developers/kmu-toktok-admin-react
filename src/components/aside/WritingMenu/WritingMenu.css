@@ -1,0 +1,46 @@
+.aside-writing > h2 {
+  font-size: 14px;
+  color: white;
+  line-height: 20px;
+  font-weight: 400;
+  margin-top: 28px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+}
+
+.aside-writing-items {
+  color: white;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.aside-writing-items > li {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  width: 100%;
+  font-weight: 300;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.aside-writing-items > li.active {
+  background: #465F7A;
+  cursor: default;
+}
+
+.aside-writing-create-btn {
+  background: #152A41;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  width: 100%;
+  font-weight: 300;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  border: none;
+}
