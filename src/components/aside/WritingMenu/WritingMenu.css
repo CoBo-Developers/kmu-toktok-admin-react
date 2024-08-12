@@ -24,10 +24,16 @@
   font-weight: 300;
   box-sizing: border-box;
   cursor: pointer;
+  border: 1px solid #193553;
+}
+
+.aside-writing-items > li:hover {
+  border: 1px solid #FFF;
 }
 
 .aside-writing-items > li.active {
   background: #465F7A;
+  border: 1px solid #465F7A;
   cursor: default;
 }
 

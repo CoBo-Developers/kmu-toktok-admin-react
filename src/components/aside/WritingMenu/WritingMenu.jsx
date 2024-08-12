@@ -1,3 +1,4 @@
+import CreateNewWriting from './CreateNewWriting';
 import './WritingMenu.css';
 
 function WritingMenu() {
@@ -21,9 +22,7 @@ function WritingMenu() {
           5주차 글쓰기
         </li>
       </ul>
-      <button className="aside-writing-create-btn">
-        + 새로운 글쓰기 추가
-      </button>
+      <CreateNewWriting />
     </section>
   )
 }
