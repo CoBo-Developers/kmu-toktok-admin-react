@@ -1,11 +1,9 @@
 import { handleTextareaChange } from '../../../utils/textareaHandler';
 import './CreateNewWriting.css';
-import { useRef, useState } from "react"
+import { useState } from "react"
 
 function CreateNewWriting() {
   const [onCreate, setOnCreate] = useState(false);
-  const textarea1 = useRef();
-  const textarea2 = useRef();
 
   return (
     <div>
@@ -19,13 +17,11 @@ function CreateNewWriting() {
             <article className="textarea">
               <label htmlFor="description">설명</label>
               <textarea name="description" id="description" placeholder="설명" rows={1}
-              ref={textarea1}
               onChange={handleTextareaChange}></textarea>
             </article>
             <article className="textarea">
               <label htmlFor="constraints">규정</label>
               <textarea name="constraints" id="constraints" placeholder="규정"
-              ref={textarea2}
               onChange={handleTextareaChange}></textarea>
             </article>
             <article className="input">
