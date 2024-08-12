@@ -1,3 +1,4 @@
+import { handleTextareaChange } from '../../../utils/textareaHandler';
 import './CreateNewWriting.css';
 import { useRef, useState } from "react"
 
@@ -5,17 +6,6 @@ function CreateNewWriting() {
   const [onCreate, setOnCreate] = useState(false);
   const textarea1 = useRef();
   const textarea2 = useRef();
-  const startDate = useRef();
-
-  const handleTextarea1Change = () => {
-    textarea1.current.style.height = 'auto';
-    textarea1.current.style.height = textarea1.current.scrollHeight + 'px';
-  }
-
-  const handleTextarea2Change = () => {
-    textarea2.current.style.height = 'auto';
-    textarea2.current.style.height = textarea2.current.scrollHeight + 'px';
-  }
 
   return (
     <div>
@@ -30,13 +20,13 @@ function CreateNewWriting() {
               <label htmlFor="description">설명</label>
               <textarea name="description" id="description" placeholder="설명" rows={1}
               ref={textarea1}
-              onChange={handleTextarea1Change}></textarea>
+              onChange={handleTextareaChange}></textarea>
             </article>
             <article className="textarea">
               <label htmlFor="constraints">규정</label>
               <textarea name="constraints" id="constraints" placeholder="규정"
               ref={textarea2}
-              onChange={handleTextarea2Change}></textarea>
+              onChange={handleTextareaChange}></textarea>
             </article>
             <article className="input">
               <label htmlFor="score">총점</label>
