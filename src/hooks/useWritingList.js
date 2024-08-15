@@ -9,7 +9,7 @@ function useWritingList() {
   useEffect(() => {
     getWritingList(cookies.accessToken)
       .then((res) => {
-        setWritingList(res.data.assginments);
+        setWritingList(res.data.assignments);
       })
       .catch((err) => {
         alert(err.message);

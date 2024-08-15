@@ -1,26 +1,28 @@
+import { useEffect } from 'react';
 import CreateNewWriting from './CreateNewWriting';
 import './WritingMenu.css';
+import useWritingList from '../../../hooks/useWritingList';
 
 function WritingMenu() {
+  const { writingList } = useWritingList();
+
+  useEffect(() => {
+    console.log(writingList);
+  }, [writingList]);
+
   return (
     <section className="aside-writing">
       <h2>주차별 글쓰기</h2>
       <ul className="aside-writing-items">
-        <li>
-          1주차 글쓰기
-        </li>
-        <li className="active">
-          2주차 글쓰기
-        </li>
-        <li>
-          3주차 글쓰기
-        </li>
-        <li>
-          4주차 글쓰기
-        </li>
-        <li>
-          5주차 글쓰기
-        </li>
+        {
+          writingList.map((item, i) => {
+            return (
+              <li key={i}>
+                {item.title}
+              </li>
+            )
+          })
+        }
       </ul>
       <CreateNewWriting />
     </section>

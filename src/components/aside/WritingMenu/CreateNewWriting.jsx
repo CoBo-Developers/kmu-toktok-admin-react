@@ -1,3 +1,4 @@
+import useWritingList from '../../../hooks/useWritingList';
 import { handleTextareaChange } from '../../../utils/textareaHandler';
 import './CreateNewWriting.css';
 import { useState } from "react"
@@ -8,6 +9,7 @@ function CreateNewWriting() {
   const [description, setDescription] = useState("");
   const [constraints, setConstraints] = useState("");
   const [score, setScore] = useState();
+
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -52,6 +54,7 @@ function CreateNewWriting() {
       return ;
     }
   }
+
 
   return (
     <div>
