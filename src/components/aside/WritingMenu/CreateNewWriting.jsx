@@ -1,4 +1,4 @@
-import useWritingList from '../../../hooks/useWritingList';
+import { dateToString } from '../../../utils/dateAndTime';
 import { handleTextareaChange } from '../../../utils/textareaHandler';
 import './CreateNewWriting.css';
 import { useState } from "react"
@@ -9,6 +9,8 @@ function CreateNewWriting() {
   const [description, setDescription] = useState("");
   const [constraints, setConstraints] = useState("");
   const [score, setScore] = useState();
+  const [startDate, setStartDate] = useState({ year: null, month: null, day: null });
+  const [endDate, setEndDate] = useState({ year: null, month: null, day: null });
 
 
   const handleTitleChange = (e) => {
@@ -33,6 +35,42 @@ function CreateNewWriting() {
     }
   }
 
+  const handleStartYearChange = (e) => {
+    let startDateCopy = { ...startDate };
+    startDateCopy.year = e.target.value;
+    setStartDate(startDateCopy);
+  }
+
+  const handleStartMonthChange = (e) => {
+    let startDateCopy = { ...startDate };
+    startDateCopy.month = e.target.value;
+    setStartDate(startDateCopy);
+  }
+
+  const handleStartDayChange = (e) => {
+    let startDateCopy = { ...startDate };
+    startDateCopy.day = e.target.value;
+    setStartDate(startDateCopy);
+  }
+
+  const handleEndYearChange = (e) => {
+    let endDateCopy = { ...endDate };
+    endDateCopy.year = e.target.value;
+    setEndDate(endDateCopy);
+  }
+
+  const handleEndMonthChange = (e) => {
+    let endDateCopy = { ...endDate };
+    endDateCopy.month = e.target.value;
+    setEndDate(endDateCopy);
+  }
+
+  const handleEndDayChange = (e) => {
+    let endDateCopy = { ...endDate };
+    endDateCopy.day = e.target.value;
+    setEndDate(endDateCopy);
+  }
+
   const handleButtonClick = () => {
     if (title.trim().length <= 0) {
       alert('제목을 입력해주세요.');
@@ -52,6 +90,31 @@ function CreateNewWriting() {
     if (title.trim().length <= 0) {
       alert('제목을 입력해주세요.');
       return ;
+    }
+
+    if (!startDate.year || 
+      !startDate.month || 
+      !startDate.day ||
+      !endDate.year || 
+      !endDate.month || 
+      !endDate.day
+    ) {
+      alert('날짜를 입력해주세요.');
+      return ;
+    }
+
+    const startDateFormat = new Date();
+    startDateFormat.setFullYear(startDate.year);
+    startDateFormat.setMonth(startDate.month - 1);
+    startDateFormat.setDate(startDate.day);
+
+    const endDateFormat = new Date();
+    endDateFormat.setFullYear(endDate.year);
+    endDateFormat.setMonth(endDate.month - 1);
+    endDateFormat.setDate(endDate.day);
+
+    if (startDateFormat > endDateFormat) {
+      alert('마감일이 시작일보다 빠릅니다.');
     }
   }
 
@@ -77,7 +140,7 @@ function CreateNewWriting() {
             </article>
             <article className="input">
               <label htmlFor="score">총점</label>
-              <input type="number" name="score" id="score" onChange={handleScoreChange} />
+              <input type="number" name="score" id="score" onChange={handleScoreChange} min={0} />
             </article>
             <article className="due-date-wrapper">
               <h5 htmlFor="due-date">기한</h5>
@@ -85,24 +148,24 @@ function CreateNewWriting() {
                 <label htmlFor="start-date">시작일</label>
                 <div>
                   <span>
-                    <input type="text" maxLength={4} />년
+                    <input type="number" maxLength={4} onChange={handleStartYearChange} />년
                   </span>
                 </div>
                 <div>
-                  <span><input type="text" maxLength={2} />월</span>
-                  <span><input type="text" maxLength={2} />일</span>
+                  <span><input type="number" maxLength={2} onChange={handleStartMonthChange} />월</span>
+                  <span><input type="number" maxLength={2} onChange={handleStartDayChange} />일</span>
                 </div>
               </section>
               <section className="end-date-wrapper">
                 <label htmlFor="end-date">마감일</label>
                 <div>
                   <span>
-                    <input type="text" maxLength={4} />년
+                    <input type="number" maxLength={4} onChange={handleEndYearChange} />년
                   </span>
                 </div>
                 <div>
-                  <span><input type="text" maxLength={2} />월</span>
-                  <span><input type="text" maxLength={2} />일</span>
+                  <span><input type="number" maxLength={2} onChange={handleEndMonthChange} />월</span>
+                  <span><input type="number" maxLength={2} onChange={handleEndDayChange} />일</span>
                 </div>
               </section>
             </article>

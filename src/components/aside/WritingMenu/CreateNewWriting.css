@@ -97,3 +97,8 @@
   border: none;
   font-size: 14px;
 }
+
+.start-date-wrapper input::-webkit-inner-spin-button,
+.end-date-wrapper input::-webkit-inner-spin-button {
+  appearance: none;
+}
