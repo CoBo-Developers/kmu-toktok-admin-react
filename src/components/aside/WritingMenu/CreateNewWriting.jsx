@@ -1,7 +1,11 @@
+import { useCookies } from 'react-cookie';
+import { getWritingList, postWriting } from '../../../api/writingApi';
 import { dateToString } from '../../../utils/dateAndTime';
 import { handleTextareaChange } from '../../../utils/textareaHandler';
 import './CreateNewWriting.css';
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import useWritingList from '../../../hooks/useWritingList';
+import { useWritingListStore } from '../../../store/useWritingListStore';
 
 function CreateNewWriting() {
   const [onCreate, setOnCreate] = useState(false);
@@ -11,6 +15,8 @@ function CreateNewWriting() {
   const [score, setScore] = useState();
   const [startDate, setStartDate] = useState({ year: null, month: null, day: null });
   const [endDate, setEndDate] = useState({ year: null, month: null, day: null });
+  const [cookies] = useCookies(['accessToken']);
+  const setWritingList = useWritingListStore((state) => state.setWritingList);
 
 
   const handleTitleChange = (e) => {
@@ -116,8 +122,31 @@ function CreateNewWriting() {
     if (startDateFormat > endDateFormat) {
       alert('마감일이 시작일보다 빠릅니다.');
     }
-  }
 
+    const sendData = {
+      "title": title,
+      "description": description,
+      "score": Number(score),
+      "startDate": dateToString(startDateFormat),
+      "endDate": dateToString(endDateFormat),
+      "prompt": constraints
+    }
+
+    postWriting(sendData, cookies.accessToken)
+    .then(() => {
+      setOnCreate(false);
+      getWritingList(cookies.accessToken)
+        .then((res) => {
+          setWritingList(res.data.assignments);
+        })
+        .catch((err) => {
+          alert(err.message);
+        })
+    })
+    .catch((err) => {
+      alert(err.message);
+    })
+  }
 
   return (
     <div>

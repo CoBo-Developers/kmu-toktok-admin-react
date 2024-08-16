@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { getWritingList } from "../api/writingApi";
+import { useWritingListStore } from "../store/useWritingListStore";
 
 function useWritingList() {
+  const { writingList, setWritingList } = useWritingListStore();
   const [ cookies ] = useCookies(['accessToken']);
-  const [ writingList, setWritingList ] = useState([]);
 
   useEffect(() => {
     getWritingList(cookies.accessToken)
