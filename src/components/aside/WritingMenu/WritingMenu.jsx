@@ -2,9 +2,13 @@ import { useEffect } from 'react';
 import CreateNewWriting from './CreateNewWriting';
 import './WritingMenu.css';
 import useWritingList from '../../../hooks/useWritingList';
+import { useCurrentWritingStore } from '../../../store/useCurrentWritingStore';
+import { useNavigate } from 'react-router-dom';
 
 function WritingMenu() {
   const { writingList } = useWritingList();
+  const { currentWritingId, setCurrentWritingId } = useCurrentWritingStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(writingList);
@@ -17,7 +21,10 @@ function WritingMenu() {
         {
           writingList.map((item, i) => {
             return (
-              <li key={i}>
+              <li className={currentWritingId === item.id ? 'active' : null} key={i} onClick={() => {
+                setCurrentWritingId(item.id);
+                navigate('/writing/' + item.id)
+              }}>
                 {item.title}
               </li>
             )

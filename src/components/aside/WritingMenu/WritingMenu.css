@@ -25,6 +25,7 @@
   box-sizing: border-box;
   cursor: pointer;
   border: 1px solid #193553;
+  transition: 0.3s border;
 }
 
 .aside-writing-items > li:hover {
