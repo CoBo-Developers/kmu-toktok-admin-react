@@ -31,8 +31,8 @@ const postWriting = async (data, token) => {
   return res.json();
 }
 
-const getWritingSubmitList = async (token) => {
-  const res = await fetch(import.meta.env.VITE_APP_WRITING_API_URL + '/api/professor/writing-list', {
+const getWritingSubmitList = async (id, page, pageSize, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_WRITING_API_URL + `/api/professor/writing-list?assignmentId=${id}&page=${page}&pageSize=${pageSize}`, {
     headers: {
       'authorization': 'Bearer ' + token
     }

@@ -1,10 +1,28 @@
 import './WritingList.css';
 import searchIcon from '../assets/icons/search-icon.png';
-
 import WritingItem from '../components/list/WritingItem';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getWritingSubmitList } from '../api/writingApi';
+import { useCookies } from 'react-cookie';
 
 function WritingList() {
-  
+  const [writingList, setWritingList] = useState([]);
+  const params = useParams();
+  const [cookies] = useCookies(['accessToken']);
+
+  useEffect(() => {
+    if (cookies.accessToken) {
+      getWritingSubmitList(params.writingId, 0, 10, cookies.accessToken)
+      .then((res) => {
+        setWritingList(res.data.writings);
+        console.log(res.data.writings);
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+    }    
+  }, [cookies, params]);
 
   return (
     <main className="writing-list">
@@ -27,7 +45,17 @@ function WritingList() {
             </tr>
           </thead>
           <tbody>
-            <WritingItem />
+            {
+              writingList.map((item, i) => {
+                return (
+                  <WritingItem
+                    studentId={item.studentId}
+                    updatedAt={item.updatedAt}
+                    writingState={item.writingState}
+                  />
+                )
+              })
+            }
           </tbody>
         </table>
       </section>

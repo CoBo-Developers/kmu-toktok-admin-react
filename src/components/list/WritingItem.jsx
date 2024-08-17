@@ -1,11 +1,13 @@
 import './WritingItem.css';
 import arrowIcon from '../../assets/icons/arrow-icon.png';
-import arrowUpIcon from '../../assets/icons/arrow-up-icon.png';
-import arrowDownIcon from '../../assets/icons/arrow-down-icon.png';
-import { useState } from 'react';
+import { writingStateEnum } from '../../utils/writingEnum';
 
-function WritingItem() {
-  const [showHistory, setShowHistory] = useState(false);
+function WritingItem(props) {
+  const {
+    studentId,
+    updatedAt,
+    writingState
+  } = props;
 
   return (
     <tr>
@@ -18,7 +20,7 @@ function WritingItem() {
       </td>
       <td>
         <div>
-          2022123449
+          {studentId}
         </div>
       </td>
       <td>
@@ -28,7 +30,7 @@ function WritingItem() {
       </td>
       <td>
         <div>
-          미제출
+          { writingStateEnum[writingState] }
         </div>
       </td>
     </tr>
