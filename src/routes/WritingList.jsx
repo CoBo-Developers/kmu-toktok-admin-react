@@ -23,7 +23,6 @@ function WritingList() {
               <th>채점하기</th>
               <th>학번</th>
               <th>제출일시</th>
-              <th>다시 제출한 횟수</th>
               <th>채점상태</th>
             </tr>
           </thead>

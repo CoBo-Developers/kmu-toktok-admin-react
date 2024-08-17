@@ -28,28 +28,6 @@ function WritingItem() {
       </td>
       <td>
         <div>
-          3회
-          <button onClick={() => {
-            setShowHistory(!showHistory);
-          }}>
-            {
-              showHistory ? <img src={arrowUpIcon} alt="arrow-up-icon" /> : <img src={arrowDownIcon} alt="arrow-down-icon" />
-            }
-            
-          </button>
-        </div>
-        {
-          showHistory ? <div className="hidden-history">
-          <ul>
-            <li>2024년 7월 22일 월요일(13:16)</li>
-            <li>2024년 7월 22일 월요일(13:16)</li>
-            <li>2024년 7월 22일 월요일(13:16)</li>
-          </ul>
-        </div> : null
-        }
-      </td>
-      <td>
-        <div>
           미제출
         </div>
       </td>
