@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import CreateNewWriting from './CreateNewWriting';
 import './WritingMenu.css';
 import useWritingList from '../../../hooks/useWritingList';
@@ -9,10 +8,6 @@ function WritingMenu() {
   const { writingList } = useWritingList();
   const { currentWritingId, setCurrentWritingId } = useCurrentWritingStore();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(writingList);
-  }, [writingList]);
 
   return (
     <section className="aside-writing">

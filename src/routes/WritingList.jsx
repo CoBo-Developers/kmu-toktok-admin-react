@@ -16,7 +16,6 @@ function WritingList() {
       getWritingSubmitList(params.writingId, 0, 10, cookies.accessToken)
       .then((res) => {
         setWritingList(res.data.writings);
-        console.log(res.data.writings);
       })
       .catch((err) => {
         alert(err.message);
@@ -49,6 +48,8 @@ function WritingList() {
               writingList.map((item, i) => {
                 return (
                   <WritingItem
+                    key={i}
+                    writingId={params.writingId}
                     studentId={item.studentId}
                     updatedAt={item.updatedAt}
                     writingState={item.writingState}

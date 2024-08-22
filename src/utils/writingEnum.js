@@ -1,23 +1,19 @@
 const writingStateEnum = {
-  NOT_SUBMITTED: {
-      text: '',
-      className: 'not-submitted',
-      state: 0
+  0: {
+      text: '미제출',
+      className: 'not-submitted'
   },
-  SUBMITTED: {
+  1: {
       text: '제출완료',
-      className: 'submitted',
-      state: 1
+      className: 'submitted'
   },
-  NOT_APPROVED: {
+  2: {
       text: '부정제출',
-      className: 'not-approved',
-      state: 2
+      className: 'not-approved'
   },
-  APPROVED: {
+  3: {
       text: '제출승인',
-      className: 'approved',
-      state: 3
+      className: 'approved'
   }
 };
 

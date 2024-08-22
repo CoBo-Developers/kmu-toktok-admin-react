@@ -11,6 +11,7 @@ import Chatbot from './routes/Chatbot';
 import History from './routes/History';
 import ChatStu from './routes/ChatStu';
 import WritingList from './routes/WritingList';
+import WritingSubmit from './routes/WritingSubmit';
 
 function App() {
   const showAside = useShowAside();
@@ -27,9 +28,8 @@ function App() {
         <Route path='/chatbot' element={<Chatbot />} />
         <Route path='/chatstu' element={<ChatStu />} />
         <Route path='/file' element={""} />
-        <Route path='/writing' element={""}>
-          <Route path='/writing/:writingId' element={<WritingList />} />
-        </Route>
+        <Route path='/writing/:writingId' element={<WritingList />} />
+        <Route path='/writing/:writingId/:studentId' element={<WritingSubmit />} />
         <Route path='/manage' element={<Manage />} />
         <Route path='/manage/:id' element={<History />} />
         <Route path="/redirect/:option" element={<Redirect />} />
