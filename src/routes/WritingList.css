@@ -3,7 +3,6 @@
   padding: 56px 0;
   padding-right: 50px;
   padding-left: calc(280px + 50px);
-  height: 100dvh;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -37,4 +36,8 @@
 
 .writing-list-table > thead > tr > th:nth-child(1) {
   text-align: center;
+}
+
+.more-btn-wrapper > button {
+  margin: auto;
 }

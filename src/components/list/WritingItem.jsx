@@ -12,8 +12,6 @@ function WritingItem(props) {
   } = props;
   const navigate = useNavigate();
 
-  console.log(writingState);
-
   return (
     <tr>
       <td>

@@ -2,26 +2,35 @@ import './WritingList.css';
 import searchIcon from '../assets/icons/search-icon.png';
 import WritingItem from '../components/list/WritingItem';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getWritingSubmitList } from '../api/writingApi';
 import { useCookies } from 'react-cookie';
+import MoreBtn from '../components/main/MoreBtn';
 
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalElement, setTotalElement] = useState(0);
   const params = useParams();
   const [cookies] = useCookies(['accessToken']);
+  const location = useLocation();
 
   useEffect(() => {
     if (cookies.accessToken) {
-      getWritingSubmitList(params.writingId, 0, 10, cookies.accessToken)
+      getWritingSubmitList(params.writingId, page, 10, cookies.accessToken)
       .then((res) => {
         setWritingList(res.data.writings);
+        setTotalElement(res.data.totalElements);
       })
       .catch((err) => {
         alert(err.message);
       })
     }    
-  }, [cookies, params]);
+  }, [cookies, params, page]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [location])
 
   return (
     <main className="writing-list">
@@ -59,6 +68,9 @@ function WritingList() {
             }
           </tbody>
         </table>
+      </section>
+      <section className="more-btn-wrapper">
+        { totalElement > 10 * (page + 1) ? <MoreBtn page={page} setPage={setPage} /> : null }
       </section>
     </main>
   )

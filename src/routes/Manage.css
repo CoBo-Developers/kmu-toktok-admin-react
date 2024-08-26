@@ -3,7 +3,6 @@
   padding: 56px 0;
   padding-right: 50px;
   padding-left: calc(280px + 50px);
-  height: 100dvh;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -57,5 +56,6 @@
   max-width: 1084px;
   text-align: center;
   margin: auto;
+  margin-bottom: 20px;
 }
 
