@@ -11,6 +11,7 @@ import ManageMenu from './ManageMenu/ManageMenu';
 import ChatStuMenu from './ChatStuMenu/ChatStuMenu';
 import useShowExtend from '../../hooks/useShowExtend';
 import useSeletectUserStore from '../../store/useSeletedUserStore';
+import WritingMenu from './WritingMenu/WritingMenu';
 import { useCookies } from 'react-cookie';
 
 function Aside() {
@@ -92,7 +93,10 @@ function Aside() {
             currentPath === 'chatstu' ? 
             <ChatStuMenu /> : null
           }
-        
+          {
+            currentPath === 'writing' ? 
+            <WritingMenu /> : null
+          }
       </section>
     </aside>
   )

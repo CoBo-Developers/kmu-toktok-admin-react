@@ -1,0 +1,104 @@
+.create-new-wrting {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.create-new-wrting > article {
+  background: #152A41;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.create-new-wrting > article > label {
+  color: #5E7D9F;
+  flex: none;
+}
+
+.create-new-wrting > article > input,
+.create-new-wrting > article > textarea {
+  width: 100%;
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  font-weight: 300;
+  resize: none;
+}
+
+.create-new-wrting > article > textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.due-date-wrapper {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.due-date-wrapper > h5 {
+  color: #5E7D9F;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.due-date-wrapper > section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2px;
+}
+
+.due-date-wrapper > section > div {
+  text-align: right;
+}
+
+.due-date-wrapper > section > div {
+  display: flex;
+  justify-content: end;
+  font-weight: 300;
+}
+
+.due-date-wrapper > section > div > * {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.due-date-wrapper > section > div > span > input {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  text-align: right;
+  color: white;
+}
+
+.due-date-wrapper > section > label {
+  font-size: 12px;
+}
+
+.create-new-wrting > button {
+  padding: 12px 0;
+  margin-top: 14px;
+  width: 100%;
+  background: #465F7A;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.start-date-wrapper input::-webkit-inner-spin-button,
+.end-date-wrapper input::-webkit-inner-spin-button {
+  appearance: none;
+}
