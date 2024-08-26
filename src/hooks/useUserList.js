@@ -7,6 +7,7 @@ function useUserList() {
   const userList = useUserListStore((state) => state.userList);
   const setUserList = useUserListStore((state) => state.setUserList);
   const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
   const [ totalElement, setTotalElement ] = useState(0);
   const [cookies] = useCookies(['accessToken']);
 
@@ -21,7 +22,7 @@ function useUserList() {
     })
   }, []);
 
-  return { userList, page, setPage, totalElement };
+  return { userList, page, setPage, totalElement, pageSize, setPageSize };
 }
 
 export default useUserList;

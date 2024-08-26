@@ -10,6 +10,7 @@ import MoreBtn from '../components/main/MoreBtn';
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
   const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
   const [totalElement, setTotalElement] = useState(0);
   const params = useParams();
   const [cookies] = useCookies(['accessToken']);
@@ -70,7 +71,7 @@ function WritingList() {
         </table>
       </section>
       <section className="more-btn-wrapper">
-        { totalElement > 10 * (page + 1) ? <MoreBtn page={page} setPage={setPage} /> : null }
+        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
       </section>
     </main>
   )

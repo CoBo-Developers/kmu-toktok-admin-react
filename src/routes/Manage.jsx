@@ -7,7 +7,7 @@ import MoreBtn from '../components/main/MoreBtn';
 
 function Manage() {
   const showExtend = useShowExtend();
-  const { userList, page, setPage, totalElement } = useUserList();
+  const { userList, page, setPage, totalElement, pageSize, setPageSize } = useUserList();
 
   return (
     <main className={"manage " + (showExtend ? "active" : "")}>
@@ -35,7 +35,7 @@ function Manage() {
         </table>
       </section>
       <section className="more-btn-wrapper">
-        { totalElement > 10 * (page + 1) ? <MoreBtn page={page} setPage={setPage} /> : null }
+        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
       </section>
     </main>
   )
