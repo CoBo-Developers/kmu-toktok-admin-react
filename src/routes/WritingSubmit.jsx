@@ -2,7 +2,7 @@ import './WritingSubmit.css';
 import backIcon from '../assets/icons/back-icon.png';
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getWritingSubmit } from '../api/writingApi';
+import { getWritingSubmit, patchWritingState } from '../api/writingApi';
 import { useCookies } from 'react-cookie';
 
 function WritingSubmit() {
@@ -10,6 +10,7 @@ function WritingSubmit() {
   const navigate = useNavigate();
   const [ writing, setWriting ] = useState();
   const [ cookies ] = useCookies(['accessToken']);
+  const [ score, setScore ] = useState();
 
   useEffect(() => {
     getWritingSubmit(writingId, studentId, cookies.accessToken)
@@ -20,6 +21,63 @@ function WritingSubmit() {
       alert(err.message);
     })
   }, [])
+
+  const handleConfirmBtnClick = async () => {
+    if (!score) {
+      alert('점수를 입력해주세요.');
+      return ;
+    }
+
+    const dataForm = {
+      assignmentId: writingId,
+      studentId: studentId,
+      writingState: 3,
+      score: score
+    }
+
+    try {
+      const res = await patchWritingState(dataForm, cookies.accessToken);
+      alert('채점되었습니다.');
+    } catch (err) { alert(err.message) }
+  }
+
+  const handleModifyBtnClick = async () => {
+    if (!score) {
+      alert('점수를 입력해주세요.');
+      return ;
+    }
+
+    const dataForm = {
+      assignmentId: writingId,
+      studentId: studentId,
+      writingState: 3,
+      score: score
+    }
+
+    try {
+      const res = await patchWritingState(dataForm, cookies.accessToken);
+      alert('채점되었습니다.');
+    } catch (err) { alert(err.message) }
+  }
+
+  const handleRejectBtnClick = async () => {
+    if (!score) {
+      alert('점수를 입력해주세요.');
+      return ;
+    }
+
+    const dataForm = {
+      assignmentId: writingId,
+      studentId: studentId,
+      writingState: 2,
+      score: 0
+    }
+
+    try {
+      const res = await patchWritingState(dataForm, cookies.accessToken);
+      alert('채점되었습니다.');
+    } catch (err) { alert(err.message) }
+  }
 
   return (
     <main className="writing-submit">
@@ -33,11 +91,16 @@ function WritingSubmit() {
       <section>
         <section>
           <label htmlFor="score" className="title-badge">채점</label>
-          <input type="number" id="score" placeholder="점수를 입력해주세요." min={0} />
+          <input 
+            type="number" 
+            id="score" 
+            placeholder="점수를 입력해주세요." 
+            min={0} 
+            onChange={(e) => { setScore(e.target.value) }} />
           <div>
-            <button className="btn confirm">확인</button>
-            <button className="btn modify">수정하기</button>
-            <button className="btn reject">부정제출</button>
+            <button className="btn confirm" onClick={handleConfirmBtnClick}>확인</button>
+            {/* <button className="btn modify" onClick={handleModifyBtnClick}>수정하기</button> */}
+            <button className="btn reject" onClick={handleRejectBtnClick}>부정제출</button>
           </div>
         </section>
         <section>

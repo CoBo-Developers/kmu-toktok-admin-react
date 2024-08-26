@@ -61,4 +61,22 @@ const getWritingSubmit = async (assignmentId, studentId, token) => {
   return res.json();
 }
 
-export { getWritingList, postWriting, getWritingSubmitList, getWritingSubmit };
+const patchWritingState = async (data, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_WRITING_API_URL + '/api/professor/writing', {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      'authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { getWritingList, postWriting, getWritingSubmitList, getWritingSubmit, patchWritingState };
