@@ -12,8 +12,10 @@ import ChatStuMenu from './ChatStuMenu/ChatStuMenu';
 import useShowExtend from '../../hooks/useShowExtend';
 import useSeletectUserStore from '../../store/useSeletedUserStore';
 import WritingMenu from './WritingMenu/WritingMenu';
+import { useCookies } from 'react-cookie';
 
 function Aside() {
+  const [cookies] = useCookies(['studentId']);
   const currentPath = useCurrentPath();
   const showExtend = useShowExtend();
   const resetSelectedUser = useSeletectUserStore((state) => state.resetSelectedUser);
@@ -26,7 +28,7 @@ function Aside() {
         <section className='aside-user-info'>
           <img className='aside-user-info-icon' src={tagIcon} alt="tag-icon" />
           <article className='aside-user-info-content'>
-            <span className='aside-id'>2022123455</span>
+            <span className='aside-id'>{cookies.studentId || ' '}</span>
             <span className='aside-logout'>로그아웃</span>
           </article>
         </section>

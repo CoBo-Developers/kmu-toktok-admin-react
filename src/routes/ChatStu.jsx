@@ -1,3 +1,4 @@
+import { useParams, useNavigate } from 'react-router-dom';
 import './ChatStu.css';
 import sendIcon from '../assets/icons/send-icon.png';
 import backIcon from '../assets/icons/back-icon.png';
@@ -5,6 +6,8 @@ import useChatStu from '../hooks/useChatStu';
 import { formatDate, formatTime } from '../utils/dateAndTime';
 
 function ChatStu() {
+  const { studentId } = useParams();  
+  const navigate = useNavigate();
   const {
     chatContent,
     newMessage,
@@ -12,20 +15,22 @@ function ChatStu() {
     handleSend,
     handleKeyDown,
     handleKeyUp,
-    handleBack,
-    selectedChatStu,
     inputRef,
     chatContentRef,
     sendRef,
   } = useChatStu();
 
-  if (!selectedChatStu.studentId) return null;
+  if (!studentId) return null;
+
+  const handleBack = () => {
+    navigate('/chatstu');
+  };
 
   return (
     <main className="chat-container">
       <section className='chat-header'>
         <img src={backIcon} alt="" onClick={handleBack} />
-        <span className='chat-header-text'>{selectedChatStu.studentId}</span>
+        <span className='chat-header-text'>{studentId}</span>
       </section>
       <section className='chat-wrapper' ref={chatContentRef}>
         {chatContent.map((chat, index) => (

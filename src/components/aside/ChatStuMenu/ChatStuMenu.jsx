@@ -1,9 +1,9 @@
 import './ChatStuMenu.css';
 import searchIcon from '../../../assets/icons/search-icon-white.png';
 import useChatListStore from '../../../store/useChatListStore';
-import useSeletectedChatStu from '../../../store/useSelectedChatStu';
 import ChatItem from './ChatItem';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getChatList } from '../../../api/chatStuApi';
 import { useCookies } from 'react-cookie';
 
@@ -13,13 +13,10 @@ function ChatStuMenu() {
     chatList: state.chatList,
     setChatList: state.setChatList,
   }));
-  const {setSelectedChatStu } = useSeletectedChatStu((state) => ({
-    setSelectedChatStu: state.setSelectedChatStu,
-  }));
-  
+  const navigate = useNavigate();
 
   const handleChatClick = (studentId) => {
-    setSelectedChatStu(studentId);
+    navigate(`/chatstu/${studentId}`);
   };
 
   useEffect(() => {
