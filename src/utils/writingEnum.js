@@ -12,7 +12,7 @@ const writingStateEnum = {
       className: 'not-approved'
   },
   3: {
-      text: '제출승인',
+      text: '채점됨',
       className: 'approved'
   }
 };

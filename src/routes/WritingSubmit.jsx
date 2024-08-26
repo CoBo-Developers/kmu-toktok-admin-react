@@ -1,10 +1,25 @@
 import './WritingSubmit.css';
 import backIcon from '../assets/icons/back-icon.png';
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { getWritingSubmit } from '../api/writingApi';
+import { useCookies } from 'react-cookie';
 
 function WritingSubmit() {
-  const params = useParams();
+  const { writingId, studentId } = useParams();
   const navigate = useNavigate();
+  const [ writing, setWriting ] = useState();
+  const [ cookies ] = useCookies(['accessToken']);
+
+  useEffect(() => {
+    getWritingSubmit(writingId, studentId, cookies.accessToken)
+    .then((res) => {
+      setWriting(res.data.content);
+    })
+    .catch((err) => {
+      alert(err.message);
+    })
+  }, [])
 
   return (
     <main className="writing-submit">
@@ -13,7 +28,7 @@ function WritingSubmit() {
           <img src={backIcon} alt="back-icon" />
           뒤로가기
         </span>
-        <span className="chat-header-text">{params.studentId}</span>
+        <span className="chat-header-text">{ studentId }</span>
       </header>
       <section>
         <section>
@@ -31,7 +46,7 @@ function WritingSubmit() {
             2024년 7월 22일 월요일(오후 2:54)
           </article>
           <article>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula dictum odio, et auctor sapien fermentum vel. Integer auctor diam ac malesuada aliquam. Suspendisse ut orci in magna facilisis volutpat. Donec consequat, risus non volutpat dignissim, erat erat suscipit libero, vel lacinia orci risus eget turpis. Proin nec ligula nec purus auctor pretium ac nec mauris. Nam vel semper nunc. Sed vel convallis nisi. Mauris et dictum velit, eu tristique libero. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula dictum odio, et auctor sapien fermentum vel. Integer auctor diam ac malesuada aliquam. Suspendisse ut orci in magna facilisis volutpat. Donec consequat, risus non volutpat dignissim, erat erat suscipit libero, vel lacinia orci risus eget turpis. Proin nec ligula nec purus auctor pretium ac nec mauris. Nam vel semper nunc. Sed vel convallis nisi. Mauris et dictum velit, eu tristique libero. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vehicula dictum odio, et auctor sapien fermentum vel. Integer auctor diam ac malesuada aliquam. Suspendisse ut orci in magna facilisis volutpat. Donec consequat, risus non volutpat dignissim, erat erat suscipit libero, vel lacinia orci risus eget turpis. Proin nec ligula nec purus auctor pretium ac nec mauris. Nam vel semper nunc. Sed vel convallis nisi. Mauris et dictum velit, eu tristique libero. In hac habitasse platea dictumst.
+            { writing || "글을 가져오는 중입니다..." }
           </article>
         </section>
       </section>
