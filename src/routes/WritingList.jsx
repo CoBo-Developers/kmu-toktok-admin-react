@@ -60,7 +60,7 @@ function WritingList() {
                     key={i}
                     writingId={params.writingId}
                     studentId={item.studentId}
-                    updatedAt={item.updatedAt}
+                    createdAt={item.createdAt}
                     writingState={item.writingState}
                   />
                 )
