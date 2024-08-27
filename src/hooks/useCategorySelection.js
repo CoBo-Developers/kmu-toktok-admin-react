@@ -33,7 +33,8 @@ const useCategorySelection = () => {
                 .then((response) => {
                     const filesWithCategoryId = response.data.files.map(file => ({
                         ...file,
-                        categoryId: category.id
+                        categoryId: category.id,
+                        categoryName: category.name,
                     }));
                     setAllFileData((prevData) => [...prevData, ...filesWithCategoryId]);
                 })
