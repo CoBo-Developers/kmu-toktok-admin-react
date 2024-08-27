@@ -13,6 +13,7 @@ import useShowExtend from '../../hooks/useShowExtend';
 import useSeletectUserStore from '../../store/useSeletedUserStore';
 import WritingMenu from './WritingMenu/WritingMenu';
 import { useCookies } from 'react-cookie';
+import FileMenu from './FileMenu/FileMenu';
 
 function Aside() {
   const [cookies] = useCookies(['studentId']);
@@ -96,6 +97,10 @@ function Aside() {
           {
             currentPath === 'writing' ? 
             <WritingMenu /> : null
+          }
+          {
+            currentPath === 'file' ? 
+            <FileMenu /> : null
           }
       </section>
     </aside>

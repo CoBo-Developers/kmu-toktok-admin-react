@@ -12,6 +12,7 @@ import History from './routes/History';
 import ChatStu from './routes/ChatStu';
 import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit';
+import File from './routes/File';
 
 function App() {
   const showAside = useShowAside();
@@ -29,7 +30,7 @@ function App() {
         <Route path="/chatstu" element={<ChatStu />}>
           <Route path=":studentId" element={<ChatStu />} />
         </Route>
-        <Route path='/file' element={""} />
+        <Route path='/file' element={<File/>} />
         <Route path='/writing/:writingId' element={<WritingList />} />
         <Route path='/writing/:writingId/:studentId' element={<WritingSubmit />} />
         <Route path='/manage' element={<Manage />} />
