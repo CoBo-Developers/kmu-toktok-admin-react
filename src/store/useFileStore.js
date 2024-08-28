@@ -24,4 +24,25 @@ const useSelectedCategoryIdStore = create((set) => ({
     setSelectedCategoryId: (newSelectedCategoryId) => set({ selectedCategoryId: newSelectedCategoryId }),
 }))
 
-export { useSelectedCategoryIdStore, useCategoryStore };
+const useFileStore = create((set) => ({
+    selectedCategoryId: null,
+    setSelectedCategoryId: (id) => set({ selectedCategoryId: id }),
+
+    selectedFiles: [],
+    setSelectedFiles: (files) => set({ selectedFiles: files }),
+
+    addSelectedFile: (file) => set((state) => ({
+        selectedFiles: [...state.selectedFiles, file],
+    })),
+
+    removeSelectedFile: (fileId) => set((state) => ({
+        selectedFiles: state.selectedFiles.filter((file) => file.id !== fileId),
+    })),
+
+    clearSelectedFiles: () => set({ selectedFiles: [] }),
+
+    fileUpdateTrigger: false,
+    triggerFileUpdate: () => set((state) => ({ fileUpdateTrigger: !state.fileUpdateTrigger })),
+}));
+
+export { useSelectedCategoryIdStore, useCategoryStore, useFileStore };
