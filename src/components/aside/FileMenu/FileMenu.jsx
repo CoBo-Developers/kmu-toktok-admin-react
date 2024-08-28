@@ -5,10 +5,12 @@ import addFileIcon from '../../../assets/icons/add-file-icon.png';
 import deleteFileIcon from '../../../assets/icons/delete-file-icon.png';
 import modifyFileIcon from '../../../assets/icons/modify-file-icon.png';
 import categoryManageIcon from '../../../assets/icons/category-manage-icon.png';
+import deleteCategoryIcon from '../../../assets/icons/delete-category-icon.png';
 import { getCategoryList } from '../../../api/fileApi';
 import { useCookies } from 'react-cookie';
 import { useSelectedCategoryIdStore } from '../../../store/useFileStore';
 import  useFileModify from '../../../hooks/FileHooks/useFileModify';
+import useCategoryManage from '../../../hooks/FileHooks/useCategoryManage';
 
 const FileMenu = () => {
     const [cookies] = useCookies(['accessToken']);
@@ -29,6 +31,24 @@ const FileMenu = () => {
         modifyActiveCategoryId,
         handleCategorySelect,
     } = useFileModify(cookies);
+
+    const {
+        showCategoryManageWrapper,
+        setShowCategoryManageWrapper,
+        editCategoryId,
+        newCategoryName,
+        setNewCategoryName,
+        newCategoryNameRef,
+        isNewCategory,
+        newCategory,
+        setNewCategory,
+        newCategoryRef,
+        handleEditClick,
+        handleSaveClick,
+        handleDeleteClick,
+        handleAddCategory,
+        categoryList,
+    } = useCategoryManage();
 
     useEffect(() => {
         getCategoryList(cookies.accessToken)
@@ -106,10 +126,74 @@ const FileMenu = () => {
                         </button>
                     </section>
                 )}
-                <article className="category-manage-wrapper">
+                <article className={`category-manage-wrapper ${showCategoryManageWrapper ? 'active' : ''}`} onClick={() => setShowCategoryManageWrapper(!showCategoryManageWrapper)}>
                     <img src={categoryManageIcon} alt="category-manage" />
                     <span>카테고리 편집하기</span>
                 </article>
+                {showCategoryManageWrapper && (
+                    <section>
+                        <table className="category-manage-option-table">
+                            <tbody>
+                                {categoryList.map((category) => (
+                                    <tr key={category.id}>
+                                        <td>
+                                            {editCategoryId === category.id ? (
+                                                <textarea
+                                                    name="new-categoryName-input"
+                                                    id="new-categoryName-input"
+                                                    rows={1}
+                                                    ref={newCategoryNameRef}
+                                                    value={newCategoryName}
+                                                    onChange={(e) => setNewCategoryName(e.target.value)}
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter') e.preventDefault();
+                                                    }}
+                                                />
+                                            ) : (
+                                                <div>{category.name}</div>
+                                            )}
+                                        </td>
+                                        <td>
+                                            <button
+                                                className={`category-modify-btn ${editCategoryId === category.id ? 'change' : ''}`}
+                                                onClick={() =>
+                                                    editCategoryId === category.id
+                                                        ? handleSaveClick(category.id)
+                                                        : handleEditClick(category.id, category.name)
+                                                }
+                                            >
+                                                {editCategoryId === category.id ? '저장' : '이름 변경'}
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button className='category-delete-btn' onClick={() => handleDeleteClick(category.id)}>
+                                                <img src={deleteCategoryIcon} alt="delete-category" />
+                                                삭제
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        {isNewCategory && (
+                            <textarea
+                                name="new-category-input"
+                                id="new-category-input"
+                                rows={1}
+                                ref={newCategoryRef}
+                                value={newCategory}
+                                onChange={(e) => setNewCategory(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') e.preventDefault();
+                                }}
+                            />
+                        )}
+                        <div className="add-category-wrapper" onClick={handleAddCategory}>
+                            <img src={addFileIcon} alt="add-category" />
+                            <span>{!isNewCategory ? '카테고리 추가' : '완료'}</span>
+                        </div>
+                    </section>
+                )}
             </section>
         </main>
     );
