@@ -1,6 +1,7 @@
+// FileMenu에서 카테고리 선택에 관련된 로직
 import { useState, useEffect } from 'react';
-import { useSelectedCategoryIdStore, useCategoryStore } from '../store/useFileStore';
-import { getCategoryList, getFileList } from '../api/fileApi';
+import { useSelectedCategoryIdStore, useCategoryStore, useFileStore } from '../../store/useFileStore';
+import { getCategoryList, getFileList } from '../../api/fileApi';
 import { useCookies } from 'react-cookie';
 
 const useCategorySelection = () => {
@@ -13,6 +14,8 @@ const useCategorySelection = () => {
         categoryList: state.categoryList,
         setCategoryList: state.setCategoryList
     }));
+
+    const { fileUpdateTrigger } = useFileStore();
 
     useEffect(() => {
         getCategoryList(cookies.accessToken)
@@ -28,6 +31,7 @@ const useCategorySelection = () => {
     }, [cookies.accessToken, setCategoryList]);
 
     useEffect(() => {
+        setAllFileData([]);
         categoryList.forEach((category) => {
             getFileList(cookies.accessToken, category.id)
                 .then((response) => {
@@ -42,7 +46,7 @@ const useCategorySelection = () => {
                     alert(error.message);
                 });
         });
-    }, [cookies.accessToken, categoryList]);
+    }, [cookies.accessToken, categoryList, fileUpdateTrigger]);
 
 
     useEffect(() => {
