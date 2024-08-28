@@ -64,7 +64,7 @@ const fileModify = async (accessToken, fileId, newFileName, categoryId) => {
     throw new Error(message);
   }
 
-  return res.blob();
+  return res.json();
 }
 
 export { getCategoryList, getFileList, fileDownload, fileModify };
