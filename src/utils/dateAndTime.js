@@ -36,4 +36,19 @@ const dateToKoreanString = (initialString) => {
   return result;
 }
 
-export { formatDate, formatTime, dateToString, dateToKoreanString };
+
+const fileFormattedDate = (dateString) => {
+  const date = new Date(dateString);
+
+  const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
+  };
+
+  return new Intl.DateTimeFormat('ko-KR', options).format(date);
+}
+
+
+export { formatDate, formatTime, dateToString, dateToKoreanString, fileFormattedDate };

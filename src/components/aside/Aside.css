@@ -119,4 +119,5 @@
 .aside-extend-menu.active {
   width: 560px;
   padding-left: calc(280px + 28px);
+  overflow-y: auto;
 }
