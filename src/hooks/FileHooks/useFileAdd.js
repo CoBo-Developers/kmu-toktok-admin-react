@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { fileAdd } from '../../api/fileApi';
 import { useFileStore } from '../../store/useFileStore';
 import { useCookies } from 'react-cookie';
@@ -13,17 +13,22 @@ const useFileAdd = () => {
     const newFileNameRef = useRef();
     const fileInputRef = useRef(); 
 
-    const handleAddWrapperClick = () => {
-        if (showAddFileWrapper) {
-            setShowAddFileWrapper(false);
-            return;
-        }
-        setShowAddFileWrapper(true);
-        setNewFileName('');
-        setSelectedCategoryId(null);
-        setFile(null);
+    useEffect(() => {
+        if (!showAddFileWrapper) {
+            setFile(null); 
+            setNewFileName('');
+            setSelectedCategoryId(null); 
 
-        if (fileInputRef.current) {
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+        }
+    }, [showAddFileWrapper]);
+
+    const handleAddWrapperClick = () => {
+        setShowAddFileWrapper(!showAddFileWrapper);
+
+        if (!showAddFileWrapper && fileInputRef.current) {
             fileInputRef.current.click();
         }
     };
