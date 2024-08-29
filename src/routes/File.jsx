@@ -3,14 +3,11 @@ import downloadIcon from '../assets/icons/download-icon.png';
 import fileSelectedIcon from '../assets/icons/file-selected.png';
 import fileUnselectedIcon from '../assets/icons/file-unselected.png';
 import { fileFormattedDate } from '../utils/dateAndTime';
-import { fileDownload } from '../api/fileApi';
-import useFileSelection from '../hooks/useFileSelection';
-import useCategorySelection from '../hooks/useCategorySelection';
-import { useCookies } from 'react-cookie';
+import useFileSelection from '../hooks/FileHooks/useFileSelection';
+import useCategorySelection from '../hooks/FileHooks/useCategorySelection';
+import useFileDownload from '../hooks/FileHooks/useFileDownload';
 
 function File() {
-    const [cookies] = useCookies(['accessToken']);
-
     const {
         fileData,
         getCategoryColor,
@@ -23,21 +20,10 @@ function File() {
         isSelected,
     } = useFileSelection(fileData);
 
+    const { downloadFile } = useFileDownload();
+
     const handleDownload = (fileId, fileName) => {
-        fileDownload(cookies.accessToken, fileId)
-            .then((blob) => {
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = fileName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            })
-            .catch((error) => {
-                alert(`Download failed: ${error.message}`);
-            });
+        downloadFile(fileId, fileName);
     };
     
     return (

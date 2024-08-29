@@ -45,4 +45,26 @@ const fileDownload = async (accessToken, fileId) => {
   return res.blob();
 }
 
-export { getCategoryList, getFileList, fileDownload };
+const fileModify = async (accessToken, fileId, newFileName, categoryId) => {
+  const res = await fetch(`${import.meta.env.VITE_APP_FILE_API_URL}/api/professor/file`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      fileId: fileId,
+      name: newFileName,
+      categoryId: categoryId
+    })
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).message;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { getCategoryList, getFileList, fileDownload, fileModify };
