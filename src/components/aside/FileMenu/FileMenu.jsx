@@ -10,6 +10,7 @@ import { useCookies } from 'react-cookie';
 import { useSelectedCategoryIdStore } from '../../../store/useFileStore';
 import useFileModify from '../../../hooks/FileHooks/useFileModify';
 import useFileAdd from '../../../hooks/FileHooks/useFileAdd';
+import useFileDetele from '../../../hooks/FileHooks/useFileDelete';
 import useCategoryManage from '../../../hooks/FileHooks/useCategoryManage';
 import ModifyFileWrapper from './ModifyFileWrapper';
 import CategoryManageWrapper from './CategoryManageWrapper';
@@ -46,6 +47,10 @@ const FileMenu = () => {
         handleFileChange,
         fileInputRef
     } = useFileAdd();
+
+    const {
+        handleDeleteFiles,
+    } = useFileDetele();
 
     const {
         showCategoryManageWrapper,
@@ -105,7 +110,7 @@ const FileMenu = () => {
                         handleFileModify={handleFileAdd}
                     />
                 )}
-                <article className='delete-file-wrapper'>
+                <article className='delete-file-wrapper' onClick={handleDeleteFiles}>
                     <img src={deleteFileIcon} alt="delete-file" />
                     <span>파일 삭제하기</span>
                 </article>
