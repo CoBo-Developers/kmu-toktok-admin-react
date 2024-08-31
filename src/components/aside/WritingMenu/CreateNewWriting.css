@@ -102,3 +102,10 @@
 .end-date-wrapper input::-webkit-inner-spin-button {
   appearance: none;
 }
+
+@media screen and (max-width: 900px) {
+  .create-new-wrting {
+    padding: 20px;
+    padding-top: 0;
+  }
+}

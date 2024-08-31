@@ -6,6 +6,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import { getWritingSubmitList } from '../api/writingApi';
 import { useCookies } from 'react-cookie';
 import MoreBtn from '../components/main/MoreBtn';
+import useIsMobile from '../hooks/useIsMobile';
+import WritingMenu from '../components/aside/WritingMenu/WritingMenu';
 
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
@@ -15,6 +17,8 @@ function WritingList() {
   const params = useParams();
   const [cookies] = useCookies(['accessToken']);
   const location = useLocation();
+  const isMobile = useIsMobile();
+
 
   useEffect(() => {
     if (cookies.accessToken) {
@@ -35,6 +39,11 @@ function WritingList() {
 
   return (
     <main className="writing-list">
+      {isMobile && (
+        <section>
+          <WritingMenu />
+        </section>
+      )}
       <section className='writing-search-wrapper'>
         <div className='search-input'>
           <input type="text" name="search" id="search" placeholder='검색...' />
