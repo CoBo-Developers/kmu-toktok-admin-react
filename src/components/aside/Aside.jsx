@@ -57,31 +57,32 @@ function Aside() {
         </section>
         <ul className='aside-menus'>
           <li className={'aside-menus-item ' + (currentPath === 'chatbot' ? 'active' : 'null')}>
-            <Link to='/chatbot'>
+            <Link to='/chatbot' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={chatIcon} alt="chat-icon" />
               <span>챗봇과 대화하기</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'chatstu' ? 'active' : 'null')}>
-            <Link to='/chatstu'>
+            <Link to='/chatstu' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={personIcon} alt="person-icon" />
               <span>질문에 답변하기</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'file' ? 'active' : 'null')}>
-            <Link to='/file'>
+            <Link to='/file' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={fileIcon} alt="file-icon" />
               <span>파일 목록 보기</span>
             </Link>
           </li>
+          {isMobile && currentPath === 'file' && <FileMenu />}
           <li className={'aside-menus-item ' + (currentPath === 'writing' ? 'active' : 'null')}>
-            <Link to='/writing'>
+            <Link to='/writing' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={writingIcon} alt="writing-icon" />
               <span>글쓰기 피드백하기</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'manage' ? 'active' : 'null')}>
-            <Link to='/manage'>
+            <Link to='/manage' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={managingIcon} alt="managing-icon" />
               <span>사용자 관리하기</span>
             </Link>
