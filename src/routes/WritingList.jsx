@@ -21,6 +21,9 @@ function WritingList() {
 
 
   useEffect(() => {
+    if (!params.writingId) {
+      return;
+    }
     if (cookies.accessToken) {
       getWritingSubmitList(params.writingId, page, 10, cookies.accessToken)
       .then((res) => {
@@ -36,6 +39,10 @@ function WritingList() {
   useEffect(() => {
     setPage(0);
   }, [location])
+
+  if (!params.writingId && !isMobile) {
+    return null;
+  }
 
   return (
     <main className="writing-list">
