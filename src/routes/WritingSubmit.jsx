@@ -27,13 +27,15 @@ function WritingSubmit() {
       </header>
       <section>
         <section>
-          <label htmlFor="score" className="title-badge">채점</label>
-          <input 
-            type="number" 
-            id="score" 
-            placeholder="점수를 입력해주세요." 
-            min={0} 
-            onChange={(e) => { setScore(e.target.value) }} />
+          <div className='score-input-wrapper'>
+            <label htmlFor="score" className="title-badge">채점</label>
+            <input 
+              type="number" 
+              id="score" 
+              placeholder="점수를 입력해주세요." 
+              min={0} 
+              onChange={(e) => { setScore(e.target.value) }} />
+          </div>
           <div>
             <button className="btn confirm" onClick={handleConfirmBtnClick}>확인</button>
             {/* <button className="btn modify" onClick={handleModifyBtnClick}>수정하기</button> */}

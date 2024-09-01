@@ -127,6 +127,9 @@
 .writing-submit-content {
   word-break: break-word;
 }
+.score-input-wrapper {
+  flex: 1;
+}
 
 @media screen and (max-width: 900px) {
   .writing-submit {
@@ -143,5 +146,21 @@
   }
   .writing-submit > section {
     padding: 10px 20px;
+  }
+  .writing-submit > section > section {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .score-input-wrapper {
+    border-top: 1px solid #E6E8EB;
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+  }
+  .writing-submit > section > section .btn {
+    margin-bottom: 10px;
+  }
+  .writing-submit > section > section:nth-child(1) {
+    margin-bottom: 0;
   }
 }
