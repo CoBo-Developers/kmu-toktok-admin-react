@@ -37,7 +37,13 @@
 .writing-list-table > thead > tr > th:nth-child(1) {
   text-align: center;
 }
-
+.writing-list-table > thead > tr > th:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+}
 .more-btn-wrapper > button {
   margin: auto;
 }
@@ -54,5 +60,8 @@
   }
   .search-input {
     width: 90%;
+  }
+  .writing-list-table > thead {
+    display: none;
   }
 }

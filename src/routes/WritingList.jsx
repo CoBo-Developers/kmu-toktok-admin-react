@@ -64,9 +64,11 @@ function WritingList() {
           <thead>
             <tr>
               <th>채점하기</th>
-              <th>학번</th>
-              <th>제출일시</th>
-              <th>채점상태</th>
+              <th>
+                <div>학번</div>
+                <div>제출일시</div>
+                <div>채점상태</div>
+              </th>
             </tr>
           </thead>
           <tbody>
