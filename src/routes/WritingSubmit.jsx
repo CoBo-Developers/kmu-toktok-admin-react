@@ -45,7 +45,7 @@ function WritingSubmit() {
           <article>
             2024년 7월 22일 월요일(오후 2:54)
           </article>
-          <article>
+          <article className='writing-submit-content'>
             { writing || "글을 가져오는 중입니다..." }
           </article>
         </section>

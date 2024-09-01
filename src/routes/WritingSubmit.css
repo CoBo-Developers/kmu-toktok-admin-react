@@ -124,3 +124,24 @@
 #score::-webkit-inner-spin-button {
   display: none;
 }
+.writing-submit-content {
+  word-break: break-word;
+}
+
+@media screen and (max-width: 900px) {
+  .writing-submit {
+    padding-left: 0;
+  }
+  .writing-submit header {
+    padding-top: 58px;
+    padding-right: 25px;
+    background-color: #193553;
+    border-radius: 0 0 16px 16px;
+  }
+  .writing-submit > header img {
+    margin-left: 0;
+  }
+  .writing-submit > section {
+    padding: 10px 20px;
+  }
+}
