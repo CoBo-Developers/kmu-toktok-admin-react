@@ -25,7 +25,8 @@ function CreateNewWriting() {
           <section className="create-new-wrting">
             <article className="input">
               <label htmlFor="title">제목</label>
-              <input type="text" placeholder="제목" onChange={handleTitleChange} />
+              <textarea name="title" id="title" placeholder="제목" rows={1}
+              onChange={handleTitleChange}></textarea>
             </article>
             <article className="textarea">
               <label htmlFor="description">설명</label>

@@ -18,6 +18,7 @@ function useCreateWriting() {
 
 
   const handleTitleChange = (e) => {
+    handleTextareaChange(e);
     setTitle(e.target.value);
   }
   
