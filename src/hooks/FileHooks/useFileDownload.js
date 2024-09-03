@@ -1,13 +1,14 @@
-//File에서 파일 다로운드 로직
-import { useCallback } from 'react';
+import { useState } from 'react';
 import { fileDownload } from '../../api/fileApi';
 import { useCookies } from 'react-cookie';
 
 const useFileDownload = () => {
     const [cookies] = useCookies(['accessToken']);
+    const [fileDownloadLoading, setFileDownloadLoading] = useState(false);
 
-    const downloadFile = useCallback((fileId, fileName) => {
-        return fileDownload(cookies.accessToken, fileId)
+    const downloadFile = (fileId, fileName) => {
+        setFileDownloadLoading(true);
+        fileDownload(cookies.accessToken, fileId)
             .then((blob) => {
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
@@ -20,10 +21,13 @@ const useFileDownload = () => {
             })
             .catch((error) => {
                 alert(`Download failed: ${error.message}`);
+            })
+            .finally(() => {
+                setFileDownloadLoading(false);
             });
-    }, [cookies.accessToken]);
+    };
 
-    return { downloadFile };
+    return { downloadFile, fileDownloadLoading };
 };
 
 export default useFileDownload;

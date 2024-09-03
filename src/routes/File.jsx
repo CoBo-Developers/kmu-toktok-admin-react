@@ -6,11 +6,13 @@ import { fileFormattedDate } from '../utils/dateAndTime';
 import useFileSelection from '../hooks/FileHooks/useFileSelection';
 import useCategorySelection from '../hooks/FileHooks/useCategorySelection';
 import useFileDownload from '../hooks/FileHooks/useFileDownload';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function File() {
     const {
         fileData,
         getCategoryColor,
+        categorySelectLoading
     } = useCategorySelection();
 
     const {
@@ -20,14 +22,15 @@ function File() {
         isSelected,
     } = useFileSelection(fileData);
 
-    const { downloadFile } = useFileDownload();
-
-    const handleDownload = (fileId, fileName) => {
-        downloadFile(fileId, fileName);
-    };
+    const {
+        downloadFile,
+        fileDownloadLoading,
+    } = useFileDownload();
     
     return (
         <main className="file-main">
+            <LoadingModal show={categorySelectLoading} />
+            <LoadingModal show={fileDownloadLoading} />
             <section className="file-main-inner">
                 <table className="file-table">
                     <thead>
@@ -69,7 +72,7 @@ function File() {
                                     <div className="date-col">{fileFormattedDate(item.createdAt)}</div>
                                 </td>
                                 <td className="download-column">
-                                    <img src={downloadIcon} className='download-btn' alt="" onClick={() => handleDownload(item.id, item.fileName)}/>
+                                    <img src={downloadIcon} className='download-btn' alt="" onClick={() => downloadFile(item.id, item.fileName)}/>
                                 </td>
                             </tr>
                         ))}

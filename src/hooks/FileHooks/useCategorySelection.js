@@ -16,8 +16,10 @@ const useCategorySelection = () => {
     }));
 
     const { fileUpdateTrigger } = useFileStore();
+    const [categorySelectLoading, setCategorySelectLoading] = useState(false);
 
     useEffect(() => {
+            setCategorySelectLoading(true);
             getCategoryList(cookies.accessToken)
                 .then((response) => {
                     const categories = response.data.categories;
@@ -27,12 +29,16 @@ const useCategorySelection = () => {
                 })
                 .catch((error) => {
                     alert(error.message);
+                })
+                .finally(() => {
+                    setCategorySelectLoading(false);
                 });
     }, [cookies.accessToken]);
 
     useEffect(() => {
         setAllFileData([]);
         categoryList.forEach((category) => {
+            setCategorySelectLoading(true);
             getFileList(cookies.accessToken, category.id)
                 .then((response) => {
                     const filesWithCategoryId = response.data.files.map(file => ({
@@ -48,6 +54,9 @@ const useCategorySelection = () => {
                 })
                 .catch((error) => {
                     alert(error.message);
+                })
+                .finally(() => {
+                    setCategorySelectLoading(false);
                 });
         });
     }, [cookies.accessToken, categoryList, fileUpdateTrigger]);
@@ -72,6 +81,7 @@ const useCategorySelection = () => {
         fileData,
         categoryList,
         getCategoryColor,
+        categorySelectLoading
     };
 };
 
