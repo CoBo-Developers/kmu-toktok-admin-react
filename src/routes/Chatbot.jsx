@@ -26,11 +26,15 @@ function Chatbot() {
           </div>
           {
             chatList.map((item, i) => {
-              item.answer = item.answer
-                .replace(/""/g, '"')
-                .replace(/\\"/g, '"')
-                .replace(/\\n/g, '\n')
-                .replace(/【\d+:\d+†source】/g, '');
+              let formattedAnswer;
+              if (item.answer) {
+                formattedAnswer = item.answer
+                  .slice(1, item.answer.length - 1)
+                  .replace(/""/g, '"')
+                  .replace(/\\"/g, '"')
+                  .replace(/\\n/g, '\n')
+                  .replace(/【\d+:\d+†source】/g, '');
+              }
               return (
                 <div key={i}>
                   <div className='message-wrapper'>
@@ -40,7 +44,7 @@ function Chatbot() {
                   </div>
                   <div className='message-wrapper'>
                     <div className="message bot">
-                      { item.answer || "Loading..." }
+                      { formattedAnswer || "Loading..." }
                     </div>
                   </div>
                 </div>
