@@ -40,3 +40,30 @@
 .writing-list-table > tbody > tr > td:nth-child(1) {
   text-align: center;
 }
+.writing-list-table > tbody > tr > td:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+@media screen and (max-width: 900px) {
+  .writing-list-table > tbody > tr > td:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .writing-state-row {
+    order: 1;
+    width: fit-content;
+    background-color: #F0F1F3;
+    padding: 4px 8px;
+    border-radius: 10px;
+  }
+  .studentId-row{
+    order: 2;
+  }
+  .date-row{
+    order: 3;
+  }
+}

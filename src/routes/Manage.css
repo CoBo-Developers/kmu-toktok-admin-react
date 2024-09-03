@@ -59,3 +59,27 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 900px) {
+  .manage{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .manage-search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mobile-manage-menu {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color:#193553;
+    padding-top: 48px;
+    z-index: 899;
+    border-radius: 0px 0px 16px 16px;
+  }
+  .manage.active {
+    padding-left: 0;
+  }
+}
+

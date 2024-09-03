@@ -4,12 +4,21 @@ import useShowExtend from '../hooks/useShowExtend';
 import UserItem from '../components/list/UserItem';
 import useUserList from '../hooks/useUserList';
 import MoreBtn from '../components/main/MoreBtn';
+import useIsMobile from '../hooks/useIsMobile';
+import ManageMenu from '../components/aside/ManageMenu/ManageMenu';
 
 function Manage() {
   const showExtend = useShowExtend();
   const { userList, page, setPage, totalElement, pageSize, setPageSize } = useUserList();
+  const isMobile = useIsMobile();
 
   return (
+    <>
+    {isMobile && (
+      <section className='mobile-manage-menu'>
+        <ManageMenu />
+      </section>
+    )}
     <main className={"manage " + (showExtend ? "active" : "")}>
       <section className='manage-search-wrapper'>
         <div className='search-input'>
@@ -38,6 +47,7 @@ function Manage() {
         { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
       </section>
     </main>
+    </>
   )
 }
 

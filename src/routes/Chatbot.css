@@ -74,3 +74,18 @@
   cursor: pointer;
   margin-top: auto;
 }
+
+@media screen and (max-width: 900px) {
+  .chatbot {
+    padding-left: 0;
+  }
+  .message-container-inner {
+    width: 90%;
+  }
+  .message-input-wrapper {
+    left: calc(50%);
+    transform: translateX(-50%);
+    width: 80vw;
+    bottom: 20px;
+  }
+}

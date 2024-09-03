@@ -1,12 +1,17 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './ChatStu.css';
 import sendIcon from '../assets/icons/send-icon.png';
 import backIcon from '../assets/icons/back-icon.png';
+import mobileDownArrow from '../assets/icons/mobile-down-arrow.png';
+import mobileUpArrow from '../assets/icons/mobile-up-arrow.png';
 import useChatStu from '../hooks/useChatStu';
 import { formatDate, formatTime } from '../utils/dateAndTime';
+import useIsMobile from '../hooks/useIsMobile';
+import ChatStuMenu from '../components/aside/ChatStuMenu/ChatStuMenu';
 
 function ChatStu() {
-  const { studentId } = useParams();  
+  let { studentId } = useParams();  
   const navigate = useNavigate();
   const {
     chatContent,
@@ -19,8 +24,20 @@ function ChatStu() {
     chatContentRef,
     sendRef,
   } = useChatStu();
+  const isMobile = useIsMobile();
+  const [isHeaderExtend, setIsHeaderExtend] = useState(false);
 
-  if (!studentId) return null;
+  useEffect(() => {
+    if (!isMobile)
+      setIsHeaderExtend(false);
+  },[isMobile]);
+
+  if (!studentId){
+    if (isMobile)
+      studentId = '목록보기';
+    else
+      return null;
+  }
 
   const handleBack = () => {
     navigate('/chatstu');
@@ -29,8 +46,19 @@ function ChatStu() {
   return (
     <main className="chat-container">
       <section className='chat-header'>
-        <img src={backIcon} alt="" onClick={handleBack} />
-        <span className='chat-header-text'>{studentId}</span>
+        <article className='chat-header-inner'>
+          {!isMobile && <img src={backIcon} alt="" onClick={handleBack} className='backIcon'/>}
+          <span className='chat-header-text'>{studentId}</span>
+          {isMobile && (
+            <img 
+              src={isHeaderExtend ? mobileUpArrow : mobileDownArrow} 
+              alt="" 
+              className='mobileArrow' 
+              onClick={() => setIsHeaderExtend(!isHeaderExtend)} 
+            />
+          )}
+        </article>
+        {isHeaderExtend && <ChatStuMenu />}
       </section>
       <section className='chat-wrapper' ref={chatContentRef}>
         {chatContent.map((chat, index) => (

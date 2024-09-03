@@ -31,6 +31,7 @@ function App() {
           <Route path=":studentId" element={<ChatStu />} />
         </Route>
         <Route path='/file' element={<File/>} />
+        <Route path='/writing' element={<WritingList />} />
         <Route path='/writing/:writingId' element={<WritingList />} />
         <Route path='/writing/:writingId/:studentId' element={<WritingSubmit />} />
         <Route path='/manage' element={<Manage />} />
