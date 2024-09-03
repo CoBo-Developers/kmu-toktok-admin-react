@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom';
 
 function useSubmittedWriting() {
   const { writingId, studentId } = useParams();
-  const [ writing, setWriting ] = useState();
+  const [ writing, setWriting ] = useState([]);
   const [ cookies ] = useCookies(['accessToken']);
   const [ score, setScore ] = useState();
 
   useEffect(() => {
     getWritingSubmit(writingId, studentId, cookies.accessToken)
     .then((res) => {
-      setWriting(res.data.content);
+      setWriting(res.data);
     })
     .catch((err) => {
       alert(err.message);

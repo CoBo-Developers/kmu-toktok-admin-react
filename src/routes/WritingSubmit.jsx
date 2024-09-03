@@ -2,7 +2,7 @@ import './WritingSubmit.css';
 import backIcon from '../assets/icons/back-icon.png';
 import { useNavigate } from "react-router-dom";
 import useSubmittedWriting from '../hooks/useSubmittedWriting';
-
+import { dateToKoreanString } from '../utils/dateAndTime';
 
 function WritingSubmit() {
   const navigate = useNavigate();
@@ -45,10 +45,10 @@ function WritingSubmit() {
         <section>
           <span className="title-badge">글</span>
           <article>
-            2024년 7월 22일 월요일(오후 2:54)
+          {dateToKoreanString(writing.createdAt)}
           </article>
           <article className='writing-submit-content'>
-            { writing || "글을 가져오는 중입니다..." }
+            { writing.content || "글을 가져오는 중입니다..." }
           </article>
         </section>
       </section>
