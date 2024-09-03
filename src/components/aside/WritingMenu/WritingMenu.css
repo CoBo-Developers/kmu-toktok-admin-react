@@ -1,4 +1,4 @@
-.aside-writing > h2 {
+.aside-writing .writing-mobile-header > h2 {
   font-size: 14px;
   color: white;
   line-height: 20px;
@@ -50,4 +50,44 @@
   text-align: center;
   color: white;
   border: none;
+}
+
+@media screen and (max-width: 900px) {
+  .aside-writing {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #193553;
+    border-radius: 0 0 16px 16px;
+  }
+  .aside-writing .writing-mobile-header {
+    padding-top: 58px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .aside-writing .writing-mobile-header h2 {
+    margin: 0;
+  }
+  .aside-writing .writing-mobile-header img {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  .aside-writing-items {
+    padding: 20px;
+    padding-top: 5px;
+  }
+  .aside-writing-content {
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+  .aside-writing-content::-webkit-scrollbar {
+    display: none;
+  }
 }

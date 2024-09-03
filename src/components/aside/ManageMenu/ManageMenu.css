@@ -113,3 +113,9 @@
 .aside-user-manage-ratio > input {
   display: none;
 }
+
+@media screen and (max-width: 900px) {
+  .aside-user-manage{
+    margin: 10px 20px;
+  }
+}

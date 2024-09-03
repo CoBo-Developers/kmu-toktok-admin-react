@@ -11,11 +11,16 @@
 .chat-header {
     background-color: #4F6B8A;
     display: flex;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
     padding: 10px;
 }
-.chat-header img {
+.chat-header-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.chat-header .backIcon {
     width: 24px;
     height: 24px;
     background-color: transparent;
@@ -140,4 +145,40 @@
 
 .input-wrapper .input-text::-webkit-scrollbar {
     display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .chat-wrapper {
+        padding-left: 0;
+    }
+    .chat-container{
+        padding-left: 0;
+        flex: none
+    }
+    .chat-wrapper {
+        width: 95%;
+        margin-bottom: 80px;
+    }
+    .chat-header .mobileArrow {
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    .input-wrapper{
+        margin-left: 0;
+    }
+    .chat-header{
+        padding-top: 58px;
+        border-radius: 0 0 16px 16px;
+        padding-left: 25px;
+        background-color: #193553;
+        max-height: 80dvh;
+        z-index: 899;
+        /* overflow-y: hidden; */
+    }
+    .chat-header .chat-header-text {
+        margin-left: 0;
+    }
 }

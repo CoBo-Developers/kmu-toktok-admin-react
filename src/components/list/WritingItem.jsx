@@ -22,9 +22,11 @@ function WritingItem(props) {
           </button>
         </div>
       </td>
-      <td><div>{ studentId }</div></td>
-      <td><div>{ dateToKoreanString(createdAt) }</div></td>
-      <td><div>{ writingStateEnum[writingState].text }</div></td>
+      <td>
+        <div className='studentId-row'>{ studentId }</div>
+        <div className='date-row'>{ dateToKoreanString(createdAt) }</div>
+        <div className='writing-state-row'>{ writingStateEnum[writingState].text }</div>
+      </td>
     </tr>
   )
 }
