@@ -18,17 +18,17 @@ const useCategorySelection = () => {
     const { fileUpdateTrigger } = useFileStore();
 
     useEffect(() => {
-        getCategoryList(cookies.accessToken)
-            .then((response) => {
-                const categories = response.data.categories;
-                categories.forEach((category) => {
-                    setCategoryList(category.id, category.name);
+            getCategoryList(cookies.accessToken)
+                .then((response) => {
+                    const categories = response.data.categories;
+                    categories.forEach((category) => {
+                        setCategoryList(category.id, category.name);
+                    });
+                })
+                .catch((error) => {
+                    alert(error.message);
                 });
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-    }, [cookies.accessToken, setCategoryList]);
+    }, [cookies.accessToken]);
 
     useEffect(() => {
         setAllFileData([]);
@@ -40,7 +40,11 @@ const useCategorySelection = () => {
                         categoryId: category.id,
                         categoryName: category.name,
                     }));
-                    setAllFileData((prevData) => [...prevData, ...filesWithCategoryId]);
+                    setAllFileData((prevData) => {
+                        const existingIds = new Set(prevData.map(file => file.id));
+                        const newFiles = filesWithCategoryId.filter(file => !existingIds.has(file.id));
+                        return [...prevData, ...newFiles];
+                    });
                 })
                 .catch((error) => {
                     alert(error.message);
