@@ -67,4 +67,42 @@ const fileModify = async (accessToken, fileId, newFileName, categoryId) => {
   return res.json();
 }
 
-export { getCategoryList, getFileList, fileDownload, fileModify };
+const fileAdd = async (accessToken, fileName, categoryId, file) => {
+  const formData = new FormData();
+  formData.append('fileName', fileName);
+  formData.append('categoryId', categoryId);
+  formData.append('multipartFile', file);
+
+  const res = await fetch(`${import.meta.env.VITE_APP_FILE_API_URL}/api/professor/file`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: formData
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).message;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+const fileDelete = async (accessToken, fileIds) => {
+  const idString = fileIds.map(id => `fileId=${id}`).join('&');
+  const res = await fetch(`${import.meta.env.VITE_APP_FILE_API_URL}/api/professor/file?${idString}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    }
+  });
+  if (!res.ok) {
+    const message = (await res.json()).message;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+    
+export { getCategoryList, getFileList, fileDownload, fileModify, fileAdd, fileDelete };
