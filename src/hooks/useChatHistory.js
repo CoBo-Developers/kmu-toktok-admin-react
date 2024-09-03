@@ -9,9 +9,11 @@ function useChatHistory() {
   const [cookies] = useCookies(['accessToken']);
   const [chatHistory, setChatHistory] = useState([]);
   const chatListRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (cookies.accessToken) {
+      setIsLoading(true);
       getStudentChat(id, cookies.accessToken)
       .then((res) => {
         setChatHistory(res.data);
@@ -19,6 +21,9 @@ function useChatHistory() {
       })
       .catch((err) => {
         alert(err.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       })
     }
   }, [])
@@ -30,7 +35,8 @@ function useChatHistory() {
   return {
     id,
     chatHistory,
-    chatListRef
+    chatListRef,
+    isLoading
   }
 }
 
