@@ -45,6 +45,7 @@ const useChatStu = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
+    chatContentRef.current.value = '';
     if (newMessage.trim() === '') return;
 
     setIsLoading(true);
