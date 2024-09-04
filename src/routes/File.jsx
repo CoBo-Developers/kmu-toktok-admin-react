@@ -34,6 +34,7 @@ function File() {
 
     const [isShowExtendFileMenu, setIsShowExtendFileMenu] = useState(false);
     const isMobile = useIsMobile();
+
     
     return (
         <main className="file-main">
@@ -75,7 +76,7 @@ function File() {
                     <tbody>
                         {fileData.map((item, index) => (
                             <tr key={index}>
-                                <td className='order-column'>
+                                <td>
                                     <img 
                                         className='check-icon'
                                         src={isSelected(item.id) ? fileSelectedIcon : fileUnselectedIcon} 
