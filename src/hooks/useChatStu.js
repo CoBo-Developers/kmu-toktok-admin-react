@@ -45,17 +45,16 @@ const useChatStu = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    chatContentRef.current.value = '';
+    inputRef.current.value = '';
+    inputRef.current.style.height = 'auto';
+    if (chatContentRef.current) {
+        chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
+    }
     if (newMessage.trim() === '') return;
 
     setIsLoading(true);
     postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
-        setNewMessage('');
-        inputRef.current.style.height = 'auto';
-        if (chatContentRef.current) {
-            chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
-        }
         setIsLoading(true);
         getChat(cookies.accessToken, studentId)
           .then((chat) => {
@@ -74,6 +73,7 @@ const useChatStu = () => {
       .finally(() => {
         setIsLoading(false);
       });
+      setNewMessage('');
   };
 
   const handleKeyUp = (e) => {
