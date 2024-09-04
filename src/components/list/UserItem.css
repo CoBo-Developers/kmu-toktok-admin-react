@@ -1,0 +1,75 @@
+.manage-user-list-redirect-btn {
+  width: 156px;
+  height: 32px;
+  box-sizing: border-box;
+  padding: 6px 10px 6px 10px;
+  border: none;
+  border-radius: 10px;
+  background: #F1F1F1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.manage-user-detail {
+  text-decoration: none;
+  color: black;
+  vertical-align: middle;
+  width: 20%;
+}
+
+.manage-user-list-table {
+  border-spacing: 7px;
+}
+
+.manage-user-list-item > td {
+  border: none;
+  font-size: 14px;
+}
+.content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.studentId-col {
+  width: 20%;
+}
+.button-col{
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  gap: 15%;
+  align-items: center;
+  justify-content: center;
+}
+.num{
+  width: 10%;
+}
+@media screen and (max-width: 900px) {
+  .num{
+    width: 15%;
+    vertical-align: top;
+  }
+  .content-row {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    gap: 5px;
+  }
+  .button-col{
+    gap: 10px;
+    width: 100%;
+    justify-content: left;
+  }
+  .button-col button {
+    flex: 1;
+  }
+  .mobile-go-detail-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+  }
+}
