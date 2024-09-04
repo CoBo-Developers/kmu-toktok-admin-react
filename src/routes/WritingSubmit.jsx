@@ -3,6 +3,7 @@ import backIcon from '../assets/icons/back-icon.png';
 import { useNavigate } from "react-router-dom";
 import useSubmittedWriting from '../hooks/useSubmittedWriting';
 import { dateToKoreanString } from '../utils/dateAndTime';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function WritingSubmit() {
   const navigate = useNavigate();
@@ -13,11 +14,13 @@ function WritingSubmit() {
     writing,
     handleConfirmBtnClick,
     handleModifyBtnClick,
-    handleRejectBtnClick
+    handleRejectBtnClick,
+    isSubmittedWritingLoading
   } = useSubmittedWriting();
   
   return (
     <main className="writing-submit">
+      <LoadingModal show={isSubmittedWritingLoading} />
       <header>
         <span onClick={() => { navigate(-1) }}>
           <img src={backIcon} alt="back-icon" />
@@ -32,13 +35,17 @@ function WritingSubmit() {
             <input 
               type="number" 
               id="score" 
+              defaultValue={score}
               placeholder="점수를 입력해주세요." 
               min={0} 
               onChange={(e) => { setScore(e.target.value) }} />
           </div>
           <div>
-            <button className="btn confirm" onClick={handleConfirmBtnClick}>확인</button>
-            {/* <button className="btn modify" onClick={handleModifyBtnClick}>수정하기</button> */}
+            {!score ? (
+              <button className="btn confirm" onClick={handleConfirmBtnClick}>확인</button>
+            ) : (
+              <button className="btn modify" onClick={handleModifyBtnClick}>수정하기</button>
+            )}
             <button className="btn reject" onClick={handleRejectBtnClick}>부정제출</button>
           </div>
         </section>
