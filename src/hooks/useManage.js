@@ -11,6 +11,7 @@ function useManage() {
   const [inputId, setInputId] = useState();
   const [isModify, setIsModify] = useState(false);
   const [cookies] = useCookies(['accessToken']);
+  const [isManageLoading, setIsManageLoading] = useState(false);
 
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
@@ -28,6 +29,7 @@ function useManage() {
     if (!isModify) {
       setIsModify(!isModify);
     } else {
+      setIsManageLoading(true);
       putUser(selectedUser.studentId, selectedUser.registerState, selectedRole, inputId, cookies.accessToken)
         .then(() => {
           alert('수정되었습니다.');
@@ -38,6 +40,9 @@ function useManage() {
             })
             .catch((error) => {
               alert(error.message);
+            })
+            .finally(() => {
+              setIsManageLoading(false);
             })
         })
         .catch((error) => {
@@ -58,7 +63,8 @@ function useManage() {
     inputId,
     handleRoleChange,
     handleStudentIdChange,
-    handleClickModifyBtn
+    handleClickModifyBtn,
+    isManageLoading
   }
 }
 
