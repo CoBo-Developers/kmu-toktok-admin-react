@@ -84,7 +84,7 @@ function WritingMenu() {
                       </div>
                       {isDeleteVisible === item.id && (
                         <div className='delete-writing-wrapper'>
-                          <p>정말 삭제하시겠습니까?</p>
+                          <p>과제를 삭제할까요?</p>
                           <div className='delete-writing-btn-wrapper'>
                             <button
                              onClick={() => {
