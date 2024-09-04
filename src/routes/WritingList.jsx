@@ -27,7 +27,7 @@ function WritingList() {
     }
     if (cookies.accessToken) {
       setIsListLoading(true);
-      getWritingSubmitList(params.writingId, page, 10, cookies.accessToken)
+      getWritingSubmitList(params.writingId, page, pageSize, cookies.accessToken)
       .then((res) => {
         setWritingList(res.data.writings);
         setTotalElement(res.data.totalElements);
@@ -39,7 +39,7 @@ function WritingList() {
         setIsListLoading(false);
       })
     }    
-  }, [cookies, params, page]);
+  }, [cookies, params, pageSize]);
 
   useEffect(() => {
     setPage(0);
