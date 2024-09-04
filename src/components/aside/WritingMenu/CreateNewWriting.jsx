@@ -1,5 +1,6 @@
 import useCreateWriting from '../../../hooks/useCreateWriting';
 import './CreateNewWriting.css';
+import LoadingModal from '../../LoadingModal/LoadingModal';
 
 function CreateNewWriting() {
   const {
@@ -15,7 +16,8 @@ function CreateNewWriting() {
     handleEndYearChange,
     handleEndMonthChange,
     handleEndDayChange,
-    handleButtonClick
+    handleButtonClick,
+    isCreateLoading
   } = useCreateWriting();
 
   return (
@@ -23,6 +25,7 @@ function CreateNewWriting() {
       {
         onCreate ? 
           <section className="create-new-wrting">
+            <LoadingModal show={isCreateLoading} />
             <article className="input">
               <label htmlFor="title">제목</label>
               <textarea name="title" id="title" placeholder="제목" rows={1}

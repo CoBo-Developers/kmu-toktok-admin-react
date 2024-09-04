@@ -15,7 +15,7 @@ function useCreateWriting() {
   const [endDate, setEndDate] = useState({ year: null, month: null, day: null });
   const [cookies] = useCookies(['accessToken']);
   const setWritingList = useWritingListStore((state) => state.setWritingList);
-
+  const [isCreateLoading, setIsCreateLoading] = useState(false);
 
   const handleTitleChange = (e) => {
     handleTextareaChange(e);
@@ -131,9 +131,11 @@ function useCreateWriting() {
       "prompt": constraints
     }
 
+    setIsCreateLoading(true);
     postWriting(sendData, cookies.accessToken)
     .then(() => {
       setOnCreate(false);
+      setIsCreateLoading(true);
       getWritingList(cookies.accessToken)
         .then((res) => {
           setWritingList(res.data.assignments);
@@ -141,10 +143,16 @@ function useCreateWriting() {
         .catch((err) => {
           alert(err.message);
         })
+        .finally(() => {
+          setIsCreateLoading(false);
+        });
     })
     .catch((err) => {
       alert(err.message);
     })
+    .finally(() => {
+      setIsCreateLoading(false);
+    });
   }
 
   return {
@@ -160,7 +168,8 @@ function useCreateWriting() {
     handleEndYearChange,
     handleEndMonthChange,
     handleEndDayChange,
-    handleButtonClick
+    handleButtonClick,
+    isCreateLoading
   }
 }
 
