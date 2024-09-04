@@ -6,7 +6,7 @@ import { useWritingListStore } from "../store/useWritingListStore";
 function useWritingList() {
   const { writingList, setWritingList } = useWritingListStore();
   const [ cookies ] = useCookies(['accessToken']);
-  const [writingLoading, setWritingLoading] = useState(true);
+  const [writingLoading, setWritingLoading] = useState(false);
 
   useEffect(() => {
     setWritingLoading(true);
