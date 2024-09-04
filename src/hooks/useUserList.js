@@ -25,7 +25,7 @@ function useUserList() {
     .finally(() => {
       setIsUserListLoading(false);
     });
-  }, []);
+  }, [pageSize]);
 
   return { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading };
 }
