@@ -12,6 +12,7 @@ const useFileAdd = () => {
     const [file, setFile] = useState(null);
     const newFileNameRef = useRef();
     const fileInputRef = useRef(); 
+    const [fileAddLoading, setFileAddLoading] = useState(false);
 
     useEffect(() => {
         if (!showAddFileWrapper) {
@@ -55,7 +56,7 @@ const useFileAdd = () => {
             alert('제목을 입력해주세요.');
             return;
         }
-
+        setFileAddLoading(true);
         fileAdd(cookies.accessToken, newFileName, selectedCategoryId, file)
             .then(() => {
                 alert('파일이 추가되었습니다');
@@ -64,6 +65,9 @@ const useFileAdd = () => {
             })
             .catch((error) => {
                 alert(`파일 추가 실패: ${error.message}`);
+            })
+            .finally(() => {
+                setFileAddLoading(false);
             });
         newFileNameRef?.current.blur();
     };
@@ -78,7 +82,8 @@ const useFileAdd = () => {
         selectedCategoryId,
         handleCategorySelect,
         handleFileChange,
-        fileInputRef
+        fileInputRef,
+        fileAddLoading,
     };
 };
 

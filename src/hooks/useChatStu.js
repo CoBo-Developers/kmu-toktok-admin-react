@@ -11,6 +11,7 @@ const useChatStu = () => {
   const inputRef = useRef();
   const chatContentRef = useRef();
   const sendRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (chatContentRef.current) {
@@ -20,12 +21,16 @@ const useChatStu = () => {
 
   useEffect(() => {
     if (studentId) {
+      setIsLoading(true);
       getChat(cookies.accessToken, studentId)
         .then((chat) => {
           setChatContent(chat.data);
         })
         .catch((error) => {
           console.error(error);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   }, [studentId, cookies.accessToken]);
@@ -40,6 +45,7 @@ const useChatStu = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (newMessage.trim() === '') return;
 
     const newChat = {
@@ -59,6 +65,9 @@ const useChatStu = () => {
       })
       .catch((error) => {
         alert(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -86,6 +95,7 @@ const useChatStu = () => {
     inputRef,
     chatContentRef,
     sendRef,
+    isLoading,
   };
 };
 

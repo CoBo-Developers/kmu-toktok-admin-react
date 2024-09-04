@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie';
 import MoreBtn from '../components/main/MoreBtn';
 import useIsMobile from '../hooks/useIsMobile';
 import WritingMenu from '../components/aside/WritingMenu/WritingMenu';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
@@ -18,13 +19,14 @@ function WritingList() {
   const [cookies] = useCookies(['accessToken']);
   const location = useLocation();
   const isMobile = useIsMobile();
-
+  const [isListLoading, setIsListLoading] = useState(true);
 
   useEffect(() => {
     if (!params.writingId) {
       return;
     }
     if (cookies.accessToken) {
+      setIsListLoading(true);
       getWritingSubmitList(params.writingId, page, 10, cookies.accessToken)
       .then((res) => {
         setWritingList(res.data.writings);
@@ -32,6 +34,9 @@ function WritingList() {
       })
       .catch((err) => {
         alert(err.message);
+      })
+      .finally(() => {
+        setIsListLoading(false);
       })
     }    
   }, [cookies, params, page]);
@@ -46,6 +51,7 @@ function WritingList() {
 
   return (
     <main className="writing-list">
+      <LoadingModal show={isListLoading} />
       {isMobile && (
         <section>
           <WritingMenu />

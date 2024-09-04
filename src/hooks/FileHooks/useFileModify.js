@@ -11,6 +11,7 @@ const useFileModify = () => {
     const [newFileName, setNewFileName] = useState('');
     const [modifyActiveCategoryId, setModifyActiveCategoryId] = useState(null);
     const newFileNameRef = useRef();
+    const [fileModifyLoading, setFileModifyLoading] = useState(false);
 
     const handleModifyWrapperClick = () => {
         if (showModifyFileNameWrapper) {
@@ -52,6 +53,7 @@ const useFileModify = () => {
     const handleFileModify = () => {
         if (selectedFiles.length === 1) {
             const selectedFile = selectedFiles[0];
+            setFileModifyLoading(true);
             fileModify(cookies.accessToken, selectedFile.id, newFileName, modifyActiveCategoryId)
                 .then(() => {
                     alert('파일이 수정되었습니다');
@@ -60,6 +62,9 @@ const useFileModify = () => {
                 })
                 .catch((error) => {
                     alert(`파일 수정 실패: ${error.message}`);
+                })
+                .finally(() => {
+                    setFileModifyLoading(false);
                 });
                 newFileNameRef?.current.blur();
         }
@@ -77,7 +82,8 @@ const useFileModify = () => {
         newFileNameRef,
         setNewFileName,
         modifyActiveCategoryId,
-        handleCategorySelect
+        handleCategorySelect,
+        fileModifyLoading
     };
 };
 

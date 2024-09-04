@@ -6,8 +6,10 @@ import { useWritingListStore } from "../store/useWritingListStore";
 function useWritingList() {
   const { writingList, setWritingList } = useWritingListStore();
   const [ cookies ] = useCookies(['accessToken']);
+  const [writingLoading, setWritingLoading] = useState(true);
 
   useEffect(() => {
+    setWritingLoading(true);
     getWritingList(cookies.accessToken)
       .then((res) => {
         setWritingList(res.data.assignments);
@@ -15,9 +17,12 @@ function useWritingList() {
       .catch((err) => {
         alert(err.message);
       })
+      .finally(() => {
+        setWritingLoading(false);
+      });
   }, [cookies]);
 
-  return { writingList };
+  return { writingList, writingLoading };
 }
 
 export default useWritingList;

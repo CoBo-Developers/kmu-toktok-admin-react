@@ -14,6 +14,7 @@ import useFileDetele from '../../../hooks/FileHooks/useFileDelete';
 import useCategoryManage from '../../../hooks/FileHooks/useCategoryManage';
 import ModifyFileWrapper from './ModifyFileWrapper';
 import CategoryManageWrapper from './CategoryManageWrapper';
+import LoadingModal from '../../LoadingModal/LoadingModal';
 
 const FileMenu = () => {
     const [cookies] = useCookies(['accessToken']);
@@ -23,7 +24,7 @@ const FileMenu = () => {
         setSelectedCategoryIdStore: state.setSelectedCategoryId
     }));
 
-
+    const [getCategoryLoading, setGetCategoryLoading] = useState(false);
     const {
         showModifyFileNameWrapper,
         handleModifyWrapperClick,
@@ -32,7 +33,8 @@ const FileMenu = () => {
         newFileNameRef: modifyFileNameRef,
         setNewFileName: setModifyFileName,
         modifyActiveCategoryId,
-        handleCategorySelect: handleModifyCategorySelect
+        handleCategorySelect: handleModifyCategorySelect,
+        fileModifyLoading
     } = useFileModify();
 
     const {
@@ -45,19 +47,23 @@ const FileMenu = () => {
         selectedCategoryId,
         handleCategorySelect: handleAddCategorySelect,
         handleFileChange,
-        fileInputRef
+        fileInputRef,
+        fileAddLoading
     } = useFileAdd();
 
     const {
         handleDeleteFiles,
+        fileDeleteLoading
     } = useFileDetele();
 
     const {
         showCategoryManageWrapper,
         setShowCategoryManageWrapper,
+        categoryLoading
     } = useCategoryManage();
 
     useEffect(() => {
+        setGetCategoryLoading(true);
         getCategoryList(cookies.accessToken)
             .then((response) => {
                 const newCategory = { id: 0, name: "게시된 모든 파일 보기" };
@@ -66,11 +72,19 @@ const FileMenu = () => {
             })
             .catch((error) => {
                 alert(error.message);
+            })
+            .finally(() => {
+                setGetCategoryLoading(false);
             });
     }, [cookies.accessToken]);
 
     return (
         <main>
+            <LoadingModal show={getCategoryLoading} />
+            <LoadingModal show={categoryLoading} />
+            <LoadingModal show={fileAddLoading} />
+            <LoadingModal show={fileDeleteLoading} />
+            <LoadingModal show={fileModifyLoading} />
             <section className="category-wrapper">
                 <ul className="category-list">
                     {categories.map((category) => (
