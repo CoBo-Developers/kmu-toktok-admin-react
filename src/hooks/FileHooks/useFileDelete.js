@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useFileStore } from '../../store/useFileStore';
 import { fileDelete } from '../../api/fileApi';
 import { useCookies } from 'react-cookie';
@@ -9,6 +10,7 @@ const useFileDelete = () => {
         clearSelectedFiles: state.clearSelectedFiles,
         triggerFileUpdate: state.triggerFileUpdate
     }));
+    const [fileDeleteLoading, setFileDeleteLoading] = useState(false);
 
     const handleDeleteFiles = () => {
         if (selectedFiles.length === 0) {
@@ -17,6 +19,7 @@ const useFileDelete = () => {
         }
 
         const fileIds = selectedFiles.map(file => file.id);
+        setFileDeleteLoading(true);
         fileDelete(cookies.accessToken, fileIds)
             .then(() => {
                 alert('파일이 삭제되었습니다.');
@@ -25,11 +28,15 @@ const useFileDelete = () => {
             })
             .catch((error) => {
                 alert(`파일 삭제 실패: ${error.message}`);
+            })
+            .finally(() => {
+                setFileDeleteLoading(false);
             });
     };
 
     return {
         handleDeleteFiles,
+        fileDeleteLoading
     };
 };
 

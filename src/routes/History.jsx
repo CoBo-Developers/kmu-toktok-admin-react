@@ -1,18 +1,21 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './History.css';
 import ltIcon from '../assets/icons/lt_icon.png';
 import useChatHistory from '../hooks/useChatHistory';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function History() {
   const navigate = useNavigate();
   const {
     id,
     chatHistory,
-    chatListRef
+    chatListRef,
+    isLoading
   } = useChatHistory();
 
   return (
     <main className="history">
+      <LoadingModal show={isLoading} />
       <header className="history-header">
         <div className="history-header-inner">
           <span className="history-return-btn" onClick={() => {

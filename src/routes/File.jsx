@@ -9,6 +9,7 @@ import { fileFormattedDate } from '../utils/dateAndTime';
 import useFileSelection from '../hooks/FileHooks/useFileSelection';
 import useCategorySelection from '../hooks/FileHooks/useCategorySelection';
 import useFileDownload from '../hooks/FileHooks/useFileDownload';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 import FileMenu from '../components/aside/FileMenu/FileMenu';
 import useIsMobile from '../hooks/useIsMobile';
 
@@ -16,6 +17,7 @@ function File() {
     const {
         fileData,
         getCategoryColor,
+        categorySelectLoading
     } = useCategorySelection();
 
     const {
@@ -25,17 +27,19 @@ function File() {
         isSelected,
     } = useFileSelection(fileData);
 
-    const { downloadFile } = useFileDownload();
-
-    const handleDownload = (fileId, fileName) => {
-        downloadFile(fileId, fileName);
-    };
+    const {
+        downloadFile,
+        fileDownloadLoading,
+    } = useFileDownload();
 
     const [isShowExtendFileMenu, setIsShowExtendFileMenu] = useState(false);
     const isMobile = useIsMobile();
+
     
     return (
         <main className="file-main">
+            <LoadingModal show={categorySelectLoading} />
+            <LoadingModal show={fileDownloadLoading} />
             {isMobile && (
             <section className='extend-file-menu'>
                 <article className="extend-file-header" onClick={() => setIsShowExtendFileMenu(!isShowExtendFileMenu)}>
@@ -72,7 +76,7 @@ function File() {
                     <tbody>
                         {fileData.map((item, index) => (
                             <tr key={index}>
-                                <td className='order-column'>
+                                <td>
                                     <img 
                                         className='check-icon'
                                         src={isSelected(item.id) ? fileSelectedIcon : fileUnselectedIcon} 
@@ -90,7 +94,7 @@ function File() {
                                     <div className="date-col">{fileFormattedDate(item.createdAt)}</div>
                                 </td>
                                 <td className="download-column">
-                                    <img src={downloadIcon} className='download-btn' alt="" onClick={() => handleDownload(item.id, item.fileName)}/>
+                                    <img src={downloadIcon} className='download-btn' alt="" onClick={() => downloadFile(item.id, item.fileName)}/>
                                 </td>
                             </tr>
                         ))}

@@ -16,23 +16,29 @@ const useCategorySelection = () => {
     }));
 
     const { fileUpdateTrigger } = useFileStore();
+    const [categorySelectLoading, setCategorySelectLoading] = useState(false);
 
     useEffect(() => {
-        getCategoryList(cookies.accessToken)
-            .then((response) => {
-                const categories = response.data.categories;
-                categories.forEach((category) => {
-                    setCategoryList(category.id, category.name);
+            setCategorySelectLoading(true);
+            getCategoryList(cookies.accessToken)
+                .then((response) => {
+                    const categories = response.data.categories;
+                    categories.forEach((category) => {
+                        setCategoryList(category.id, category.name);
+                    });
+                })
+                .catch((error) => {
+                    alert(error.message);
+                })
+                .finally(() => {
+                    setCategorySelectLoading(false);
                 });
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
-    }, [cookies.accessToken, setCategoryList]);
+    }, [cookies.accessToken]);
 
     useEffect(() => {
         setAllFileData([]);
         categoryList.forEach((category) => {
+            setCategorySelectLoading(true);
             getFileList(cookies.accessToken, category.id)
                 .then((response) => {
                     const filesWithCategoryId = response.data.files.map(file => ({
@@ -40,10 +46,17 @@ const useCategorySelection = () => {
                         categoryId: category.id,
                         categoryName: category.name,
                     }));
-                    setAllFileData((prevData) => [...prevData, ...filesWithCategoryId]);
+                    setAllFileData((prevData) => {
+                        const existingIds = new Set(prevData.map(file => file.id));
+                        const newFiles = filesWithCategoryId.filter(file => !existingIds.has(file.id));
+                        return [...prevData, ...newFiles];
+                    });
                 })
                 .catch((error) => {
                     alert(error.message);
+                })
+                .finally(() => {
+                    setCategorySelectLoading(false);
                 });
         });
     }, [cookies.accessToken, categoryList, fileUpdateTrigger]);
@@ -68,6 +81,7 @@ const useCategorySelection = () => {
         fileData,
         categoryList,
         getCategoryColor,
+        categorySelectLoading
     };
 };
 

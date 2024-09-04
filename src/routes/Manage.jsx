@@ -6,14 +6,16 @@ import useUserList from '../hooks/useUserList';
 import MoreBtn from '../components/main/MoreBtn';
 import useIsMobile from '../hooks/useIsMobile';
 import ManageMenu from '../components/aside/ManageMenu/ManageMenu';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function Manage() {
   const showExtend = useShowExtend();
-  const { userList, page, setPage, totalElement, pageSize, setPageSize } = useUserList();
+  const { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading } = useUserList();
   const isMobile = useIsMobile();
 
   return (
     <>
+    <LoadingModal show={isUserListLoading} />
     {isMobile && (
       <section className='mobile-manage-menu'>
         <ManageMenu />

@@ -18,13 +18,19 @@ const useCategoryManage = () => {
     const [newCategory, setNewCategory] = useState(''); // 새로 추가할 카테고리 이름
     const newCategoryRef = useRef(null);
 
+    const [categoryLoading, setCategoryLoading] = useState(false);
+
     useEffect(() => {
+        setCategoryLoading(true);
         getCategoryList(cookies.accessToken)
             .then((response) => {
                 setCategoryList(response.data.categories);
             })
             .catch((error) => {
                 alert(error.message);
+            })
+            .finally(() => {
+                setCategoryLoading(false);
             });
     }, [cookies.accessToken, updateCategoryList]);
 
@@ -52,6 +58,7 @@ const useCategoryManage = () => {
     };
 
     const handleSaveClick = (categoryId) => {
+        setCategoryLoading(true);
         modifyCategory(cookies.accessToken, categoryId, newCategoryName)
             .then(() => {
                 alert('카테고리 이름이 변경되었습니다.');
@@ -61,10 +68,14 @@ const useCategoryManage = () => {
             })
             .catch((error) => {
                 alert(error.message);
+            })
+            .finally(() => {
+                setCategoryLoading(false);
             });
     };
 
     const handleDeleteClick = async (categoryId) => {
+        setCategoryLoading(true);
         deleteCategory(cookies.accessToken, categoryId)
             .then(() => {
                 alert('카테고리가 삭제되었습니다.');
@@ -72,11 +83,15 @@ const useCategoryManage = () => {
             })
             .catch((error) => {
                 alert(error.message);
+            })
+            .finally(() => {
+                setCategoryLoading(false);
             });
     };
 
     const handleAddCategory = async () => {
         if (isNewCategory) {
+            setCategoryLoading(true);
             addCategory(cookies.accessToken, newCategory)
                 .then(() => {
                     alert('새로운 카테고리가 추가되었습니다.');
@@ -86,6 +101,9 @@ const useCategoryManage = () => {
                 })
                 .catch((error) => {
                     alert(error.message);
+                })
+                .finally(() => {
+                    setCategoryLoading(false);
                 });
         } else {
             setIsNewCategory(true);
@@ -110,7 +128,8 @@ const useCategoryManage = () => {
         handleSaveClick,
         handleDeleteClick,
         handleAddCategory,
-        categoryList
+        categoryList,
+        categoryLoading,
     };
 };
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import useManage from "../../../hooks/useManage";
 import { useNavigate } from 'react-router-dom';
 import useIsMobile from '../../../hooks/useIsMobile';
+import LoadingModal from '../../LoadingModal/LoadingModal';
 
 function ManageMenu() {
   const {
@@ -12,7 +13,8 @@ function ManageMenu() {
     inputId,
     handleRoleChange,
     handleStudentIdChange,
-    handleClickModifyBtn
+    handleClickModifyBtn,
+    isManageLoading
   } =  useManage();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
@@ -31,6 +33,7 @@ function ManageMenu() {
 
   return (
     <section className='aside-user-manage'>
+      <LoadingModal show={isManageLoading} />
       <h2 className='aside-user-manage-title'
         onClick={() => {
           if (!selectedUser.selected) {

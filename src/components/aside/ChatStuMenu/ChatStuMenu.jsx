@@ -2,10 +2,11 @@ import './ChatStuMenu.css';
 import searchIcon from '../../../assets/icons/search-icon-white.png';
 import useChatListStore from '../../../store/useChatListStore';
 import ChatItem from './ChatItem';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChatList } from '../../../api/chatStuApi';
 import { useCookies } from 'react-cookie';
+import LoadingModal from '../../LoadingModal/LoadingModal';
 
 function ChatStuMenu() {
   const [cookies] = useCookies(['accessToken', 'refreshToken', 'isActive']);
@@ -14,20 +15,29 @@ function ChatStuMenu() {
     setChatList: state.setChatList,
   }));
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChatClick = (studentId) => {
     navigate(`/chatstu/${studentId}`);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getChatList(cookies.accessToken, 0, 20)
       .then((res) => {
         setChatList(res.data.chatList);
+    })
+    .catch((error) => {
+      alert(error.message);
+    })
+    .finally(() => {
+      setIsLoading(false);
     });
   },[]);
 
   return (
     <main className="chat-stu-menu">
+      <LoadingModal show={isLoading} />
       <section className="stu-search-wrapper">
         <div className='stu-search'>
           <input type="text" className='stu-search-input' placeholder='검색...' />

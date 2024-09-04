@@ -9,6 +9,7 @@ import useChatStu from '../hooks/useChatStu';
 import { formatDate, formatTime } from '../utils/dateAndTime';
 import useIsMobile from '../hooks/useIsMobile';
 import ChatStuMenu from '../components/aside/ChatStuMenu/ChatStuMenu';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function ChatStu() {
   let { studentId } = useParams();  
@@ -23,6 +24,7 @@ function ChatStu() {
     inputRef,
     chatContentRef,
     sendRef,
+    isLoading
   } = useChatStu();
   const isMobile = useIsMobile();
   const [isHeaderExtend, setIsHeaderExtend] = useState(false);
@@ -45,6 +47,7 @@ function ChatStu() {
 
   return (
     <main className="chat-container">
+      <LoadingModal show={isLoading} />
       <section className='chat-header'>
         <article className='chat-header-inner'>
           {!isMobile && <img src={backIcon} alt="" onClick={handleBack} className='backIcon'/>}

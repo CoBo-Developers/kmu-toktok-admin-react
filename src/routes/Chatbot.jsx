@@ -1,6 +1,7 @@
 import sendIcon from '../assets/icons/send-icon.png';
 import useChatbot from '../hooks/useChatbot';
 import './Chatbot.css';
+import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function Chatbot() {
   const {
@@ -11,11 +12,13 @@ function Chatbot() {
     handleTextareaChange,
     handleTextareaKeyDown,
     handleTextareaKeyUp,
-    handleMessageSubmit
+    handleMessageSubmit,
+    isLoading
   } = useChatbot();
 
   return (
     <main className="chatbot">
+      <LoadingModal show={isLoading} />
       <section className="message-container">
         <article className="message-container-inner">
           <div className='message-wrapper'>
