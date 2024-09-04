@@ -47,12 +47,6 @@ const useChatStu = () => {
     e.preventDefault();
     if (newMessage.trim() === '') return;
 
-    const newChat = {
-      comment: newMessage,
-      localDateTime: new Date().toISOString(),
-      question: false,
-    };
-    setChatContent([...chatContent, newChat]);
     setIsLoading(true);
     postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
@@ -61,6 +55,17 @@ const useChatStu = () => {
         if (chatContentRef.current) {
             chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
         }
+        setIsLoading(true);
+        getChat(cookies.accessToken, studentId)
+          .then((chat) => {
+            setChatContent(chat.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
         alert(error.message);
