@@ -142,6 +142,10 @@
   max-height: calc(1.5em * 3);
   overflow-y: scroll;
 }
+.input-wrapper-inner .send-btn{
+    margin: 5px;
+    display: flex;
+}
 
 .input-wrapper .input-text::-webkit-scrollbar {
     display: none;
