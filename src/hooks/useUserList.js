@@ -10,8 +10,10 @@ function useUserList() {
   const [pageSize, setPageSize] = useState(10);
   const [ totalElement, setTotalElement ] = useState(0);
   const [cookies] = useCookies(['accessToken']);
+  const [isUserListLoading, setIsUserListLoading] = useState(false);
 
   useEffect(() => {
+    setIsUserListLoading(true);
     getUserList(page, 10, cookies.accessToken)
     .then((result) => {
       setUserList(result.data.users);
@@ -20,9 +22,12 @@ function useUserList() {
     .catch((error) => {
       alert(error.message);
     })
+    .finally(() => {
+      setIsUserListLoading(false);
+    });
   }, []);
 
-  return { userList, page, setPage, totalElement, pageSize, setPageSize };
+  return { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading };
 }
 
 export default useUserList;
