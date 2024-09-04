@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import useIsMobile from '../../../hooks/useIsMobile';
 import mobileDownArrow from '../../../assets/icons/mobile-down-arrow.png';
 import mobileUpArrow from '../../../assets/icons/mobile-up-arrow.png';
+import LoadingModal from '../../LoadingModal/LoadingModal';
 
 function WritingMenu() {
-  const { writingList } = useWritingList();
+  const { writingList, writingLoading } = useWritingList();
   const { currentWritingId, setCurrentWritingId } = useCurrentWritingStore();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
@@ -38,6 +39,7 @@ function WritingMenu() {
 
   return (
     <section className="aside-writing">
+      <LoadingModal show={writingLoading} />
       <div className='writing-mobile-header' onClick={handleDropdown}>
        <h2>{writingHeader}</h2> 
         {isMobile && (

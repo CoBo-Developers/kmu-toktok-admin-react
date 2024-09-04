@@ -8,14 +8,20 @@ function useSubmittedWriting() {
   const [ writing, setWriting ] = useState([]);
   const [ cookies ] = useCookies(['accessToken']);
   const [ score, setScore ] = useState();
+  const [submittedWritingLoading, setSubmittedWritingLoading] = useState(true);
 
   useEffect(() => {
+    setSubmittedWritingLoading(true);
     getWritingSubmit(writingId, studentId, cookies.accessToken)
     .then((res) => {
       setWriting(res.data);
+      if (res.data.score) setScore(res.data.score);
     })
     .catch((err) => {
       alert(err.message);
+    })
+    .finally(() => {
+      setSubmittedWritingLoading(false);
     })
   }, [])
 
@@ -31,11 +37,15 @@ function useSubmittedWriting() {
       writingState: 3,
       score: score
     }
-
+    setSubmittedWritingLoading(true);
     try {
+      setSubmittedWritingLoading(true);
       const res = await patchWritingState(dataForm, cookies.accessToken);
       alert('채점되었습니다.');
     } catch (err) { alert(err.message) }
+    finally {
+      setSubmittedWritingLoading(false);
+    }
   }
 
   const handleModifyBtnClick = async () => {
@@ -50,11 +60,14 @@ function useSubmittedWriting() {
       writingState: 3,
       score: score
     }
-
+    setSubmittedWritingLoading(true);
     try {
       const res = await patchWritingState(dataForm, cookies.accessToken);
       alert('채점되었습니다.');
     } catch (err) { alert(err.message) }
+    finally {
+      setSubmittedWritingLoading(false);
+    }
   }
 
   const handleRejectBtnClick = async () => {
@@ -69,11 +82,14 @@ function useSubmittedWriting() {
       writingState: 2,
       score: 0
     }
-
+    setSubmittedWritingLoading(true);
     try {
       const res = await patchWritingState(dataForm, cookies.accessToken);
       alert('채점되었습니다.');
     } catch (err) { alert(err.message) }
+    finally {
+      setSubmittedWritingLoading(false);
+    }
   }
 
   return {
@@ -83,7 +99,8 @@ function useSubmittedWriting() {
     writing,
     handleConfirmBtnClick,
     handleModifyBtnClick,
-    handleRejectBtnClick
+    handleRejectBtnClick,
+    submittedWritingLoading
   }
 }
 
