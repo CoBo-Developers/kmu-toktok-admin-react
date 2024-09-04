@@ -86,13 +86,13 @@ function WritingMenu() {
                         <div className='delete-writing-wrapper'>
                           <p>과제를 삭제할까요?</p>
                           <div className='delete-writing-btn-wrapper'>
+                            <button onClick={() => setIsDeleteVisible(null)}>
+                              취소</button>
                             <button
                              onClick={() => {
                               handleDelete(item.id);
                               setIsDeleteVisible(null);
                             }}>삭제</button>
-                            <button onClick={() => setIsDeleteVisible(null)}>
-                              취소</button>
                           </div>
                         </div>
                       )}
