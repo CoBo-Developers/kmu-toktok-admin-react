@@ -52,10 +52,10 @@ const useChatStu = () => {
       localDateTime: new Date().toISOString(),
       question: false,
     };
+    setChatContent([...chatContent, newChat]);
     setIsLoading(true);
     postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
-        setChatContent([...chatContent, newChat]);
         setNewMessage('');
         inputRef.current.style.height = 'auto';
         if (chatContentRef.current) {
