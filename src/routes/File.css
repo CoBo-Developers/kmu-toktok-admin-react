@@ -117,3 +117,85 @@
   padding: 6px 10px;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 900px) {
+  .extend-file-menu {
+    position: fixed;
+    z-index: 899;
+    width: 100%;
+    top: 0;
+    left: 0; 
+    background-color: #193553;
+    border-radius: 0px 0px 16px 16px;
+    padding: 10px 25px 10px 25px; 
+    padding-top: 58px;
+    box-sizing: border-box; 
+  }
+  .file-main-inner {
+    padding-left: 0;
+    margin: 10px auto;
+    margin-top: 100px;
+  }
+
+  .file-table {
+    width: 95%;
+  }
+
+  .file-table thead {
+    display: none;
+  }
+
+  .file-table tbody tr {
+    display: flex;
+    align-items: center;
+  }
+  .file-table tbody th,
+  .file-table tbody td {
+    padding: 15px 0;
+  }
+
+  .order-column {
+    width: 15%;
+    text-align: center;
+  }
+
+  .info-column {
+    width: 70%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .download-column {
+    width: 15%;
+    text-align: center;
+  }
+
+  .category-col {
+    text-align: left;
+  }
+  .info-column div {
+    line-height: 32px;
+    height: 32px;
+  }
+  .extend-file-menu h2{
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+  }
+  .extend-file-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .extend-file-header img{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .extend-file-menu-content{
+    padding: 0 20px;
+  }
+}
