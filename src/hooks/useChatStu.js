@@ -45,7 +45,6 @@ const useChatStu = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    setIsLoading(true);
     if (newMessage.trim() === '') return;
 
     const newChat = {
@@ -53,7 +52,7 @@ const useChatStu = () => {
       localDateTime: new Date().toISOString(),
       question: false,
     };
-
+    setIsLoading(true);
     postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
         setChatContent([...chatContent, newChat]);
