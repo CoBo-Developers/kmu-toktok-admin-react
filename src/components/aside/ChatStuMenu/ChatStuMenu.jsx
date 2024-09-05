@@ -23,7 +23,6 @@ function ChatStuMenu() {
     navigate(`/chatstu/${studentId}`);
   };
   const handleSearchBtn = () => {
-    setFilteredChatList(chatList);
     const filteredList = chatList.filter(chat => 
       chat.studentId.includes(searchStr)
     );
