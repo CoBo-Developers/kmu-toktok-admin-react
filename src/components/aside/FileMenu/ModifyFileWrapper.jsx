@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import './ModifyFileWrapper.css';
+import { useEffect } from 'react';
 
 const ModifyFileWrapper = ({
     categories,
@@ -10,6 +11,13 @@ const ModifyFileWrapper = ({
     handleCategorySelect,
     handleFileModify
 }) => {
+
+    useEffect(() => {
+        if (newFileNameRef && newFileNameRef.current) {
+            newFileNameRef.current.style.height = 'auto';
+            newFileNameRef.current.style.height = newFileNameRef.current.scrollHeight + 'px';
+        }
+    }, [newFileName]);
 
     return (
         <section className='modify-wrapper-extend'>

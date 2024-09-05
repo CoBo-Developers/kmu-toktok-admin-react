@@ -20,7 +20,10 @@ function UserItem(props) {
           <button className='manage-user-list-redirect-btn' onClick={() => {
             navigate('/manage/' + studentId);
           }}>챗봇과의 대화기록 보기</button>
-          <button className='manage-user-list-redirect-btn'>나와의 대화기록 보기</button>
+          <button className='manage-user-list-redirect-btn' onClick={() => {
+            navigate('/chatstu/' + studentId);
+          }}
+          >나와의 대화기록 보기</button>
         </div>
         {isMobile ? (
           <img src={mobileGoDetailIcon} 

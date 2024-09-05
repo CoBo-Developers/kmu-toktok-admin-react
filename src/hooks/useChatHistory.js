@@ -17,7 +17,6 @@ function useChatHistory() {
       getStudentChat(id, cookies.accessToken)
       .then((res) => {
         setChatHistory(res.data);
-        console.log(res);
       })
       .catch((err) => {
         alert(err.message);
