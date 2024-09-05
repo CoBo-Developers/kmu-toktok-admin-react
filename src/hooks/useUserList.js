@@ -14,7 +14,7 @@ function useUserList() {
 
   useEffect(() => {
     setIsUserListLoading(true);
-    getUserList(page, 10, cookies.accessToken)
+    getUserList(page, pageSize, cookies.accessToken)
     .then((result) => {
       setUserList(result.data.users);
       setTotalElement(result.data.totalElements);
