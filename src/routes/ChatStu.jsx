@@ -48,8 +48,8 @@ function ChatStu() {
   return (
     <main className="chat-container">
       <LoadingModal show={isLoading} />
-      <section className='chat-header' onClick={() => setIsHeaderExtend(!isHeaderExtend)} >
-        <article className='chat-header-inner'>
+      <section className='chat-header'>
+        <article className='chat-header-inner'  onClick={() => setIsHeaderExtend(!isHeaderExtend)}>
           {!isMobile && <img src={backIcon} alt="" onClick={handleBack} className='backIcon'/>}
           <span className='chat-header-text'>{studentId}</span>
           {isMobile && (
