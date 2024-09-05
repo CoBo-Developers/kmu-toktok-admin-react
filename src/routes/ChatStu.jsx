@@ -49,7 +49,11 @@ function ChatStu() {
     <main className="chat-container">
       <LoadingModal show={isLoading} />
       <section className='chat-header'>
-        <article className='chat-header-inner'  onClick={() => setIsHeaderExtend(!isHeaderExtend)}>
+        <article className='chat-header-inner'  
+          onClick={() => {
+            if(isMobile) 
+              setIsHeaderExtend(!isHeaderExtend)
+          }}>
           {!isMobile && <img src={backIcon} alt="" onClick={handleBack} className='backIcon'/>}
           <span className='chat-header-text'>{studentId}</span>
           {isMobile && (
@@ -60,7 +64,7 @@ function ChatStu() {
             />
           )}
         </article>
-        {isHeaderExtend && <ChatStuMenu />}
+        {isHeaderExtend && <ChatStuMenu isMobile={isMobile} setIsHeaderExtend={setIsHeaderExtend} />}
       </section>
       <section className='chat-wrapper' ref={chatContentRef}>
         {chatContent.map((chat, index) => (

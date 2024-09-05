@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './ChatStuMenu.css';
 import searchIcon from '../../../assets/icons/search-icon-white.png';
 import useChatListStore from '../../../store/useChatListStore';
@@ -8,7 +9,7 @@ import { getChatList } from '../../../api/chatStuApi';
 import { useCookies } from 'react-cookie';
 import LoadingModal from '../../LoadingModal/LoadingModal';
 
-function ChatStuMenu() {
+function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
   const [cookies] = useCookies(['accessToken', 'refreshToken', 'isActive']);
   const { chatList, setChatList } = useChatListStore((state) => ({
     chatList: state.chatList,
@@ -21,6 +22,9 @@ function ChatStuMenu() {
 
   const handleChatClick = (studentId) => {
     navigate(`/chatstu/${studentId}`);
+    if (isMobile) {
+      setIsHeaderExtend(false);
+    }
   };
   const handleSearchBtn = () => {
     const filteredList = chatList.filter(chat => 
