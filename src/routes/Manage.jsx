@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Manage.css';
 import searchIcon from '../assets/icons/search-icon.png';
 import useShowExtend from '../hooks/useShowExtend';
@@ -14,7 +14,11 @@ function Manage() {
   const { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading } = useUserList();
   const isMobile = useIsMobile();
   const [searchStr, setSearchStr] = useState("");
-  const [filteredUserList, setFilteredUserList] = useState(userList);
+  const [filteredUserList, setFilteredUserList] = useState([]);
+
+  useEffect(() => {
+    setFilteredUserList(userList);
+  }, [userList]);
 
   const handleSearchBtn = () => {
     const filteredList = userList.filter(user => 
