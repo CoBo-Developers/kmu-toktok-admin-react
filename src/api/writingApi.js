@@ -54,7 +54,7 @@ const getWritingSubmit = async (assignmentId, studentId, token) => {
   });
 
   if (!res.ok) {
-    const message = (await res.json()).statusMsg;
+    const message = (await res.json()).message;
     throw new Error(message);
   }
 
@@ -72,7 +72,7 @@ const patchWritingState = async (data, token) => {
   });
 
   if (!res.ok) {
-    const message = (await res.json()).statusMsg;
+    const message = (await res.json()).message;
     throw new Error(message);
   }
 
@@ -87,7 +87,7 @@ const deleteWriting = async (id, token) => {
     }
   });
   if (!res.ok) {
-    const message = (await res.json()).statusMsg;
+    const message = (await res.json()).message;
     throw new Error(message);
   }
 
