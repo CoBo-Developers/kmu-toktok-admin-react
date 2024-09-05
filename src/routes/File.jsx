@@ -76,7 +76,7 @@ function File() {
                     <tbody>
                         {fileData.map((item, index) => (
                             <tr key={index}>
-                                <td>
+                                <td className='order-column'>
                                     <img 
                                         className='check-icon'
                                         src={isSelected(item.id) ? fileSelectedIcon : fileUnselectedIcon} 
