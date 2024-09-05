@@ -71,13 +71,13 @@ function Aside() {
           <li className={'aside-menus-item ' + (currentPath === 'file' ? 'active' : 'null')}>
             <Link to='/file' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={fileIcon} alt="file-icon" />
-              <span>파일 목록 보기</span>
+              <span>활동안내 관리</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'writing' ? 'active' : 'null')}>
             <Link to='/writing' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={writingIcon} alt="writing-icon" />
-              <span>글쓰기 피드백하기</span>
+              <span>학습활동 관리</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'manage' ? 'active' : 'null')}>

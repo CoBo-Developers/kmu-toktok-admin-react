@@ -24,7 +24,7 @@ function WritingMenu() {
     writingHeader = selectedWriting ? selectedWriting.title : '목록보기';
   }
   else {
-    writingHeader = '주차별 글쓰기';
+    writingHeader = '주차별 학습활동';
   }
 
   const handleDropdown = () => {
