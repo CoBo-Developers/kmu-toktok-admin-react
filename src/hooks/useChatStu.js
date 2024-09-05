@@ -45,23 +45,27 @@ const useChatStu = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    inputRef.current.value = '';
+    inputRef.current.style.height = 'auto';
+    if (chatContentRef.current) {
+        chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
+    }
     if (newMessage.trim() === '') return;
 
-    const newChat = {
-      comment: newMessage,
-      localDateTime: new Date().toISOString(),
-      question: false,
-    };
-
+    setIsLoading(true);
     postChat(cookies.accessToken, studentId, newMessage)
       .then(() => {
-        setChatContent([...chatContent, newChat]);
-        setNewMessage('');
-        inputRef.current.style.height = 'auto';
-        if (chatContentRef.current) {
-            chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
-        }
+        setIsLoading(true);
+        getChat(cookies.accessToken, studentId)
+          .then((chat) => {
+            setChatContent(chat.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
         alert(error.message);
@@ -69,6 +73,7 @@ const useChatStu = () => {
       .finally(() => {
         setIsLoading(false);
       });
+      setNewMessage('');
   };
 
   const handleKeyUp = (e) => {

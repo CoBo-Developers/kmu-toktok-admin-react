@@ -54,7 +54,7 @@ const getWritingSubmit = async (assignmentId, studentId, token) => {
   });
 
   if (!res.ok) {
-    const message = (await res.json()).statusMsg;
+    const message = (await res.json()).message;
     throw new Error(message);
   }
 
@@ -72,11 +72,26 @@ const patchWritingState = async (data, token) => {
   });
 
   if (!res.ok) {
-    const message = (await res.json()).statusMsg;
+    const message = (await res.json()).message;
     throw new Error(message);
   }
 
   return res.json();
 }
 
-export { getWritingList, postWriting, getWritingSubmitList, getWritingSubmit, patchWritingState };
+const deleteWriting = async (id, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_WRITING_API_URL + `/api/professor?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'authorization': 'Bearer ' + token
+    }
+  });
+  if (!res.ok) {
+    const message = (await res.json()).message;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { getWritingList, postWriting, getWritingSubmitList, getWritingSubmit, patchWritingState, deleteWriting };

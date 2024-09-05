@@ -2,6 +2,7 @@ import sendIcon from '../assets/icons/send-icon.png';
 import useChatbot from '../hooks/useChatbot';
 import './Chatbot.css';
 import LoadingModal from '../components/LoadingModal/LoadingModal';
+import Loading from '../components/BotLoading/Loading';
 
 function Chatbot() {
   const {
@@ -15,6 +16,8 @@ function Chatbot() {
     handleMessageSubmit,
     isLoading
   } = useChatbot();
+
+  let isBotLoading = false;
 
   return (
     <main className="chatbot">
@@ -38,6 +41,9 @@ function Chatbot() {
                   .replace(/\\n/g, '\n')
                   .replace(/【\d+:\d+†source】/g, '');
               }
+              if (!formattedAnswer) {
+                isBotLoading = true;
+              }
               return (
                 <div key={i}>
                   <div className='message-wrapper'>
@@ -47,7 +53,7 @@ function Chatbot() {
                   </div>
                   <div className='message-wrapper'>
                     <div className="message bot">
-                      { formattedAnswer || "Loading..." }
+                      { formattedAnswer || <Loading /> }
                     </div>
                   </div>
                 </div>
@@ -62,7 +68,10 @@ function Chatbot() {
           placeholder="질문을 입력해주세요" ref={textarea} 
           onChange={handleTextareaChange}
           onKeyUp={handleTextareaKeyUp}
-          onKeyDown={handleTextareaKeyDown}></textarea>
+          onKeyDown={handleTextareaKeyDown}
+          disabled={isBotLoading}
+          >
+        </textarea>
         <button className='send-btn' onClick={handleMessageSubmit} ref={submitBtn}>
           <img src={sendIcon} alt="send-icon" />
         </button>

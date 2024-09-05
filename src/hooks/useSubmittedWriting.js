@@ -8,7 +8,7 @@ function useSubmittedWriting() {
   const [ writing, setWriting ] = useState([]);
   const [ cookies ] = useCookies(['accessToken']);
   const [ score, setScore ] = useState();
-  const [submittedWritingLoading, setSubmittedWritingLoading] = useState(true);
+  const [submittedWritingLoading, setSubmittedWritingLoading] = useState(false);
 
   useEffect(() => {
     setSubmittedWritingLoading(true);
