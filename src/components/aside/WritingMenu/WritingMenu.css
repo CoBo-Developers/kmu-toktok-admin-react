@@ -26,6 +26,38 @@
   cursor: pointer;
   border: 1px solid #193553;
   transition: 0.3s border;
+  display: flex;
+  flex-direction: column;
+}
+.writing-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.delete-writing-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+.delete-writing-btn-wrapper > button {
+  background-color: transparent;
+  border: 1px solid #587697;
+  cursor: pointer;
+  border-radius: 10px;
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 14px;
+  color: #fff
+}
+.delete-writing-btn-wrapper > button:nth-child(2) {
+  background-color: #587697;
+}
+.writing-title-wrapper.delete-visible{
+  background-color: #152A41;
+  padding: 12px;
+  border-radius: 10px;
 }
 
 .aside-writing-items > li:hover {
@@ -36,6 +68,11 @@
   background: #465F7A;
   border: 1px solid #465F7A;
   cursor: default;
+}
+.aside-writing-items > li.delete-visible {
+  background-color: rgba(70, 95, 122, 0.3);
+  border-radius: 12px;
+  padding: 5px;
 }
 
 .aside-writing-create-btn {
@@ -50,6 +87,16 @@
   text-align: center;
   color: white;
   border: none;
+}
+
+.delete-writing {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.delete-writing:hover {
+  border: 1px solid #FFF;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 900px) {

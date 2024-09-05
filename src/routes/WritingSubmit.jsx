@@ -41,7 +41,7 @@ function WritingSubmit() {
               onChange={(e) => { setScore(e.target.value) }} />
           </div>
           <div>
-            {!score ? (
+            {!writing.score ? (
               <button className="btn confirm" onClick={handleConfirmBtnClick}>확인</button>
             ) : (
               <button className="btn modify" onClick={handleModifyBtnClick}>수정하기</button>

@@ -19,7 +19,7 @@ function WritingList() {
   const [cookies] = useCookies(['accessToken']);
   const location = useLocation();
   const isMobile = useIsMobile();
-  const [isListLoading, setIsListLoading] = useState(true);
+  const [isListLoading, setIsListLoading] = useState(false);
 
   useEffect(() => {
     if (!params.writingId) {
