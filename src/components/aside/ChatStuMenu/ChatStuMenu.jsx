@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './ChatStuMenu.css';
 import searchIcon from '../../../assets/icons/search-icon-white.png';
 import useChatListStore from '../../../store/useChatListStore';
@@ -8,7 +9,7 @@ import { getChatList } from '../../../api/chatStuApi';
 import { useCookies } from 'react-cookie';
 import LoadingModal from '../../LoadingModal/LoadingModal';
 
-function ChatStuMenu() {
+function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
   const [cookies] = useCookies(['accessToken', 'refreshToken', 'isActive']);
   const { chatList, setChatList } = useChatListStore((state) => ({
     chatList: state.chatList,
@@ -16,9 +17,20 @@ function ChatStuMenu() {
   }));
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [searchStr, setSearchStr] = useState("");
+  const [filteredChatList, setFilteredChatList] = useState([]);
 
   const handleChatClick = (studentId) => {
     navigate(`/chatstu/${studentId}`);
+    if (isMobile) {
+      setIsHeaderExtend(false);
+    }
+  };
+  const handleSearchBtn = () => {
+    const filteredList = chatList.filter(chat => 
+      chat.studentId.includes(searchStr)
+    );
+    setFilteredChatList(filteredList);
   };
 
   useEffect(() => {
@@ -26,6 +38,7 @@ function ChatStuMenu() {
     getChatList(cookies.accessToken, 0, 20)
       .then((res) => {
         setChatList(res.data.chatList);
+        setFilteredChatList(res.data.chatList);
     })
     .catch((error) => {
       alert(error.message);
@@ -40,14 +53,24 @@ function ChatStuMenu() {
       <LoadingModal show={isLoading} />
       <section className="stu-search-wrapper">
         <div className='stu-search'>
-          <input type="text" className='stu-search-input' placeholder='검색...' />
-          <button className='stu-search-btn'>
+          <input type="text" 
+            className='stu-search-input' 
+            placeholder='검색...'
+            value={searchStr}
+            onChange={(e)=>setSearchStr(e.target.value)}
+            onKeyDown={(e)=>{
+              if (e.key === 'Enter') {
+                handleSearchBtn();
+              }
+            }}
+          />
+          <button className='stu-search-btn' onClick={handleSearchBtn}>
             <img src={searchIcon} alt="" />
           </button>
         </div>
       </section>
       <ul className="chat-list">
-        {chatList.map((chat, index) => (
+        {filteredChatList.map((chat, index) => (
           <ChatItem key={index} chat={chat} onClick={handleChatClick} />
         ))}
       </ul>
