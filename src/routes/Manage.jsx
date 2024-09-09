@@ -8,8 +8,11 @@ import MoreBtn from '../components/main/MoreBtn';
 import useIsMobile from '../hooks/useIsMobile';
 import ManageMenu from '../components/aside/ManageMenu/ManageMenu';
 import LoadingModal from '../components/LoadingModal/LoadingModal';
+import { searchUser } from '../api/userApi';
+import { useCookies } from 'react-cookie';
 
 function Manage() {
+  const [cookies] = useCookies(['accessToken']);
   const showExtend = useShowExtend();
   const { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading } = useUserList();
   const isMobile = useIsMobile();
@@ -21,10 +24,13 @@ function Manage() {
   }, [userList]);
 
   const handleSearchBtn = () => {
-    const filteredList = userList.filter(user => 
-      user.studentId.includes(searchStr)
-    );
-    setFilteredUserList(filteredList);
+    searchUser(cookies.accessToken, searchStr, pageSize, page)
+    .then(res => {
+      setFilteredUserList(res.data.users);
+    })
+    .catch(err => {
+      alert(err.message);
+    });
   };
 
   return (
