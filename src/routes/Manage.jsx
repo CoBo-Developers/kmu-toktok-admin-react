@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import './Manage.css';
 import searchIcon from '../assets/icons/search-icon.png';
 import useShowExtend from '../hooks/useShowExtend';
@@ -8,30 +7,20 @@ import MoreBtn from '../components/main/MoreBtn';
 import useIsMobile from '../hooks/useIsMobile';
 import ManageMenu from '../components/aside/ManageMenu/ManageMenu';
 import LoadingModal from '../components/LoadingModal/LoadingModal';
-import { searchUser } from '../api/userApi';
-import { useCookies } from 'react-cookie';
 
 function Manage() {
-  const [cookies] = useCookies(['accessToken']);
   const showExtend = useShowExtend();
-  const { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading } = useUserList();
+  const { 
+    userList, 
+    totalElement, 
+    pageSize, 
+    setPageSize, 
+    isUserListLoading, 
+    handleSearchBtn, 
+    searchStr, 
+    setSearchStr 
+  } = useUserList();
   const isMobile = useIsMobile();
-  const [searchStr, setSearchStr] = useState("");
-  const [filteredUserList, setFilteredUserList] = useState([]);
-
-  useEffect(() => {
-    setFilteredUserList(userList);
-  }, [userList]);
-
-  const handleSearchBtn = () => {
-    searchUser(cookies.accessToken, searchStr, pageSize, page)
-    .then(res => {
-      setFilteredUserList(res.data.users);
-    })
-    .catch(err => {
-      alert(err.message);
-    });
-  };
 
   return (
     <>
@@ -63,7 +52,7 @@ function Manage() {
         <table className='manage-user-list-table'>
           <tbody>
             {
-              filteredUserList.map((item, i) => {
+              userList.map((item, i) => {
                 if (item.studentId) 
                   return <UserItem 
                             key={i}
