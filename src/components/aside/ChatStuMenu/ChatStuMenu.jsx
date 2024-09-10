@@ -35,7 +35,7 @@ function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
 
   useEffect(() => {
     setIsLoading(true);
-    getChatList(cookies.accessToken, 0, 20)
+    getChatList(cookies.accessToken, 0, import.meta.env.VITE_CHATLIST_SIZE)
       .then((res) => {
         setChatList(res.data.chatList);
         setFilteredChatList(res.data.chatList);

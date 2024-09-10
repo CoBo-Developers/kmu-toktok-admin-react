@@ -13,7 +13,7 @@ import LoadingModal from '../components/LoadingModal/LoadingModal';
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(import.meta.env.VITE_WRITING_PAGESIZE);
   const [totalElement, setTotalElement] = useState(0);
   const params = useParams();
   const [cookies] = useCookies(['accessToken']);
@@ -95,7 +95,7 @@ function WritingList() {
         </table>
       </section>
       <section className="more-btn-wrapper">
-        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
+        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} pageIncrement = {import.meta.env.VITE_WRITING_PAGESIZE}/> : null }
       </section>
     </main>
   )
