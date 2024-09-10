@@ -13,7 +13,7 @@ import LoadingModal from '../components/LoadingModal/LoadingModal';
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(import.meta.env.VITE_WRITING_PAGESIZE);
   const [totalElement, setTotalElement] = useState(0);
   const params = useParams();
   const [cookies] = useCookies(['accessToken']);
