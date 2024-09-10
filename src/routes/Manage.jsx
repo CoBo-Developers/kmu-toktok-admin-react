@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import './Manage.css';
 import searchIcon from '../assets/icons/search-icon.png';
 import useShowExtend from '../hooks/useShowExtend';
@@ -11,21 +10,17 @@ import LoadingModal from '../components/LoadingModal/LoadingModal';
 
 function Manage() {
   const showExtend = useShowExtend();
-  const { userList, page, setPage, totalElement, pageSize, setPageSize, isUserListLoading } = useUserList();
+  const { 
+    userList, 
+    totalElement, 
+    pageSize, 
+    setPageSize, 
+    isUserListLoading, 
+    handleSearchBtn, 
+    searchStr, 
+    setSearchStr 
+  } = useUserList();
   const isMobile = useIsMobile();
-  const [searchStr, setSearchStr] = useState("");
-  const [filteredUserList, setFilteredUserList] = useState([]);
-
-  useEffect(() => {
-    setFilteredUserList(userList);
-  }, [userList]);
-
-  const handleSearchBtn = () => {
-    const filteredList = userList.filter(user => 
-      user.studentId.includes(searchStr)
-    );
-    setFilteredUserList(filteredList);
-  };
 
   return (
     <>
@@ -57,7 +52,7 @@ function Manage() {
         <table className='manage-user-list-table'>
           <tbody>
             {
-              filteredUserList.map((item, i) => {
+              userList.map((item, i) => {
                 if (item.studentId) 
                   return <UserItem 
                             key={i}
