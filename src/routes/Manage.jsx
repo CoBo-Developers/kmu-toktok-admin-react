@@ -66,7 +66,7 @@ function Manage() {
         </table>
       </section>
       <section className="more-btn-wrapper">
-        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
+        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} pageIncrement = {import.meta.env.VITE_MANAGE_PAGESIZE}/> : null }
       </section>
     </main>
     </>

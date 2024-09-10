@@ -4,10 +4,11 @@ import { useCookies } from "react-cookie";
 import { useUserListStore } from "../store/useUserStore";
 
 function useUserList() {
+  const pageIncrement = import.meta.env.VITE_MANAGE_PAGESIZE;
   const userList = useUserListStore((state) => state.userList);
   const setUserList = useUserListStore((state) => state.setUserList);
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(pageIncrement);
   const [ totalElement, setTotalElement ] = useState(0);
   const [cookies] = useCookies(['accessToken']);
   const [isUserListLoading, setIsUserListLoading] = useState(false);
@@ -39,7 +40,7 @@ function useUserList() {
 
   const handleSearchBtn = () => {
     setPage(0); 
-    setPageSize(10);
+    setPageSize(pageIncrement);
     setUserList([]);
     getUserListData();
   };

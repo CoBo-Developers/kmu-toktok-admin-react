@@ -34,7 +34,7 @@ function useManage() {
         .then(() => {
           alert('수정되었습니다.');
           setIsModify(false);
-          getUserList(0, 10, cookies.accessToken)
+          getUserList(0, import.meta.env.VITE_MANAGE_PAGESIZE, cookies.accessToken)
             .then((res) => {
               setUserList(res.data.users);
             })
