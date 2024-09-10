@@ -42,4 +42,18 @@ const putUser = async (studentId, registerState, newRole, newStudentId, token) =
   return res.json();
 }
 
-export { getUserList, putUser };
+const searchUser = async (accessToken, studentId, pageSize, page) => {
+  const res = await fetch(`${import.meta.env.VITE_APP_AUTH_API_URL}/api/user/search?studentId=${studentId}&pageSize=${pageSize}&page=${page}`, {
+    headers: {
+      Authorization: 'Bearer ' + accessToken,
+    },
+  });
+  if (!res.ok) {
+    let message = (await res.json()).message;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { getUserList, putUser, searchUser };
