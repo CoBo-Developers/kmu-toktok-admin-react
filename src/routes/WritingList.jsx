@@ -95,7 +95,7 @@ function WritingList() {
         </table>
       </section>
       <section className="more-btn-wrapper">
-        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} /> : null }
+        { totalElement > pageSize ? <MoreBtn pageSize={pageSize} setPageSize={setPageSize} pageIncrement = {import.meta.env.VITE_WRITING_PAGESIZE}/> : null }
       </section>
     </main>
   )
