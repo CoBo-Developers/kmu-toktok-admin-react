@@ -55,5 +55,4 @@ function useUserList() {
     setSearchStr,
   };
 }
-
 export default useUserList;
