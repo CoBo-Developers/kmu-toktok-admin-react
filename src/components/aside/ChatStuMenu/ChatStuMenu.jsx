@@ -46,7 +46,7 @@ function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
     .finally(() => {
       setIsLoading(false);
     });
-  },[]);
+  },[chatList]);
 
   return (
     <main className="chat-stu-menu">

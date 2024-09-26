@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { getChat, postChat } from '../api/chatStuApi';
+import { getChat, postChat, patchChatRead, getChatList } from '../api/chatStuApi';
 import { useCookies } from 'react-cookie';
+import useChatListStore from '../store/useChatListStore';
 
 const useChatStu = () => {
   const { studentId } = useParams();
@@ -12,6 +13,7 @@ const useChatStu = () => {
   const chatContentRef = useRef();
   const sendRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
+  const { setChatList } = useChatListStore();
 
   useEffect(() => {
     if (chatContentRef.current) {
@@ -89,6 +91,29 @@ const useChatStu = () => {
     }
   };
 
+  const setChatRead = (studentId) => {
+    setIsLoading(true);
+    patchChatRead(cookies.accessToken, studentId)
+      .then(() => {
+        setIsLoading(true);
+        getChatList(cookies.accessToken, 0, import.meta.env.VITE_CHATLIST_SIZE)
+            .then((res) => {
+              setChatList(res.data.chatList);
+          })
+          .catch((error) => {
+            alert(error.message);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      })
+      .catch((error) => {
+        alert(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return {
     chatContent,
@@ -101,6 +126,7 @@ const useChatStu = () => {
     chatContentRef,
     sendRef,
     isLoading,
+    setChatRead
   };
 };
 

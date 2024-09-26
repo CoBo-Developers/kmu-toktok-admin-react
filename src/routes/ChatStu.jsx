@@ -24,7 +24,8 @@ function ChatStu() {
     inputRef,
     chatContentRef,
     sendRef,
-    isLoading
+    isLoading,
+    setChatRead
   } = useChatStu();
   const isMobile = useIsMobile();
   const [isHeaderExtend, setIsHeaderExtend] = useState(false);
@@ -56,6 +57,10 @@ function ChatStu() {
           }}>
           {!isMobile && <img src={backIcon} alt="" onClick={handleBack} className='backIcon'/>}
           <span className='chat-header-text'>{studentId}</span>
+          <button className='last-chatting-btn' onClick={() => setChatRead(studentId)}>
+            <span>이 채팅방을 아래로 내리기</span>
+            <img src={mobileDownArrow} alt=""/> 
+          </button>
           {isMobile && (
             <img 
               src={isHeaderExtend ? mobileUpArrow : mobileDownArrow} 
