@@ -11,9 +11,10 @@ import LoadingModal from '../../LoadingModal/LoadingModal';
 
 function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
   const [cookies] = useCookies(['accessToken', 'refreshToken', 'isActive']);
-  const { chatList, setChatList } = useChatListStore((state) => ({
+  const { chatList, setChatList, renderChatList } = useChatListStore((state) => ({
     chatList: state.chatList,
     setChatList: state.setChatList,
+    renderChatList: state.renderChatList,
   }));
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,7 @@ function ChatStuMenu({ isMobile, setIsHeaderExtend }) {
     .finally(() => {
       setIsLoading(false);
     });
-  },[chatList]);
+  },[renderChatList]);
 
   return (
     <main className="chat-stu-menu">
