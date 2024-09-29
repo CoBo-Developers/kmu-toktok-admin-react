@@ -51,4 +51,20 @@ const getChatList = async (accessToken, page, pageSize) => {
       return res.json();
   }
 
-export { getChat, postChat, getChatList };
+const patchChatRead = async (accessToken, studentId) => {
+    const res = await fetch(`${import.meta.env.VITE_APP_CHAT_API_URL}/api/prof?studentId=${studentId}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  
+    if (!res.ok) {
+      const message = await res.json();
+      throw new Error(message);
+    }
+  
+    return res.json();
+}
+
+export { getChat, postChat, getChatList, patchChatRead };
