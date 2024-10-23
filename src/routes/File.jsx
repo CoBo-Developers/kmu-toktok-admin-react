@@ -25,6 +25,7 @@ function File() {
         handleSelectItem,
         handleSelectAll,
         isSelected,
+        isNewFile,
     } = useFileSelection(fileData);
 
     const {
@@ -90,7 +91,10 @@ function File() {
                                         {fileData.find(file => file.id === item.id).categoryName}
                                         </span>
                                     </div>
-                                    <div className="title-col">{item.name}</div>
+                                    <div className="title-col">
+                                        <span className="title-text">{item.name}</span>
+                                        {isNewFile(item.createdAt) && <span className="new-badge">new</span>}
+                                    </div>
                                     <div className="date-col">{fileFormattedDate(item.createdAt)}</div>
                                 </td>
                                 <td className="download-column">
