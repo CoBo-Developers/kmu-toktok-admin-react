@@ -64,12 +64,15 @@ const useCategorySelection = () => {
 
     useEffect(() => {
         if (selectedCategoryId === 0 || selectedCategoryId === null) {
-            setFileData(allFileData);
+            const sortedFiles = [...allFileData].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            setFileData(sortedFiles);
         } else {
-            const filteredFiles = allFileData.filter(file => file.categoryId === selectedCategoryId);
+            const filteredFiles = allFileData
+                .filter(file => file.categoryId === selectedCategoryId)
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             setFileData(filteredFiles);
         }
-    }, [selectedCategoryId, allFileData]);
+    }, [cookies.accessToken, selectedCategoryId, allFileData]);
 
     
     const getCategoryColor = (categoryId) => {
