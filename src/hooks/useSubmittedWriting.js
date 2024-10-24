@@ -16,6 +16,7 @@ function useSubmittedWriting() {
     .then((res) => {
       setWriting(res.data);
       if (res.data.score) setScore(res.data.score);
+      if(res.data.writingState === 2) setScore(0);
     })
     .catch((err) => {
       alert(err.message);
