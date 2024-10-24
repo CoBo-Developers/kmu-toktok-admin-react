@@ -71,7 +71,7 @@ function Aside() {
           <li className={'aside-menus-item ' + (currentPath === 'file' ? 'active' : 'null')}>
             <Link to='/file' onClick={()=>setMenuVisible(!isMenuVisible)}>
               <img src={fileIcon} alt="file-icon" />
-              <span>활동안내 관리</span>
+              <span>학습안내 관리</span>
             </Link>
           </li>
           <li className={'aside-menus-item ' + (currentPath === 'writing' ? 'active' : 'null')}>
