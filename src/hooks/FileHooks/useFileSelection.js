@@ -35,11 +35,19 @@ const useFileSelection = (fileData) => {
 
     const isSelected = (id) => selectedRows.includes(id);
 
+    const isNewFile = (createdAt) => {
+        const now = new Date();
+        const fileDate = new Date(createdAt);
+        const oneWeek = 7 * 24 * 60 * 60 * 1000;
+        return now - fileDate <= oneWeek;
+    };
+
     return {
         selectedRows,
         handleSelectItem,
         handleSelectAll,
         isSelected,
+        isNewFile,
     };
 };
 
