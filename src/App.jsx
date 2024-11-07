@@ -4,7 +4,7 @@ import Aside from './components/aside/Aside'
 import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage';
 import Login from './routes/Login';
-import Redirect from './routes/Redirect';
+import Redirect from './routes/Redirect/Redirect';
 import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
 import Chatbot from './routes/Chatbot';
