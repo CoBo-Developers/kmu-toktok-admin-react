@@ -1,7 +1,7 @@
 // FileMenu에서 파일 수정에 관련된 로직
 import { useState, useEffect, useRef } from 'react';
-import { fileModify } from '../../api/fileApi';
-import { useFileStore } from '../../store/useFileStore';
+import { fileModify } from '../../../../api/fileApi';
+import { useFileStore } from '../../../../store/useFileStore';
 import { useCookies } from 'react-cookie';
 
 const useFileModify = () => {

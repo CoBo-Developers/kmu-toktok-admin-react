@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { getWritingList, deleteWriting } from "../api/writingApi";
-import { useWritingListStore } from "../store/useWritingListStore";
+import { getWritingList, deleteWriting } from "../../../../api/writingApi";
+import { useWritingListStore } from "../../../../store/useWritingListStore";
 
 function useWritingList() {
   const { writingList, setWritingList } = useWritingListStore();

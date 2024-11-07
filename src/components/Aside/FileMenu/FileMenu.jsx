@@ -8,12 +8,12 @@ import categoryManageIcon from '../../../assets/icons/category-manage-icon.png';
 import { getCategoryList } from '../../../api/fileApi';
 import { useCookies } from 'react-cookie';
 import { useSelectedCategoryIdStore } from '../../../store/useFileStore';
-import useFileModify from '../../../hooks/FileHooks/useFileModify';
-import useFileAdd from '../../../hooks/FileHooks/useFileAdd';
-import useFileDetele from '../../../hooks/FileHooks/useFileDelete';
-import useCategoryManage from '../../../hooks/FileHooks/useCategoryManage';
-import ModifyFileWrapper from './ModifyFileWrapper';
-import CategoryManageWrapper from './CategoryManageWrapper';
+import useFileModify from './hooks/useFileModify';
+import useFileAdd from './hooks/useFileAdd';
+import useFileDetele from './hooks/useFileDelete';
+import useCategoryManage from './hooks/useCategoryManage';
+import ModifyFileWrapper from './components/ModifyFileWrapper/ModifyFileWrapper';
+import CategoryManageWrapper from './components/CategoryManageWrapper/CategoryManageWrapper';
 import LoadingModal from '../../LoadingModal/LoadingModal';
 
 const FileMenu = () => {
