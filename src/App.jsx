@@ -10,7 +10,7 @@ import useReissue from './hooks/useReissue';
 import History from './routes/History/History';
 import Chatbot from './routes/Chatbot/Chatbot';
 import ChatStu from './routes/ChatStu/ChatStu';
-import WritingList from './routes/WritingList';
+import WritingList from './routes/WritingList/WritingList';
 import WritingSubmit from './routes/WritingSubmit';
 import File from './routes/File/File';
 
