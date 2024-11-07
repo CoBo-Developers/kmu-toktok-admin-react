@@ -12,6 +12,12 @@ function FileItem({
   downloadFile,
   getCategoryColor,
 }) {
+  const isNewFile = (createdAt) => {
+    const now = new Date();
+    const fileDate = new Date(createdAt);
+    const oneWeek = 7 * 24 * 60 * 60 * 1000;
+    return now - fileDate <= oneWeek;
+  };
   return (
     <tr>
       <td className="order-column">
@@ -31,7 +37,12 @@ function FileItem({
             {item.categoryName}
           </span>
         </div>
-        <div className="title-col">{item.name}</div>
+        <div className="title-col">
+          <span className="title-text">{item.name}</span>
+          {isNewFile(item.createdAt) && (
+            <span className="new-badge">new</span>
+          )}
+        </div>
         <div className="date-col">{fileFormattedDate(item.createdAt)}</div>
       </td>
       <td className="download-column">
