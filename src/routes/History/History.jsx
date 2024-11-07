@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import './History.css';
-import ltIcon from '../assets/icons/lt_icon.png';
-import useChatHistory from '../hooks/useChatHistory';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
+import ltIcon from '../../assets/icons/lt_icon.png';
+import useChatHistory from './hooks/useChatHistory';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function History() {
   const navigate = useNavigate();
