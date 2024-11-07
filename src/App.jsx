@@ -7,7 +7,7 @@ import Login from './routes/Login';
 import Redirect from './routes/Redirect';
 import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
-import Chatbot from './routes/Chatbot';
+import Chatbot from './routes/Chatbot/Chatbot';
 import History from './routes/History';
 import ChatStu from './routes/ChatStu';
 import WritingList from './routes/WritingList';
