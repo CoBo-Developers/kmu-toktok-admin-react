@@ -9,7 +9,7 @@ import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
 import Chatbot from './routes/Chatbot';
 import History from './routes/History';
-import ChatStu from './routes/ChatStu';
+import ChatStu from './routes/ChatStu/ChatStu';
 import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit';
 import File from './routes/File';
