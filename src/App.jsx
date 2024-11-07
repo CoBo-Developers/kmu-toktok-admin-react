@@ -5,7 +5,7 @@ import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage';
 import Login from './routes/Login';
 import Redirect from './routes/Redirect';
-import Register from './routes/Register';
+import Register from './routes/Register/Register';
 import useReissue from './hooks/useReissue';
 import Chatbot from './routes/Chatbot';
 import History from './routes/History';
