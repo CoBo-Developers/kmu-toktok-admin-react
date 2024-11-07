@@ -1,14 +1,14 @@
 import './WritingList.css';
-import searchIcon from '../assets/icons/search-icon.png';
-import WritingItem from '../components/list/WritingItem';
+import searchIcon from '../../assets/icons/search-icon.png';
+import WritingItem from './components/WritingItem/WritingItem';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { getWritingSubmitList } from '../api/writingApi';
+import { getWritingSubmitList } from '../../api/writingApi';
 import { useCookies } from 'react-cookie';
-import MoreBtn from '../components/main/MoreBtn';
-import useIsMobile from '../hooks/useIsMobile';
-import WritingMenu from '../components/aside/WritingMenu/WritingMenu';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
+import MoreBtn from '../../components/main/MoreBtn';
+import useIsMobile from '../../hooks/useIsMobile';
+import WritingMenu from '../../components/aside/WritingMenu/WritingMenu';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function WritingList() {
   const [writingList, setWritingList] = useState([]);
