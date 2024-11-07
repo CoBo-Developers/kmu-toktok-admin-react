@@ -1,15 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './ChatStu.css';
-import sendIcon from '../assets/icons/send-icon.png';
-import backIcon from '../assets/icons/back-icon.png';
-import mobileDownArrow from '../assets/icons/mobile-down-arrow.png';
-import mobileUpArrow from '../assets/icons/mobile-up-arrow.png';
-import useChatStu from '../hooks/useChatStu';
-import { formatDate, formatTime } from '../utils/dateAndTime';
-import useIsMobile from '../hooks/useIsMobile';
-import ChatStuMenu from '../components/aside/ChatStuMenu/ChatStuMenu';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
+import sendIcon from '../../assets/icons/send-icon.png';
+import backIcon from '../../assets/icons/back-icon.png';
+import mobileDownArrow from '../../assets/icons/mobile-down-arrow.png';
+import mobileUpArrow from '../../assets/icons/mobile-up-arrow.png';
+import useChatStu from './hooks/useChatStu';
+import { formatDate, formatTime } from '../../utils/dateAndTime';
+import useIsMobile from '../../hooks/useIsMobile';
+import ChatStuMenu from '../../components/aside/ChatStuMenu/ChatStuMenu';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function ChatStu() {
   let { studentId } = useParams();  
