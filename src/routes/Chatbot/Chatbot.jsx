@@ -1,8 +1,8 @@
-import sendIcon from '../assets/icons/send-icon.png';
-import useChatbot from '../hooks/useChatbot';
+import sendIcon from '../../assets/icons/send-icon.png';
+import useChatbot from './hooks/useChatbot';
 import './Chatbot.css';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
-import Loading from '../components/BotLoading/Loading';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
+import Loading from './components/Loading/Loading';
 
 function Chatbot() {
   const {
