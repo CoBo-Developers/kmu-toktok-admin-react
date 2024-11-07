@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import Aside from './components/aside/Aside'
 import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage';
+import Redirect from './routes/Redirect/Redirect';
 import Login from './routes/Login/Login';
-import Redirect from './routes/Redirect';
 import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
 import History from './routes/History/History';
