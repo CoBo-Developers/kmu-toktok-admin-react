@@ -1,12 +1,12 @@
 import './Manage.css';
-import searchIcon from '../assets/icons/search-icon.png';
-import useShowExtend from '../hooks/useShowExtend';
-import UserItem from '../components/list/UserItem';
-import useUserList from '../hooks/useUserList';
-import MoreBtn from '../components/main/MoreBtn';
-import useIsMobile from '../hooks/useIsMobile';
-import ManageMenu from '../components/aside/ManageMenu/ManageMenu';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
+import searchIcon from '../../assets/icons/search-icon.png';
+import useShowExtend from '../../hooks/useShowExtend';
+import UserItem from './components/UserItem/UserItem';
+import useUserList from './hooks/useUserList';
+import MoreBtn from '../../components/main/MoreBtn';
+import useIsMobile from '../../hooks/useIsMobile';
+import ManageMenu from '../../components/aside/ManageMenu/ManageMenu';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function Manage() {
   const showExtend = useShowExtend();
