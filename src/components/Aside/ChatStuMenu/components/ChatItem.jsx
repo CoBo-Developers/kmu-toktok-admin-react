@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './ChatItem.css';
-import { formatTime } from '../../../utils/dateAndTime';
+import { formatTime } from '../../../../utils/dateAndTime';
 
 const renderChatState = (state) => {
   switch (state) {

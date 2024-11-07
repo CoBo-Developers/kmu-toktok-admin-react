@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { addCategory, modifyCategory, deleteCategory } from '../../api/categoryApi';
-import { getCategoryList } from '../../api/fileApi';
+import { addCategory, modifyCategory, deleteCategory } from '../../../../api/categoryApi';
+import { getCategoryList } from '../../../../api/fileApi';
 import { useCookies } from 'react-cookie';
 
 const useCategoryManage = () => {

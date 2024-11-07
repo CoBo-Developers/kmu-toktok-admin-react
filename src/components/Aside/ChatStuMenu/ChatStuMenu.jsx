@@ -2,7 +2,7 @@
 import './ChatStuMenu.css';
 import searchIcon from '../../../assets/icons/search-icon-white.png';
 import useChatListStore from '../../../store/useChatListStore';
-import ChatItem from './ChatItem';
+import ChatItem from './components/ChatItem';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChatList } from '../../../api/chatStuApi';

@@ -1,9 +1,9 @@
 import { useCookies } from 'react-cookie';
-import { getWritingList, postWriting } from '../api/writingApi';
-import { dateToString } from '../utils/dateAndTime';
-import { handleTextareaChange } from '../utils/textareaHandler';
+import { getWritingList, postWriting } from '../../../../api/writingApi';
+import { dateToString } from '../../../../utils/dateAndTime';
+import { handleTextareaChange } from '../../../../utils/textareaHandler';
 import { useState } from "react"
-import { useWritingListStore } from '../store/useWritingListStore';
+import { useWritingListStore } from '../../../../store/useWritingListStore';
 
 function useCreateWriting() {
   const [onCreate, setOnCreate] = useState(false);

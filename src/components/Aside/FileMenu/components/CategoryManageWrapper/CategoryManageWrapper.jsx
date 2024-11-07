@@ -1,7 +1,7 @@
 import './CategoryManageWrapper.css';
-import deleteCategoryIcon from '../../../assets/icons/delete-category-icon.png';
-import addFileIcon from '../../../assets/icons/add-file-icon.png';
-import useCategoryManage from '../../../hooks/FileHooks/useCategoryManage';
+import deleteCategoryIcon from '../../../../../assets/icons/delete-category-icon.png';
+import addFileIcon from '../../../../../assets/icons/add-file-icon.png';
+import useCategoryManage from '../../hooks/useCategoryManage';
 
 const CategoryManageWrapper = () => {
     const {

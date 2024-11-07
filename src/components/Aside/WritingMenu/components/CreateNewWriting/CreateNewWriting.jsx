@@ -1,6 +1,6 @@
-import useCreateWriting from '../../../hooks/useCreateWriting';
+import useCreateWriting from '../../hooks/useCreateWriting';
 import './CreateNewWriting.css';
-import LoadingModal from '../../LoadingModal/LoadingModal';
+import LoadingModal from '../../../../LoadingModal/LoadingModal';
 
 function CreateNewWriting() {
   const {
