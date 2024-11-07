@@ -10,7 +10,7 @@ import useFileSelection from '../hooks/FileHooks/useFileSelection';
 import useCategorySelection from '../hooks/FileHooks/useCategorySelection';
 import useFileDownload from '../hooks/FileHooks/useFileDownload';
 import LoadingModal from '../components/LoadingModal/LoadingModal';
-import FileMenu from '../components/aside/FileMenu/FileMenu';
+import FileMenu from '../components/Aside/FileMenu/FileMenu';
 import useIsMobile from '../hooks/useIsMobile';
 
 function File() {
