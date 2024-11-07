@@ -11,7 +11,7 @@ import Chatbot from './routes/Chatbot';
 import History from './routes/History';
 import ChatStu from './routes/ChatStu';
 import WritingList from './routes/WritingList';
-import WritingSubmit from './routes/WritingSubmit';
+import WritingSubmit from './routes/WritingSubmit/WritingSubmit';
 import File from './routes/File';
 
 function App() {

@@ -1,9 +1,9 @@
 import './WritingSubmit.css';
-import backIcon from '../assets/icons/back-icon.png';
+import backIcon from '../../assets/icons/back-icon.png';
 import { useNavigate } from "react-router-dom";
-import useSubmittedWriting from '../hooks/useSubmittedWriting';
-import { dateToKoreanString } from '../utils/dateAndTime';
-import LoadingModal from '../components/LoadingModal/LoadingModal';
+import useSubmittedWriting from './hooks/useSubmittedWriting';
+import { dateToKoreanString } from '../../utils/dateAndTime';
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function WritingSubmit() {
   const navigate = useNavigate();
