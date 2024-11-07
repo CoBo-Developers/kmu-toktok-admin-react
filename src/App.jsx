@@ -1,6 +1,6 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Aside from './components/aside/Aside'
+import Aside from './components/Aside/Aside'
 import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage';
 import Register from './routes/Register/Register';
