@@ -12,7 +12,7 @@ import History from './routes/History';
 import ChatStu from './routes/ChatStu';
 import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit';
-import File from './routes/File';
+import File from './routes/File/File';
 
 function App() {
   const showAside = useShowAside();
