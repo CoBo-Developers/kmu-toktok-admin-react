@@ -7,12 +7,12 @@ import Login from './routes/Login';
 import Redirect from './routes/Redirect';
 import Register from './routes/Register';
 import useReissue from './hooks/useReissue';
-import Chatbot from './routes/Chatbot';
 import History from './routes/History/History';
-import ChatStu from './routes/ChatStu';
+import Chatbot from './routes/Chatbot/Chatbot';
+import ChatStu from './routes/ChatStu/ChatStu';
 import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit';
-import File from './routes/File';
+import File from './routes/File/File';
 
 function App() {
   const showAside = useShowAside();
