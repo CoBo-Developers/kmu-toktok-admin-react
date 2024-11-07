@@ -1,4 +1,4 @@
-import useLogin from '../routes/Login/hooks/useLogin';
+import useLogin from '../hooks/useLogin';
 
 function Redirect() {
   useLogin();
