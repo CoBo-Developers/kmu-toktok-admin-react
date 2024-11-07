@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getUserList, searchUser } from "../api/userApi";
+import { getUserList, searchUser } from "../../../api/userApi";
 import { useCookies } from "react-cookie";
-import { useUserListStore } from "../store/useUserStore";
+import { useUserListStore } from "../../../store/useUserStore";
 
 function useUserList() {
   const pageIncrement = import.meta.env.VITE_MANAGE_PAGESIZE;

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import arrowIcon from '../../assets/icons/arrow-icon.png';
-import mobileGoDetailIcon from '../../assets/icons/mobile-go-detail-icon.png';
-import useSeletectUserStore from "../../store/useSeletedUserStore";
+import arrowIcon from '../../../../assets/icons/arrow-icon.png';
+import mobileGoDetailIcon from '../../../../assets/icons/mobile-go-detail-icon.png';
+import useSeletectUserStore from "../../../../store/useSeletedUserStore";
 import './UserItem.css';
-import useIsMobile from "../../hooks/useIsMobile";
+import useIsMobile from "../../../../hooks/useIsMobile";
 
 function UserItem(props) {
   const { num, studentId, role } = props;
