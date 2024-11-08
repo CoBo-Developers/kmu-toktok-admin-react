@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { getWritingSubmitList } from '../../api/writingApi';
 import { useCookies } from 'react-cookie';
-import MoreBtn from '../../components/main/MoreBtn';
+import MoreBtn from '../../components/MoreBtn/MoreBtn';
 import useIsMobile from '../../hooks/useIsMobile';
 import WritingMenu from '../../components/aside/WritingMenu/WritingMenu';
 import LoadingModal from '../../components/LoadingModal/LoadingModal';

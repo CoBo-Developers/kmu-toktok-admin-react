@@ -11,7 +11,6 @@ import WritingList from './routes/WritingList/WritingList';
 import History from './routes/History/History';
 import Chatbot from './routes/Chatbot/Chatbot';
 import ChatStu from './routes/ChatStu/ChatStu';
-import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit/WritingSubmit';
 import File from './routes/File/File';
 
