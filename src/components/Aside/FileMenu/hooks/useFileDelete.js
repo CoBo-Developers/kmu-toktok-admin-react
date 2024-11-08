@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useFileStore } from '../../store/useFileStore';
-import { fileDelete } from '../../api/fileApi';
+import { useFileStore } from '../../../../store/useFileStore';
+import { fileDelete } from '../../../../api/fileApi';
 import { useCookies } from 'react-cookie';
 
 const useFileDelete = () => {
