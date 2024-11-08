@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getWritingSubmit, patchWritingState } from '../api/writingApi';
+import { getWritingSubmit, patchWritingState } from '../../../api/writingApi';
 import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
 
