@@ -1,6 +1,6 @@
 
 .register-main {
-    background-image: url('../assets/images/login_background.png');
+    background-image: url('../../assets/images/login_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -151,6 +151,9 @@
     background-color: #D9D9D9; 
 }
 
+.content-step1 .input-wrapper{
+    margin-left: 0;
+}
 
 /* register-content-right step1*/
 .register-content-right{
@@ -173,6 +176,7 @@
     gap:5px;
     font-size: 12px;
     width: 100%;
+    align-items: self-start;
 }
 .register-content-right .input-wrapper input{
     border: none;
@@ -260,18 +264,20 @@
     text-align: center;
 }
 .info-table th:nth-child(1){
-    width: 33%;
+    width: 50%;
 }
 .info-table th:nth-child(2){
-    width: 33%;
+    width: 25%;
 }
 .info-table th:nth-child(3){
-    width: 34%;
+    width: 25%;
 }
 .info-table td {
     padding: 5px 8px;
 }
-
+.btn-wrapper {
+    width: 100%;
+}
 @media screen and (max-width: 900px) {
     .register-main {
         background-image: none;
