@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { getChat, postChat, patchChatRead } from '../api/chatStuApi';
+import { getChat, postChat, patchChatRead } from '../../../api/chatStuApi';
 import { useCookies } from 'react-cookie';
-import useChatListStore from '../store/useChatListStore';
+import useChatListStore from '../../../store/useChatListStore';
 
 const useChatStu = () => {
   const { studentId } = useParams();
@@ -86,7 +86,8 @@ const useChatStu = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       return;
     }
   };

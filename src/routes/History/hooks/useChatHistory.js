@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
-import { getStudentChat } from '../api/chatBotApi';
+import { getStudentChat } from '../../../api/chatBotApi';
 
 function useChatHistory() {
   const params = useParams();
