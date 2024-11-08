@@ -1,8 +1,8 @@
 import './WritingItem.css';
-import arrowIcon from '../../assets/icons/arrow-icon.png';
-import { writingStateEnum } from '../../utils/writingEnum';
+import arrowIcon from '../../../../assets/icons/arrow-icon.png';
+import { writingStateEnum } from '../../../../utils/writingEnum';
 import { useNavigate } from 'react-router-dom';
-import { dateToKoreanString } from '../../utils/dateAndTime';
+import { dateToKoreanString } from '../../../../utils/dateAndTime';
 
 function WritingItem(props) {
   const {
