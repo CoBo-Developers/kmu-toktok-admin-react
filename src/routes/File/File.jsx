@@ -8,7 +8,7 @@ import useFileSelection from "./hooks/useFileSelection";
 import useCategorySelection from "./hooks/useCategorySelection";
 import useFileDownload from "./hooks/useFileDownload";
 import LoadingModal from "../../components/LoadingModal/LoadingModal";
-import FileMenu from "../../components/aside/FileMenu/FileMenu";
+import FileMenu from "../../components/Aside/FileMenu/FileMenu";
 import useIsMobile from "../../hooks/useIsMobile";
 import FileItem from "./components/FileItem";
 
