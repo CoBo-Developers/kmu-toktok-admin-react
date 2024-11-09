@@ -1,5 +1,5 @@
 import './Manage.css';
-import searchIcon from '../../assets/icons/search-icon.png';
+import searchIcon from '../../assets/icons/search-icon.svg';
 import useShowExtend from '../../hooks/useShowExtend';
 import UserItem from './components/UserItem/UserItem';
 import useUserList from './hooks/useUserList';

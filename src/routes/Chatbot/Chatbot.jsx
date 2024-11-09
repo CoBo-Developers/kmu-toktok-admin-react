@@ -1,4 +1,4 @@
-import sendIcon from '../../assets/icons/send-icon.png';
+import sendIcon from '../../assets/icons/send-icon.svg';
 import useChatbot from './hooks/useChatbot';
 import './Chatbot.css';
 import LoadingModal from '../../components/LoadingModal/LoadingModal';
