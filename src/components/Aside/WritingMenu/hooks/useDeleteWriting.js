@@ -1,18 +1,28 @@
 import { useState } from "react";
-import { deleteWriting } from "../../../../api/writingApi";
+import { getWritingList, deleteWriting } from "../../../../api/writingApi";
 import { useWritingListStore } from "../../../../store/useWritingListStore";
 import { useCookies } from "react-cookie";
 
 function useDeleteWriting() {
     const [writingLoading, setWritingLoading] = useState(false);
-    const { writingList, setWritingList } = useWritingListStore();
+    const setWritingList = useWritingListStore((state) => state.setWritingList);
     const [cookies] = useCookies(['accessToken']);
     
     const handleDelete = (id) => {
         setWritingLoading(true);
         deleteWriting(id, cookies.accessToken)
           .then(() => {
-            setWritingList(writingList.filter(item => item.id !== id));
+            setWritingLoading(true);
+            getWritingList(cookies.accessToken)
+              .then((res) => {
+                setWritingList(res.data.assignments);
+              })
+              .catch((err) => {
+                alert(err.message);
+              })
+              .finally(() => {
+                setWritingLoading(false);
+              });
           })
           .catch((err) => {
             alert(err.message);
