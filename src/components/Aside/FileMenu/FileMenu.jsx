@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import './FileMenu.css';
-import categoryCheckIcon from '../../../assets/icons/category-check-icon.png';
-import addFileIcon from '../../../assets/icons/add-file-icon.png';
-import deleteFileIcon from '../../../assets/icons/delete-file-icon.png';
-import modifyFileIcon from '../../../assets/icons/modify-file-icon.png';
-import categoryManageIcon from '../../../assets/icons/category-manage-icon.png';
+import categoryCheckIcon from '../../../assets/icons/category-check-icon.svg';
+import addFileIcon from '../../../assets/icons/add-file-icon.svg';
+import deleteFileIcon from '../../../assets/icons/delete-file-icon.svg';
+import modifyFileIcon from '../../../assets/icons/modify-file-icon.svg';
+import categoryManageIcon from '../../../assets/icons/category-manage-icon.svg';
 import { getCategoryList } from '../../../api/fileApi';
 import { useCookies } from 'react-cookie';
 import { useSelectedCategoryIdStore } from '../../../store/useFileStore';

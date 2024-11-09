@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import downloadIcon from "../../../assets/icons/download-icon.png";
-import fileSelectedIcon from "../../../assets/icons/file-selected.png";
-import fileUnselectedIcon from "../../../assets/icons/file-unselected.png";
+import downloadIcon from "../../../assets/icons/download-icon.svg";
+import fileSelectedIcon from "../../../assets/icons/file-selected.svg";
+import fileUnselectedIcon from "../../../assets/icons/file-unselected.svg";
 import { fileFormattedDate } from "../../../utils/dateAndTime";
 import "./FileItem.css";
 

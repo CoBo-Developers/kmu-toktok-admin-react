@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './History.css';
-import ltIcon from '../../assets/icons/lt_icon.png';
+import ltIcon from '../../assets/icons/lt_icon.svg';
 import useChatHistory from './hooks/useChatHistory';
 import LoadingModal from '../../components/LoadingModal/LoadingModal';
 

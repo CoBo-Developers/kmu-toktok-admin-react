@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./File.css";
-import mobileDownArrow from "../../assets/icons/mobile-down-arrow.png";
-import mobileUpArrow from "../../assets/icons/mobile-up-arrow.png";
-import fileSelectedIcon from "../../assets/icons/file-selected.png";
-import fileUnselectedIcon from "../../assets/icons/file-unselected.png";
+import mobileDownArrow from "../../assets/icons/mobile-down-arrow.svg";
+import mobileUpArrow from "../../assets/icons/mobile-up-arrow.svg";
+import fileSelectedIcon from "../../assets/icons/file-selected.svg";
+import fileUnselectedIcon from "../../assets/icons/file-unselected.svg";
 import useFileSelection from "./hooks/useFileSelection";
 import useCategorySelection from "./hooks/useCategorySelection";
 import useFileDownload from "./hooks/useFileDownload";

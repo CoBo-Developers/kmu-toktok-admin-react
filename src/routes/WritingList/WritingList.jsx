@@ -1,5 +1,5 @@
 import './WritingList.css';
-import searchIcon from '../../assets/icons/search-icon.png';
+import searchIcon from '../../assets/icons/search-icon.svg';
 import WritingItem from './components/WritingItem/WritingItem';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';

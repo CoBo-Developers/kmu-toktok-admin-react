@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './ChatStu.css';
-import sendIcon from '../../assets/icons/send-icon.png';
-import backIcon from '../../assets/icons/back-icon.png';
-import mobileDownArrow from '../../assets/icons/mobile-down-arrow.png';
-import mobileUpArrow from '../../assets/icons/mobile-up-arrow.png';
+import sendIcon from '../../assets/icons/send-icon.svg';
+import backIcon from '../../assets/icons/back-icon.svg';
+import mobileDownArrow from '../../assets/icons/mobile-down-arrow.svg';
+import mobileUpArrow from '../../assets/icons/mobile-up-arrow.svg';
 import useChatStu from './hooks/useChatStu';
 import { formatDate, formatTime } from '../../utils/dateAndTime';
 import useIsMobile from '../../hooks/useIsMobile';

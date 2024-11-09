@@ -1,5 +1,5 @@
 import './WritingItem.css';
-import arrowIcon from '../../../../assets/icons/arrow-icon.png';
+import arrowIcon from '../../../../assets/icons/arrow-icon.svg';
 import { writingStateEnum } from '../../../../utils/writingEnum';
 import { useNavigate } from 'react-router-dom';
 import { dateToKoreanString } from '../../../../utils/dateAndTime';

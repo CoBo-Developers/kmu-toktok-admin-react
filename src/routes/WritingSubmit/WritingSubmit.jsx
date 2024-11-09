@@ -1,5 +1,5 @@
 import './WritingSubmit.css';
-import backIcon from '../../assets/icons/back-icon.png';
+import backIcon from '../../assets/icons/back-icon.svg';
 import { useNavigate } from "react-router-dom";
 import useSubmittedWriting from './hooks/useSubmittedWriting';
 import { dateToKoreanString } from '../../utils/dateAndTime';

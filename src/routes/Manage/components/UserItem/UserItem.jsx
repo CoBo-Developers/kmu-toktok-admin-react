@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import arrowIcon from '../../../../assets/icons/arrow-icon.png';
-import mobileGoDetailIcon from '../../../../assets/icons/mobile-go-detail-icon.png';
+import arrowIcon from '../../../../assets/icons/arrow-icon.svg';
+import mobileGoDetailIcon from '../../../../assets/icons/mobile-go-detail-icon.svg';
 import useSeletectUserStore from "../../../../store/useSeletedUserStore";
 import './UserItem.css';
 import useIsMobile from "../../../../hooks/useIsMobile";

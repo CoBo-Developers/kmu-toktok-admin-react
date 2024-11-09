@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './ChatStuMenu.css';
-import searchIcon from '../../../assets/icons/search-icon-white.png';
+import searchIcon from '../../../assets/icons/search-icon-white.svg';
 import useChatListStore from '../../../store/useChatListStore';
 import ChatItem from './components/ChatItem';
 import { useEffect, useState } from 'react';
