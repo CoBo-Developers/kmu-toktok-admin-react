@@ -72,6 +72,7 @@
     align-items: center;
     color: #fff;
     font-size: 14px;
+    border: 1px solid #193553;
 }
 .file-manage-wrapper > article > img {
     width: 30px;

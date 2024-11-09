@@ -1,0 +1,20 @@
+.delete-writing-btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+  }
+.delete-writing-btn-wrapper > button {
+    background-color: transparent;
+    border: 1px solid #587697;
+    cursor: pointer;
+    border-radius: 10px;
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 14px;
+    color: #fff
+}
+.delete-writing-btn-wrapper > button:nth-child(2) {
+    background-color: #587697;
+}
