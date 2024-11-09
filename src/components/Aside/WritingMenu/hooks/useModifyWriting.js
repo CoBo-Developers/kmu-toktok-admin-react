@@ -1,17 +1,18 @@
 import { useCookies } from 'react-cookie';
-import { getWritingList, postWriting } from '../../../../api/writingApi';
+import { getWritingList, putWriting } from '../../../../api/writingApi';
 import { useState } from "react";
 import useAssignmentStore from '../../../../store/useAssignmentStore';
 import { useWritingListStore } from '../../../../store/useWritingListStore';
 
-function useCreateWriting() {
+function useModifyWriting() {
   const [cookies] = useCookies(['accessToken']);
   const setWritingList = useWritingListStore((state) => state.setWritingList);
   const { assignmentData } = useAssignmentStore();
-  const [isCreateLoading, setIsCreateLoading] = useState(false);
+  const [isModifyLoading, setIsModifyLoading] = useState(false);
 
-  const handleCreateButtonClick = () => {  
+  const handleModifyButtonClick = () => {  
     const sendData = {
+      id: assignmentData.id,
       title: assignmentData.title,
       description: assignmentData.description,
       score: Number(assignmentData.score),
@@ -24,10 +25,13 @@ function useCreateWriting() {
       prompt: assignmentData.constraints
     };
 
-    setIsCreateLoading(true);
-    postWriting(sendData, cookies.accessToken)
+    console.log(sendData);
+
+    setIsModifyLoading(true);
+    putWriting(sendData, cookies.accessToken)
       .then(() => {
-        setIsCreateLoading(true);
+        setIsModifyLoading(true);
+        alert('과제가 수정되었습니다.');
         getWritingList(cookies.accessToken)
           .then((res) => {
             setWritingList(res.data.assignments);
@@ -36,21 +40,21 @@ function useCreateWriting() {
             alert(err.message);
           })
           .finally(() => {
-            setIsCreateLoading(false);
+            setIsModifyLoading(false);
           });
       })
       .catch((err) => {
         alert(err.message);
       })
       .finally(() => {
-        setIsCreateLoading(false);
+        setIsModifyLoading(false);
       });
   };
 
   return {
-    handleCreateButtonClick,
-    isCreateLoading
+    handleModifyButtonClick,
+    isModifyLoading
   };
 }
 
-export default useCreateWriting;
+export default useModifyWriting;

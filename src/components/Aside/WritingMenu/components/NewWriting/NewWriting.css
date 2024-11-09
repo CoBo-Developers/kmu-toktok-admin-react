@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 10px;
 }
 
 .create-new-wrting > article {
-  background: #152A41;
+  background: #152a41;
   border-radius: 10px;
   padding: 12px;
   display: flex;
@@ -15,7 +16,7 @@
 }
 
 .create-new-wrting > article > label {
-  color: #5E7D9F;
+  color: #5e7d9f;
   flex: none;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .due-date-wrapper > h5 {
-  color: #5E7D9F;
+  color: #5e7d9f;
   font-weight: 400;
   font-size: 14px;
   margin: 0;
@@ -90,7 +91,7 @@
   padding: 12px 0;
   margin-top: 14px;
   width: 100%;
-  background: #465F7A;
+  background: #465f7a;
   color: white;
   cursor: pointer;
   border-radius: 8px;
