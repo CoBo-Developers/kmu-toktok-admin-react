@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { getWritingList, deleteWriting } from "../../../../api/writingApi";
+import { getWritingList} from "../../../../api/writingApi";
 import { useWritingListStore } from "../../../../store/useWritingListStore";
 
 function useWritingList() {
@@ -22,22 +22,7 @@ function useWritingList() {
       });
   }, [cookies]);
 
-  const handleDelete = (id) => {
-    setWritingLoading(true);
-    deleteWriting(id, cookies.accessToken)
-      .then(() => {
-        setWritingList(writingList.filter(item => item.id !== id));
-      })
-      .catch((err) => {
-        alert(err.message);
-      })
-      .finally(() => {
-        setWritingLoading(false);
-      });
-  };
-
-
-  return { writingList, writingLoading, handleDelete };
+  return { writingList, writingLoading };
 }
 
 export default useWritingList;
