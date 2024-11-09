@@ -8,7 +8,7 @@ import mobileUpArrow from '../../assets/icons/mobile-up-arrow.png';
 import useChatStu from './hooks/useChatStu';
 import { formatDate, formatTime } from '../../utils/dateAndTime';
 import useIsMobile from '../../hooks/useIsMobile';
-import ChatStuMenu from '../../components/aside/ChatStuMenu/ChatStuMenu';
+import ChatStuMenu from '../../components/Aside/ChatStuMenu/ChatStuMenu';
 import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function ChatStu() {

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { fileAdd } from '../../api/fileApi';
-import { useFileStore } from '../../store/useFileStore';
+import { fileAdd } from '../../../../api/fileApi';
+import { useFileStore } from '../../../../store/useFileStore';
 import { useCookies } from 'react-cookie';
 
 const useFileAdd = () => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import CreateNewWriting from './CreateNewWriting';
+import CreateNewWriting from './components/CreateNewWriting/CreateNewWriting';
 import './WritingMenu.css';
-import useWritingList from '../../../hooks/useWritingList';
+import useWritingList from './hooks/useWritingList';
 import { useCurrentWritingStore } from '../../../store/useCurrentWritingStore';
 import { useNavigate } from 'react-router-dom';
 import useIsMobile from '../../../hooks/useIsMobile';

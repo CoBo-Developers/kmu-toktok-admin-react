@@ -1,6 +1,6 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Aside from './components/aside/Aside'
+import Aside from './components/Aside/Aside'
 import useShowAside from './hooks/useShowAside'
 import Manage from './routes/Manage/Manage';
 import Register from './routes/Register/Register';
@@ -11,7 +11,6 @@ import WritingList from './routes/WritingList/WritingList';
 import History from './routes/History/History';
 import Chatbot from './routes/Chatbot/Chatbot';
 import ChatStu from './routes/ChatStu/ChatStu';
-import WritingList from './routes/WritingList';
 import WritingSubmit from './routes/WritingSubmit/WritingSubmit';
 import File from './routes/File/File';
 
