@@ -8,16 +8,19 @@ import useIsMobile from '../../../hooks/useIsMobile';
 import mobileDownArrow from '../../../assets/icons/mobile-down-arrow.png';
 import mobileUpArrow from '../../../assets/icons/mobile-up-arrow.png';
 import writingDelete from '../../../assets/icons/delete-category-icon.png';
+import extendIcon from '../../../assets/icons/extend-icon.svg';
 import LoadingModal from '../../LoadingModal/LoadingModal';
+import DeteleWriting from './components/DeleteWriting/DeleteWriting';
 
 function WritingMenu() {
-  const { writingList, writingLoading, handleDelete } = useWritingList();
+  const { writingList, writingLoading} = useWritingList();
   const { currentWritingId, setCurrentWritingId } = useCurrentWritingStore();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const selectedWriting = writingList.find(item => item.id === currentWritingId);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const [isDeleteVisible, setIsDeleteVisible] = useState(null);
+  const [isModifyVisible, setIsModifyVisible] = useState(null);
 
   let writingHeader = '';
   if (isMobile) {
@@ -73,28 +76,31 @@ function WritingMenu() {
                         `writing-title-wrapper ${isDeleteVisible === item.id ? 'delete-visible' : ''}`}
                       >
                         {item.title}
-                        <img src={writingDelete} 
+                        {currentWritingId === item.id ? (
+                          <img src={extendIcon} 
+                            alt="extend" 
+                            className='delete-writing'
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsModifyVisible(item.id);
+                            }} 
+                          />
+                        ): (
+                          <img src={writingDelete} 
                             alt="delete" 
                             className='delete-writing'
                             onClick={(e) => {
                               e.stopPropagation();
                               setIsDeleteVisible(item.id);
                             }} 
-                        />
+                          />
+                        )}
                       </div>
                       {isDeleteVisible === item.id && (
-                        <div className='delete-writing-wrapper'>
-                          <p>과제를 삭제할까요?</p>
-                          <div className='delete-writing-btn-wrapper'>
-                            <button onClick={() => setIsDeleteVisible(null)}>
-                              취소</button>
-                            <button
-                             onClick={() => {
-                              handleDelete(item.id);
-                              setIsDeleteVisible(null);
-                            }}>삭제</button>
-                          </div>
-                        </div>
+                        <DeteleWriting item={item} setIsDeleteVisible={setIsDeleteVisible}/>
+                      )}
+                      {isModifyVisible === item.id && (
+                        <CreateNewWriting />
                       )}
                     </li>
                   )
