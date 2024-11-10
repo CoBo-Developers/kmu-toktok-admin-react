@@ -88,7 +88,7 @@ function WritingMenu() {
                           {currentWritingId === item.id ? (
                             isModifyVisible === item.id ? (
                               <img src={reduceIcon} 
-                                alt="extend" 
+                                alt="delete" 
                                 className='delete-writing'
                                 onClick={(e) => {
                                   e.stopPropagation();
@@ -97,11 +97,12 @@ function WritingMenu() {
                               />
                               ) : (
                               <img src={extendIcon} 
-                                alt="delete" 
+                                alt="extend" 
                                 className='delete-writing'
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setIsModifyVisible(item.id);
+                                  setOnCreate(false);
                                 }}
                               />
                             )
@@ -131,7 +132,13 @@ function WritingMenu() {
             {onCreate ? (
               <NewWriting initialData={null} onClose={()=> setOnCreate(false)}/>
             ):
-            <button className="aside-writing-create-btn" onClick={() => { setOnCreate(true) }}>
+            <button
+              className="aside-writing-create-btn" 
+              onClick={() => { 
+                setOnCreate(true);
+                setIsModifyVisible(null);
+              }}
+            >
               + 새로운 글쓰기 추가
             </button>
             }

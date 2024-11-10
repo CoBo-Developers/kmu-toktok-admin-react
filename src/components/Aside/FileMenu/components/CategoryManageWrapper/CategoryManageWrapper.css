@@ -105,3 +105,6 @@
 #new-category-input::-webkit-scrollbar {
     display: none;
 }
+.category-manage-name {
+    word-break: break-all;
+}

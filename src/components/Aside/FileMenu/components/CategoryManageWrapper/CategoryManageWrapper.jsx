@@ -40,7 +40,7 @@ const CategoryManageWrapper = () => {
                                         }}
                                     />
                                 ) : (
-                                    <div>{category.name}</div>
+                                    <div className='category-manage-name'>{category.name}</div>
                                 )}
                             </td>
                             <td>

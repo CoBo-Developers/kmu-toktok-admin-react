@@ -31,6 +31,13 @@ function useWritingForm(initialData) {
     }
   }, [initialData]);
 
+  useEffect(() => {
+    document.querySelectorAll('textarea').forEach(textarea => {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    });
+  }, [assignmentData]);
+
   const handleTitleChange = (e) => {
     handleTextareaChange(e);
     setAssignmentData({ title: e.target.value });

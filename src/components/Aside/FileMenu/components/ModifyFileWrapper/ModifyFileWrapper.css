@@ -60,6 +60,7 @@
     width: fit-content;
     margin-left: 6px;
     margin-bottom: 6px;
+    word-break: break-all;
 }
 .category-modify-option-item.active{
     background-color: #465F7A;
