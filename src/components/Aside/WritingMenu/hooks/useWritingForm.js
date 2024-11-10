@@ -17,6 +17,12 @@ function useWritingForm(initialData) {
         startDate: { year: start[0], month: start[1], day: start[2] },
         endDate: { year: end[0], month: end[1], day: end[2] }
       });
+      setTimeout(() => {
+        document.querySelectorAll('textarea').forEach(textarea => {
+          textarea.style.height = 'auto';
+          textarea.style.height = textarea.scrollHeight + 'px';
+        });
+      }, 0);
     }
     else{
       setAssignmentData({
