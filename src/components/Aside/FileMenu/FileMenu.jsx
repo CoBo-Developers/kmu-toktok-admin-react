@@ -79,7 +79,7 @@ const FileMenu = () => {
     }, [cookies.accessToken]);
 
     return (
-        <main>
+        <main className='file-menu-container'>
             <LoadingModal show={getCategoryLoading} />
             <LoadingModal show={categoryLoading} />
             <LoadingModal show={fileAddLoading} />

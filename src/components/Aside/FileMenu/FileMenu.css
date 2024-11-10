@@ -1,3 +1,10 @@
+.file-menu-container {
+    height: 90dvh;
+    overflow-y: scroll;
+}
+.file-menu-container::-webkit-scrollbar {
+    display: none;
+}
 /*category-wrapper*/
 .category-wrapper {
     background-color: #152A41;
