@@ -55,6 +55,12 @@ function WritingMenu() {
       </div>
       {isMenuVisible && (
         <article className='aside-writing-content'>
+            <div 
+              className='testing-item' 
+              onClick={()=>{navigate('/writing/testing')}}
+            >
+              피드백 테스트
+            </div>
             <ul className="aside-writing-items">
               {
                 writingList.map((item, i) => {

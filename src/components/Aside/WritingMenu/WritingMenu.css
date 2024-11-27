@@ -94,7 +94,15 @@
 .aside-writing::-webkit-scrollbar {
   display: none;
 }
-
+.testing-item{
+  background: linear-gradient(97.49deg, #465F7A 5.21%, #7D71BC 48.2%, #81AEE0 112.33%);
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
 @media screen and (max-width: 900px) {
   .aside-writing {
     padding: 0;
