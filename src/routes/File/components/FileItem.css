@@ -22,6 +22,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0 10px;
 }
 .category-col {
   flex: 2;
