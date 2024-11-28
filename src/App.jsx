@@ -13,6 +13,7 @@ import Chatbot from './routes/Chatbot/Chatbot';
 import ChatStu from './routes/ChatStu/ChatStu';
 import WritingSubmit from './routes/WritingSubmit/WritingSubmit';
 import File from './routes/File/File';
+import Testing from './routes/Testing/Testing';
 
 function App() {
   const showAside = useShowAside();
@@ -37,6 +38,7 @@ function App() {
         <Route path='/manage' element={<Manage />} />
         <Route path='/manage/:id' element={<History />} />
         <Route path="/redirect/:option" element={<Redirect />} />
+        <Route path="/writing/testing" element={<Testing />} />
       </Routes>
     </div>
   )
