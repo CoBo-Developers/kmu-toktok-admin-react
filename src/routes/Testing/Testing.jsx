@@ -1,6 +1,7 @@
 import "./Testing.css";
 import leftArrow from "../../assets/icons/left-arrow.svg";
 import useTesting from "./hooks/useTesting";
+import LoadingModal from '../../components/LoadingModal/LoadingModal';
 
 function Testing() {
   const { 
@@ -12,10 +13,12 @@ function Testing() {
     handleConstraintsChange,
     feedbackContent,
     getFeedback,
+    isLoading,
   } = useTesting();
 
   return (
     <main className="testing-main">
+      <LoadingModal show={isLoading}/>
       <header className="testing-header">
         <span>피드백 테스트</span>
       </header>
