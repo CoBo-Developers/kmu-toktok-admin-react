@@ -47,8 +47,11 @@ function useTesting() {
       withCredentials: true,
     });
 
-    eventSource.addEventListener('chat-update', (event) => {
+    eventSource.onopen = () => {
       setIsLoading(false);
+    }
+
+    eventSource.addEventListener('chat-update', (event) => {
       const content = JSON.parse(event.data).message
       setFeedbackContent((prevFeedbackContent) => [...prevFeedbackContent, content]);
     })
