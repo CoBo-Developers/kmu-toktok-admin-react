@@ -93,11 +93,18 @@ hr {
   resize: none;
   word-break: keep-all;
   flex-grow: 1;
+  line-height: 1.8;
 }
 #writing-content:focus {
   outline: none;
 }
-
+.feedback-wrapper {
+  line-height: 1.8;
+}
+.feedback-wrapper > p {
+  margin: 0;
+  word-break: keep-all;
+}
 @media screen and (max-width: 900px) {
   .testing-main {
     padding-left: 0;
