@@ -84,10 +84,10 @@ function useTesting() {
         const match = evt.match(/^data:\s*(.*)$/m);
         if (match) {
           const json = match[1];
-          const data = JSON.parse(json);
-          console.log(data.message); // "안녕하세요"
+          // const data = JSON.parse(json);
+          // console.log(data.message); // "안녕하세요"
 
-          setFeedbackContent((prev) => [...prev, data]);
+          setFeedbackContent((prev) => [...prev, json]);
         }
       }
     }
