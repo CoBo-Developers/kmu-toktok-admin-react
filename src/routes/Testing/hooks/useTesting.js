@@ -65,17 +65,18 @@ function useTesting() {
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
-    let buffer = "";
+    // let buffer = "";
 
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-      buffer += decoder.decode(value, { stream: true });
+      // buffer += decoder.decode(value, { stream: true });
       // const sseContent = parseSSE(result);
       // if (sseContent.event !== 'chat-update') continue;
 
       // const message = JSON.parse(sseContent.data).message;
-      // setFeedbackContent((prev) => [ ...prev, message ]);
+      const message = decoder.decode(value, { stream: true });
+      setFeedbackContent((prev) => [...prev, message]);
     }
 
     setIsLoading(false);
