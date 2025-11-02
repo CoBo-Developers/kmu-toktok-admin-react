@@ -81,14 +81,13 @@ function useTesting() {
 
       for (const evt of events) {
         // "data:" 부분 찾기
-        const match = evt.match(/^data:\s*(.*)$/m);
-        if (match) {
-          const json = match[1];
-          // const data = JSON.parse(json);
-          // console.log(data.message); // "안녕하세요"
+        const lines = evt.split("\n").filter((l) => l.startsWith("data:"));
 
-          setFeedbackContent((prev) => [...prev, json]);
-        }
+        // 공백 포함한 원문 추출 — trim 절대 하지 말기!
+        const chunk = lines.map((l) => l.slice(5)).join("\n");
+
+        // 한 글자 단위로 이어붙이기
+        setFeedbackContent((prev) => [...prev, chunk]);
       }
     }
 
