@@ -46,13 +46,16 @@ function useTesting() {
   };
 
   const requestFeedback = async (userContent, systemContent) => {
-    const res = await fetch(`/api/api/api/see`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userContent, systemContent }),
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_APP_PROMPTING_API_URL}/api/api/api/see`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userContent, systemContent }),
+      }
+    );
 
     if (!res.ok) {
       throw new Error("요청에 실패했습니다.");
