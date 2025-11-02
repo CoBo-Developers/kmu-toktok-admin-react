@@ -47,7 +47,7 @@ function useTesting() {
 
   const requestFeedback = async (userContent, systemContent) => {
     const res = await fetch(
-      `${import.meta.env.VITE_APP_PROMPTING_API_URL}/api/api/see`,
+      `${import.meta.env.VITE_APP_PROMPTING_API_URL}/api/see`,
       {
         method: "POST",
         headers: {
