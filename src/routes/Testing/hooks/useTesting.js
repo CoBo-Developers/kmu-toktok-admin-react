@@ -67,17 +67,42 @@ function useTesting() {
     const decoder = new TextDecoder();
     // let buffer = "";
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      // buffer += decoder.decode(value, { stream: true });
-      // const sseContent = parseSSE(result);
-      // if (sseContent.event !== 'chat-update') continue;
+    let buffer = "";
 
-      // const message = JSON.parse(sseContent.data).message;
-      const message = decoder.decode(value, { stream: true });
-      setFeedbackContent((prev) => [...prev, message]);
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      // 이벤트 단위로 자르기 (빈 줄 기준)
+      const events = buffer.split("\n\n");
+      buffer = events.pop(); // 마지막은 incomplete일 수 있음
+
+      for (const evt of events) {
+        // "data:" 부분 찾기
+        const match = evt.match(/^data:\s*(.*)$/m);
+        if (match) {
+          const json = match[1];
+          const data = JSON.parse(json);
+          console.log(data.message); // "안녕하세요"
+
+          setFeedbackContent((prev) => [...prev, data]);
+        }
+      }
     }
+
+    // while (true) {
+    //   const { done, value } = await reader.read();
+    //   if (done) break;
+    //   // buffer += decoder.decode(value, { stream: true });
+    //   const message = decoder.decode(value, { stream: true });
+    //   const sseContent = parseSSE(result);
+    //   if (sseContent.event !== 'chat-update') continue;
+
+    //   // const message = JSON.parse(sseContent.data).message;
+    //   setFeedbackContent((prev) => [...prev, message]);
+    // }
 
     setIsLoading(false);
   };
